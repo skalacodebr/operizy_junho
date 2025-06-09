@@ -164,24 +164,28 @@ class StoreController extends Controller
                 );
                 $objStore->is_store_enabled = 1;
                 $objStore->enable_storelink = 'on';
-                $objStore->content = 'Hi,
-                                    *Welcome to* {store_name},
-                                    Your order is confirmed & your order no. is {order_no}
-                                    Your order detail is:
-                                    Name : {customer_name}
-                                    Address : {billing_address} {billing_city} , {shipping_address} {shipping_city}
-                                    ~~~~~~~~~~~~~~~~
-                                    {item_variable}
-                                    ~~~~~~~~~~~~~~~~
-                                    Qty Total : {qty_total}
-                                    Sub Total : {sub_total}
-                                    Discount Price : {discount_amount}
-                                    Shipping Price : {shipping_amount}
-                                    Tax : {total_tax}
-                                    Total : {final_total}
-                                    ~~~~~~~~~~~~~~~~~~
-                                    To collect the order you need to show the receipt at the counter.
-                                    Thanks {store_name}
+                $objStore->content = 'Olá, *Bem-vindo(a) à* {store_name},
+
+Seu pedido foi confirmado e o número do seu pedido é {order_no}.
+
+Detalhes do seu pedido:
+Nome: {customer_name}
+Endereço: {billing_address} {billing_city}, {shipping_address} {shipping_city}
+~~~~~~~~~~~~~~~
+{item_variable}
+~~~~~~~~~~~~~~~
+Qtde Total: {qty_total}
+Subtotal: {sub_total}
+Valor de Desconto: {discount_amount}
+Valor do Frete: {shipping_amount}
+Imposto: {total_tax}
+Total: {final_total}
+~~~~~~~~~~~~~~~~~
+Para retirar o pedido, você precisa apresentar o comprovante no balcão.
+
+Obrigado(a),  
+{store_name}
+
                                     ';
                 $objStore->item_variable = '{sku} : {quantity} x {product_name} - {variant_name} + {item_tax} = {item_total}';
                 $objStore->theme_dir = 'theme1';
@@ -241,24 +245,28 @@ class StoreController extends Controller
                 $objStore->email = \Auth::user()->email;
                 $objStore->is_store_enabled = 1;
                 $objStore->enable_storelink = 'on';
-                $objStore->content = 'Hi,
-                                    *Welcome to* {store_name},
-                                    Your order is confirmed & your order no. is {order_no}
-                                    Your order detail is:
-                                    Name : {customer_name}
-                                    Address : {billing_address} {billing_city} , {shipping_address} {shipping_city}
-                                    ~~~~~~~~~~~~~~~~
-                                    {item_variable}
-                                    ~~~~~~~~~~~~~~~~
-                                    Qty Total : {qty_total}
-                                    Sub Total : {sub_total}
-                                    Discount Price : {discount_amount}
-                                    Shipping Price : {shipping_amount}
-                                    Tax : {total_tax}
-                                    Total : {final_total}
-                                    ~~~~~~~~~~~~~~~~~~
-                                    To collect the order you need to show the receipt at the counter.
-                                    Thanks {store_name}
+                $objStore->content = 'Olá, *Bem-vindo(a) à* {store_name},
+
+Seu pedido foi confirmado e o número do seu pedido é {order_no}.
+
+Detalhes do seu pedido:
+Nome: {customer_name}
+Endereço: {billing_address} {billing_city}, {shipping_address} {shipping_city}
+~~~~~~~~~~~~~~~
+{item_variable}
+~~~~~~~~~~~~~~~
+Qtde Total: {qty_total}
+Subtotal: {sub_total}
+Valor de Desconto: {discount_amount}
+Valor do Frete: {shipping_amount}
+Imposto: {total_tax}
+Total: {final_total}
+~~~~~~~~~~~~~~~~~
+Para retirar o pedido, você precisa apresentar o comprovante no balcão.
+
+Obrigado(a),  
+{store_name}
+
                                     ';
                 $objStore->item_variable = '{sku} : {quantity} x {product_name} - {variant_name} + {item_tax} = {item_total}';
                 $objStore->theme_dir = isset($request['themefile'])?$request['themefile']:'theme1';
