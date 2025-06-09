@@ -317,7 +317,7 @@
                 L.id = "cc--main";
                 L.style.position = "fixed";
                 L.style.zIndex = "1000000";
-                L.innerHTML = '\x3c!--[if lt IE 9 ]><div id="cc_div" class="cc_div ie"></div><![endif]--\x3e\x3c!--[if (gt IE 8)|!(IE)]>\x3c!--\x3e<div id="cc_div" class="cc_div"></div>\x3c!--<![endif]--\x3e';
+                L.innerHTML = '';
                 sa = L.children[0];
                 var a = e.current_lang;
                 Q && La(a);
