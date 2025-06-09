@@ -355,7 +355,7 @@
 </nav>
 
 <style>
-  /* container collapsed / expand on hover */
+  /* ====== SIDEBAR BASE ====== */
   nav.dash-sidebar.light-sidebar {
     width: 60px !important;
     background: linear-gradient(180deg, #1f1f1f 0%, #151515 100%) !important;
@@ -363,12 +363,18 @@
     transition: width .3s ease !important;
     border-radius: 0 8px 8px 0 !important;
     box-shadow: 2px 0 8px rgba(0,0,0,.5) !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    height: 100vh !important;
+    z-index: 1000 !important;
   }
+  /* EXPAND ON HOVER */
   nav.dash-sidebar.light-sidebar:hover {
-    width: 220px !important;
+    width: 240px !important;
   }
 
-  /* logo centralizado */
+  /* ====== LOGO ====== */
   nav.dash-sidebar .m-header {
     padding: 16px 0 !important;
     text-align: center !important;
@@ -379,35 +385,40 @@
     display: inline-block !important;
   }
 
-  /* itens em coluna, sem texto */
+  /* ====== NAV ITEMS ====== */
   nav.dash-sidebar .dash-link {
     display: flex !important;
     align-items: center !important;
     padding: 12px !important;
     position: relative !important;
+    text-decoration: none !important;
   }
-  /* ícone */
+  /* ICON */
   nav.dash-sidebar .dash-micon {
     width: 36px !important;
     text-align: center !important;
     color: #ccc !important;
+    font-size: 18px !important;
   }
-  /* texto escondido quando está colapsado */
+  /* TEXT */
   nav.dash-sidebar .dash-mtext {
     margin-left: 12px !important;
     white-space: nowrap !important;
     opacity: 0 !important;
-    transition: opacity .2s ease, transform .2s ease !important;
+    visibility: hidden !important;
     transform: translateX(-10px) !important;
+    transition: opacity .2s ease, transform .2s ease !important;
     color: #fff !important;
+    font-size: 14px !important;
   }
-  /* texto aparece ao passar o mouse */
+  /* SHOW TEXT ON EXPAND */
   nav.dash-sidebar.light-sidebar:hover .dash-mtext {
     opacity: 1 !important;
+    visibility: visible !important;
     transform: translateX(0) !important;
   }
 
-  /* destaque no item ativo */
+  /* ACTIVE ITEM HIGHLIGHT */
   nav.dash-sidebar .dash-item.active > .dash-link {
     background: rgba(255, 125, 0, .2) !important;
     border-radius: 6px !important;
@@ -417,18 +428,19 @@
     color: #ff7d00 !important;
   }
 
-  /* setinhas de submenu reposicionadas */
+  /* ARROW FOR SUBMENU */
   nav.dash-sidebar .dash-arrow {
     position: absolute !important;
     right: 16px !important;
     opacity: 0 !important;
     transition: opacity .2s !important;
   }
+  /* SHOW ARROW ON EXPAND */
   nav.dash-sidebar.light-sidebar:hover .dash-arrow {
     opacity: 1 !important;
   }
 
-  /* submenu flutuante */
+  /* SUBMENU FLOATING */
   nav.dash-sidebar .dash-submenu {
     position: absolute !important;
     left: 100% !important;
@@ -439,18 +451,36 @@
     padding: 8px 0 !important;
     box-shadow: 2px 2px 8px rgba(0,0,0,.5) !important;
     display: none !important;
+    z-index: 1100 !important;
   }
+  /* SHOW SUBMENU ON PARENT HOVER */
   nav.dash-sidebar .dash-item:hover > .dash-submenu {
     display: block !important;
   }
 
-  /* espaçamento entre grupos */
+  /* GROUP SEPARATORS */
   nav.dash-sidebar .navbar-content > ul > li:nth-child(1),
   nav.dash-sidebar .navbar-content > ul > li:nth-child(5),
   nav.dash-sidebar .navbar-content > ul > li:nth-child(9) {
     margin-top: 16px !important;
     border-top: 1px solid rgba(255,255,255,.1) !important;
     padding-top: 16px !important;
+  }
+
+  /* ====== CONTENT CONTAINER ====== */
+  .dash-container {
+    position: relative !important;
+    top: 70px !important;
+    min-height: calc(100vh - 70px) !important;
+    transition: margin-left .3s ease !important;
+  }
+  /* COLLAPSED STATE */
+  nav.dash-sidebar.light-sidebar ~ .dash-container {
+    margin-left: 60px !important;
+  }
+  /* EXPANDED STATE */
+  nav.dash-sidebar.light-sidebar:hover ~ .dash-container {
+    margin-left: 240px !important;
   }
 </style>
 
