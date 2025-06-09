@@ -1,0 +1,114 @@
+@extends('storefront.layout.theme10')
+@section('page-title')
+    {{ __('Wish list') }}
+@endsection
+
+@php
+    $imgpath = \App\Models\Utility::get_file('uploads/is_cover_image/');
+    $imgpath2 = \App\Models\Utility::get_file('uploads/product_image/');
+@endphp
+
+@section('content')
+<main>
+    
+    @include('storefront.theme10.common.common_banner_section')
+
+    <section class="pro-wishlist-sec pt pb">
+        <div class="container">
+            @if(count($products) > 0)
+                <div class="row">
+                    @foreach($products as $k => $product)
+                        <div class="col-xl-3 col-md-4 col-sm-6 col-12">
+                            <div class="product-card">
+                                <div class="product-card-inner">
+                                    <div class="product-card-image">
+                                        <a href="{{ route('store.product.product_view', [$store->slug, $product['product_id']]) }}" class="default-img img-wrapper">
+                                            @if(!empty($product['image']))
+                                                <img src="{{ $imgpath.$product['image'] }}" alt="product-card-image" loading="lazy">
+                                            @else
+                                                <img src="{{asset(Storage::url('uploads/is_cover_image/default.jpg'))}}" alt="product-card-image" loading="lazy">
+                                            @endif
+                                        </a>
+                                        <a href="{{ route('store.product.product_view', [$store->slug, $product['product_id']]) }}" class="hover-img img-wrapper">
+                                            @if(!empty($product['product_image']))
+                                                <img src="{{ $imgpath2.$product['product_image'] }}" alt="product-card-image" loading="lazy">
+                                            @elseif(!empty($product['image']))
+                                                <img src="{{ $imgpath.$product['image'] }}" alt="product-card-image" loading="lazy">
+                                            @else
+                                                <img src="{{ asset(Storage::url('uploads/is_cover_image/default.jpg')) }}" alt="product-card-image" loading="lazy">
+                                            @endif
+                                        </a>
+                                        <div class="pro-btn-wrapper">
+                                            <div class="pro-btn">
+                                                @if ($product['enable_product_variant'] == 'on')
+                                                    <a href="{{ route('store.product.product_view', [$store->slug, $product['product_id']]) }}" class="cart-btn">
+                                                        <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M6.19063 6.89429C5.99324 6.89429 5.78547 6.81117 5.64002 6.66573C5.33874 6.36445 5.33874 5.86579 5.64002 5.56451L9.41119 1.79334C9.71247 1.49206 10.2111 1.49206 10.5124 1.79334C10.8137 2.09462 10.8137 2.59329 10.5124 2.89456L6.74124 6.66573C6.58541 6.81117 6.38802 6.89429 6.19063 6.89429Z" fill="#333333"/>
+                                                            <path d="M20.3397 6.89429C20.1423 6.89429 19.945 6.82156 19.7891 6.66573L16.018 2.89456C15.7167 2.59329 15.7167 2.09462 16.018 1.79334C16.3192 1.49206 16.8179 1.49206 17.1192 1.79334L20.8903 5.56451C21.1916 5.86579 21.1916 6.36445 20.8903 6.66573C20.7449 6.81117 20.5371 6.89429 20.3397 6.89429Z" fill="#333333"/>
+                                                            <path d="M21.7943 11.2793C21.7215 11.2793 21.6488 11.2793 21.5761 11.2793H21.3371H4.95387C4.22665 11.2897 3.39553 11.2897 2.79298 10.6872C2.31509 10.2197 2.09692 9.49243 2.09692 8.42237C2.09692 5.56543 4.18509 5.56543 5.18242 5.56543H21.3475C22.3449 5.56543 24.433 5.56543 24.433 8.42237C24.433 9.50282 24.2149 10.2197 23.737 10.6872C23.1968 11.2274 22.4695 11.2793 21.7943 11.2793ZM5.18242 9.72099H21.5865C22.054 9.73137 22.4903 9.73137 22.6358 9.58593C22.7085 9.51321 22.8643 9.26387 22.8643 8.42237C22.8643 7.24843 22.5734 7.12376 21.3371 7.12376H5.18242C3.94615 7.12376 3.65526 7.24843 3.65526 8.42237C3.65526 9.26387 3.82148 9.51321 3.88381 9.58593C4.02926 9.72099 4.47598 9.72099 4.93309 9.72099H5.18242Z" fill="#333333"/>
+                                                            <path d="M10.9386 19.2786C10.5126 19.2786 10.1594 18.9254 10.1594 18.4994V14.8114C10.1594 14.3854 10.5126 14.0322 10.9386 14.0322C11.3645 14.0322 11.7178 14.3854 11.7178 14.8114V18.4994C11.7178 18.9358 11.3645 19.2786 10.9386 19.2786Z" fill="#333333"/>
+                                                            <path d="M15.7181 19.2786C15.2922 19.2786 14.939 18.9254 14.939 18.4994V14.8114C14.939 14.3854 15.2922 14.0322 15.7181 14.0322C16.1441 14.0322 16.4973 14.3854 16.4973 14.8114V18.4994C16.4973 18.9358 16.1441 19.2786 15.7181 19.2786Z" fill="#333333"/>
+                                                            <path d="M16.2684 23.9008H10.0039C6.28467 23.9008 5.45355 21.6879 5.1315 19.766L3.66667 10.7796C3.59394 10.3536 3.88483 9.95887 4.31078 9.88615C4.73672 9.81343 5.1315 10.1043 5.20422 10.5303L6.66905 19.5063C6.97033 21.3451 7.59367 22.3424 10.0039 22.3424H16.2684C18.9383 22.3424 19.2396 21.4074 19.5824 19.5998L21.3278 10.5095C21.4109 10.0835 21.8161 9.80304 22.242 9.89654C22.6679 9.97965 22.9381 10.3848 22.8549 10.8108L21.1096 19.901C20.7044 22.01 20.0292 23.9008 16.2684 23.9008Z" fill="#333333"/>
+                                                        </svg>
+                                                    </a>
+                                                @else
+                                                    <a class="cart-btn add_to_cart" data-id="{{ $product['product_id'] }}">
+                                                        <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M6.19063 6.89429C5.99324 6.89429 5.78547 6.81117 5.64002 6.66573C5.33874 6.36445 5.33874 5.86579 5.64002 5.56451L9.41119 1.79334C9.71247 1.49206 10.2111 1.49206 10.5124 1.79334C10.8137 2.09462 10.8137 2.59329 10.5124 2.89456L6.74124 6.66573C6.58541 6.81117 6.38802 6.89429 6.19063 6.89429Z" fill="#333333"/>
+                                                            <path d="M20.3397 6.89429C20.1423 6.89429 19.945 6.82156 19.7891 6.66573L16.018 2.89456C15.7167 2.59329 15.7167 2.09462 16.018 1.79334C16.3192 1.49206 16.8179 1.49206 17.1192 1.79334L20.8903 5.56451C21.1916 5.86579 21.1916 6.36445 20.8903 6.66573C20.7449 6.81117 20.5371 6.89429 20.3397 6.89429Z" fill="#333333"/>
+                                                            <path d="M21.7943 11.2793C21.7215 11.2793 21.6488 11.2793 21.5761 11.2793H21.3371H4.95387C4.22665 11.2897 3.39553 11.2897 2.79298 10.6872C2.31509 10.2197 2.09692 9.49243 2.09692 8.42237C2.09692 5.56543 4.18509 5.56543 5.18242 5.56543H21.3475C22.3449 5.56543 24.433 5.56543 24.433 8.42237C24.433 9.50282 24.2149 10.2197 23.737 10.6872C23.1968 11.2274 22.4695 11.2793 21.7943 11.2793ZM5.18242 9.72099H21.5865C22.054 9.73137 22.4903 9.73137 22.6358 9.58593C22.7085 9.51321 22.8643 9.26387 22.8643 8.42237C22.8643 7.24843 22.5734 7.12376 21.3371 7.12376H5.18242C3.94615 7.12376 3.65526 7.24843 3.65526 8.42237C3.65526 9.26387 3.82148 9.51321 3.88381 9.58593C4.02926 9.72099 4.47598 9.72099 4.93309 9.72099H5.18242Z" fill="#333333"/>
+                                                            <path d="M10.9386 19.2786C10.5126 19.2786 10.1594 18.9254 10.1594 18.4994V14.8114C10.1594 14.3854 10.5126 14.0322 10.9386 14.0322C11.3645 14.0322 11.7178 14.3854 11.7178 14.8114V18.4994C11.7178 18.9358 11.3645 19.2786 10.9386 19.2786Z" fill="#333333"/>
+                                                            <path d="M15.7181 19.2786C15.2922 19.2786 14.939 18.9254 14.939 18.4994V14.8114C14.939 14.3854 15.2922 14.0322 15.7181 14.0322C16.1441 14.0322 16.4973 14.3854 16.4973 14.8114V18.4994C16.4973 18.9358 16.1441 19.2786 15.7181 19.2786Z" fill="#333333"/>
+                                                            <path d="M16.2684 23.9008H10.0039C6.28467 23.9008 5.45355 21.6879 5.1315 19.766L3.66667 10.7796C3.59394 10.3536 3.88483 9.95887 4.31078 9.88615C4.73672 9.81343 5.1315 10.1043 5.20422 10.5303L6.66905 19.5063C6.97033 21.3451 7.59367 22.3424 10.0039 22.3424H16.2684C18.9383 22.3424 19.2396 21.4074 19.5824 19.5998L21.3278 10.5095C21.4109 10.0835 21.8161 9.80304 22.242 9.89654C22.6679 9.97965 22.9381 10.3848 22.8549 10.8108L21.1096 19.901C20.7044 22.01 20.0292 23.9008 16.2684 23.9008Z" fill="#333333"/>
+                                                        </svg>
+                                                    </a>
+                                                @endif
+                                            </div>
+                                            <div class="pro-btn">
+                                                <a href="javascript:void(0)" id="delete_wishlist_item1" class="wishlist-btn wishlist-active heart-btn delete_wishlist_item" data-id="{{$product['product_id']}}">
+                                                    <svg width="28" height="23" viewBox="0 0 28 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M0.599095 7.38008L0.599095 7.38008C0.539537 4.05401 2.33093 1.69577 4.77155 0.848363C7.21517 -8.66357e-05 10.4236 0.630794 13.2378 3.54845L13.5977 3.92156L13.9575 3.54845C16.7713 0.631207 19.9795 1.89873e-05 22.4231 0.848089C24.8636 1.69511 26.6552 4.05284 26.5962 7.37893C26.5427 10.402 24.4323 13.5144 21.6585 16.2578C19.0068 18.8804 15.8394 21.077 13.5977 22.4186C11.3561 21.0771 8.18894 18.8807 5.53733 16.2583C2.76364 13.5152 0.653182 10.4029 0.599095 7.38008Z" fill="white" stroke="black"></path>
+                                                    </svg>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="product-content">
+                                        <div class="product-content-top">
+                                            <h3>
+                                                <a href="{{ route('store.product.product_view', [$store->slug, $product['product_id']]) }}" tabindex="0">{{ $product['product_name'] }}</a>
+                                            </h3>
+                                        </div>
+                                        <div class="product-content-bottom">
+                                            <div class="price">
+                                                @if ($product['enable_product_variant'] == 'on')
+                                                    <ins>{{ __('In variant') }}</ins>
+                                                @else
+                                                    <ins>{{ \App\Models\Utility::priceFormat($product['price']) }}</ins>
+                                                    <del>{{ \App\Models\Utility::priceFormat($product['last_price']) }}</del>
+                                                @endif
+                                            </div>
+                                            <div class="pro-card-label">
+                                                <span>{{ \App\Models\Product::getCategoryById($product['product_id']) }}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            @else
+                <div class="row justify-center">
+                    <div class="text-center">
+                        <i class="fas fa-folder-open text-gray" style="font-size: 48px;"></i>
+                        <h2>{{ __('Opps...') }}</h2>
+                        <h6> {!! __('No data Found.') !!} </h6>
+                    </div>
+                </div>
+            @endif
+        </div>
+    </section>
+</main>
+@endsection
+
