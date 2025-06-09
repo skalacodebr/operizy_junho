@@ -122,7 +122,7 @@
                 </div>
                 </li>
             @endif
-            <li class="dropdown dash-h-item drp-language">
+            <li class="dropdown dash-h-item drp-language d-none">
                 <a class="dash-head-link dropdown-toggle  language-dropdow-wrp arrow-none me-0" data-bs-toggle="dropdown" href="#"
                     role="button" aria-haspopup="false" aria-expanded="false">
                     <i class="ti ti-world "></i>
