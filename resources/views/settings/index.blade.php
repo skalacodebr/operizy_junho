@@ -175,11 +175,11 @@
             </li>
         @else
             <li class="nav-item col-xxl-2 col-xl-3 col-md-4 col-sm-6  col-12 text-center d-none">
-                <a class="nav-link active border border-primary common-radius" id="pills-brand_setting-tab" data-bs-toggle="pill" href="#pills-brand-setting"
+                <a class="nav-link border border-primary common-radius" id="pills-brand_setting-tab" data-bs-toggle="pill" href="#pills-brand-setting"
                     role="tab" aria-controls="pills-brandsetting" aria-selected="false">{{ __('Brand Settings') }}</a>
             </li>
             <li class="nav-item col-xxl-2 col-xl-3 col-md-4 col-sm-6  col-12 text-center">
-                <a class="nav-link border border-primary common-radius" id="pills-store_setting-tab" data-bs-toggle="pill" href="#pills-store_setting"
+                <a class="nav-link border active border-primary common-radius" id="pills-store_setting-tab" data-bs-toggle="pill" href="#pills-store_setting"
                     role="tab" aria-controls="pills-store_setting" aria-selected="false">{{ __('Store Settings') }}</a>
             </li>
             <li class="nav-item col-xxl-2 col-xl-3 col-md-4 col-sm-6  col-12 text-center">
