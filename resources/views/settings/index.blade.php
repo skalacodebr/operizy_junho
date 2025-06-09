@@ -3367,7 +3367,7 @@
                 </div>
             @else
                 <div class="tab-content" id="pills-tabContent">
-                    <div class="tab-pane fade active show" id="pills-brand-setting" role="tabpanel"
+                    <div class="tab-pane fade " id="pills-brand-setting" role="tabpanel"
                         aria-labelledby="pills-brand_setting-tab">
                         {{ Form::model($settings, ['route' => 'business.setting', 'method' => 'POST', 'enctype' => 'multipart/form-data']) }}
                             <div class="row">
@@ -3665,7 +3665,7 @@
                             </div>
                         {!! Form::close() !!}
                     </div>
-                    <div class="tab-pane fade" id="pills-store_setting" role="tabpanel" aria-labelledby="pills-brand_setting-tab">
+                    <div class="tab-pane fade active show" id="pills-store_setting" role="tabpanel" aria-labelledby="pills-brand_setting-tab">
                         {{ Form::model($store_settings, ['route' => ['settings.store', $store_settings['id']], 'method' => 'POST', 'enctype' => 'multipart/form-data']) }}
                         <div class="row">
                             <div class="col-lg-12 col-sm-12 col-md-12">
