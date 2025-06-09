@@ -353,3 +353,104 @@
         </div>
     </div>
 </nav>
+
+<style>
+  /* container collapsed / expand on hover */
+  nav.dash-sidebar.light-sidebar {
+    width: 60px !important;
+    background: linear-gradient(180deg, #1f1f1f 0%, #151515 100%) !important;
+    overflow: hidden !important;
+    transition: width .3s ease !important;
+    border-radius: 0 8px 8px 0 !important;
+    box-shadow: 2px 0 8px rgba(0,0,0,.5) !important;
+  }
+  nav.dash-sidebar.light-sidebar:hover {
+    width: 220px !important;
+  }
+
+  /* logo centralizado */
+  nav.dash-sidebar .m-header {
+    padding: 16px 0 !important;
+    text-align: center !important;
+  }
+  nav.dash-sidebar .logo-lg {
+    height: 32px !important;
+    width: auto !important;
+    display: inline-block !important;
+  }
+
+  /* itens em coluna, sem texto */
+  nav.dash-sidebar .dash-link {
+    display: flex !important;
+    align-items: center !important;
+    padding: 12px !important;
+    position: relative !important;
+  }
+  /* ícone */
+  nav.dash-sidebar .dash-micon {
+    width: 36px !important;
+    text-align: center !important;
+    color: #ccc !important;
+  }
+  /* texto escondido quando está colapsado */
+  nav.dash-sidebar .dash-mtext {
+    margin-left: 12px !important;
+    white-space: nowrap !important;
+    opacity: 0 !important;
+    transition: opacity .2s ease, transform .2s ease !important;
+    transform: translateX(-10px) !important;
+    color: #fff !important;
+  }
+  /* texto aparece ao passar o mouse */
+  nav.dash-sidebar.light-sidebar:hover .dash-mtext {
+    opacity: 1 !important;
+    transform: translateX(0) !important;
+  }
+
+  /* destaque no item ativo */
+  nav.dash-sidebar .dash-item.active > .dash-link {
+    background: rgba(255, 125, 0, .2) !important;
+    border-radius: 6px !important;
+  }
+  nav.dash-sidebar .dash-item.active .dash-micon,
+  nav.dash-sidebar .dash-item.active .dash-mtext {
+    color: #ff7d00 !important;
+  }
+
+  /* setinhas de submenu reposicionadas */
+  nav.dash-sidebar .dash-arrow {
+    position: absolute !important;
+    right: 16px !important;
+    opacity: 0 !important;
+    transition: opacity .2s !important;
+  }
+  nav.dash-sidebar.light-sidebar:hover .dash-arrow {
+    opacity: 1 !important;
+  }
+
+  /* submenu flutuante */
+  nav.dash-sidebar .dash-submenu {
+    position: absolute !important;
+    left: 100% !important;
+    top: 0 !important;
+    width: 180px !important;
+    background: #1a1a1a !important;
+    border-radius: 6px !important;
+    padding: 8px 0 !important;
+    box-shadow: 2px 2px 8px rgba(0,0,0,.5) !important;
+    display: none !important;
+  }
+  nav.dash-sidebar .dash-item:hover > .dash-submenu {
+    display: block !important;
+  }
+
+  /* espaçamento entre grupos */
+  nav.dash-sidebar .navbar-content > ul > li:nth-child(1),
+  nav.dash-sidebar .navbar-content > ul > li:nth-child(5),
+  nav.dash-sidebar .navbar-content > ul > li:nth-child(9) {
+    margin-top: 16px !important;
+    border-top: 1px solid rgba(255,255,255,.1) !important;
+    padding-top: 16px !important;
+  }
+</style>
+
