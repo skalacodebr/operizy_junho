@@ -129,7 +129,7 @@
                         </li>
                     @endcan
                 @else
-                <li class="menu-title">APLICATIVOS</li>
+                
 
 <li class="dash-item">
     <a href="#" class="dash-link">
@@ -220,7 +220,7 @@
 </li>
 
 {{-- === VENDAS === --}}
-<li class="menu-title">VENDAS</li>
+
 
 <li class="dash-item">
     <a href="#" class="dash-link">
