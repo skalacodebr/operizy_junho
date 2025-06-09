@@ -129,6 +129,156 @@
                         </li>
                     @endcan
                 @else
+
+                @can('Manage Favorites')
+    <li class="dash-item {{ Request::segment(1) == 'favorites' ? ' active' : '' }}">
+        <a href="{{ route('favorites.index') }}" class="dash-link">
+            <span class="dash-micon"><i class="ti ti-bookmark"></i></span>
+            <span class="dash-mtext">{{ __('Favoritos') }}</span>
+        </a>
+    </li>
+    @endcan
+
+    @can('Manage Reviews')
+    <li class="dash-item dash-hasmenu {{ Request::segment(1) == 'reviews' ? ' active dash-trigger' : 'collapsed' }}">
+        <a href="#!" class="dash-link">
+            <span class="dash-micon"><i class="ti ti-star"></i></span>
+            <span class="dash-mtext">{{ __('Avaliações') }}</span>
+            <span class="dash-arrow"><i data-feather="chevron-right"></i></span>
+        </a>
+        <ul class="dash-submenu {{ Request::segment(1) == 'reviews' ? ' show' : '' }}">
+            <li class="dash-item {{ Request::route()->getName() == 'reviews.index' ? ' active' : '' }}">
+                <a class="dash-link" href="{{ route('reviews.index') }}">{{ __('Todas Avaliações') }}</a>
+            </li>
+        </ul>
+    </li>
+    @endcan
+
+    @can('Manage Returns')
+    <li class="dash-item dash-hasmenu {{ Request::segment(1) == 'returns' ? ' active dash-trigger' : 'collapsed' }}">
+        <a href="#!" class="dash-link">
+            <span class="dash-micon"><i class="ti ti-refresh"></i></span>
+            <span class="dash-mtext">{{ __('Trocas e devoluções') }}</span>
+            <span class="dash-arrow"><i data-feather="chevron-right"></i></span>
+        </a>
+        <ul class="dash-submenu {{ Request::segment(1) == 'returns' ? ' show' : '' }}">
+            <li class="dash-item {{ Request::route()->getName() == 'returns.index' ? ' active' : '' }}">
+                <a class="dash-link" href="{{ route('returns.index') }}">{{ __('Listar trocas/devoluções') }}</a>
+            </li>
+        </ul>
+    </li>
+    @endcan
+
+    @can('Manage VideoCommerce')
+    <li class="dash-item dash-hasmenu {{ Request::segment(1) == 'video-commerce' ? ' active dash-trigger' : 'collapsed' }}">
+        <a href="#!" class="dash-link">
+            <span class="dash-micon"><i class="ti ti-video"></i></span>
+            <span class="dash-mtext">{{ __('Video commerce') }}</span>
+            <span class="dash-arrow"><i data-feather="chevron-right"></i></span>
+        </a>
+        <ul class="dash-submenu {{ Request::segment(1) == 'video-commerce' ? ' show' : '' }}">
+            <li class="dash-item {{ Request::route()->getName() == 'video-commerce.index' ? ' active' : '' }}">
+                <a class="dash-link" href="{{ route('video-commerce.index') }}">{{ __('Configurar vídeos') }}</a>
+            </li>
+        </ul>
+    </li>
+    @endcan
+
+    @can('Manage Comments')
+    <li class="dash-item dash-hasmenu {{ Request::segment(1) == 'comments' ? ' active dash-trigger' : 'collapsed' }}">
+        <a href="#!" class="dash-link">
+            <span class="dash-micon"><i class="ti ti-message-circle"></i></span>
+            <span class="dash-mtext">{{ __('Comentários') }}</span>
+            <span class="dash-arrow"><i data-feather="chevron-right"></i></span>
+        </a>
+        <ul class="dash-submenu {{ Request::segment(1) == 'comments' ? ' show' : '' }}">
+            <li class="dash-item {{ Request::route()->getName() == 'comments.index' ? ' active' : '' }}">
+                <a class="dash-link" href="{{ route('comments.index') }}">{{ __('Todas comentários') }}</a>
+            </li>
+        </ul>
+    </li>
+    @endcan
+
+    {{-- Provedor virtual (desabilitado) --}}
+    <li class="dash-item disabled">
+        <a href="#!" class="dash-link">
+            <span class="dash-micon"><i class="ti ti-server"></i></span>
+            <span class="dash-mtext">{{ __('Provedor virtual') }}</span>
+            <span class="badge badge-danger ml-auto">✕</span>
+            <span class="badge badge-warning ml-1">Novo</span>
+        </a>
+    </li>
+
+    @can('Manage IziLead')
+    <li class="dash-item dash-hasmenu {{ Request::segment(1) == 'izi-lead' ? ' active dash-trigger' : 'collapsed' }}">
+        <a href="#!" class="dash-link">
+            <span class="dash-micon"><i class="ti ti-flash"></i></span>
+            <span class="dash-mtext">{{ __('Izi Lead') }}</span>
+            <span class="dash-arrow"><i data-feather="chevron-right"></i></span>
+        </a>
+        <ul class="dash-submenu {{ Request::segment(1) == 'izi-lead' ? ' show' : '' }}">
+            <li class="dash-item {{ Request::route()->getName() == 'izi-lead.index' ? ' active' : '' }}">
+                <a class="dash-link" href="{{ route('izi-lead.index') }}">{{ __('Painel Izi Lead') }}</a>
+            </li>
+        </ul>
+    </li>
+    @endcan
+
+    {{-- Programa de afiliados (desabilitado) --}}
+    <li class="dash-item disabled">
+        <a href="#!" class="dash-link">
+            <span class="dash-micon"><i class="ti ti-user-plus"></i></span>
+            <span class="dash-mtext">{{ __('Programa de afiliados') }}</span>
+            <span class="badge badge-danger ml-auto">✕</span>
+        </a>
+    </li>
+
+    {{-- === VENDAS === --}}
+    <li class="menu-title">{{ __('VENDAS') }}</li>
+
+    @can('Manage Customers')
+    <li class="dash-item {{ Request::segment(1) == 'customers' ? ' active' : '' }}">
+        <a href="{{ route('customers.index') }}" class="dash-link">
+            <span class="dash-micon"><i class="ti ti-user"></i></span>
+            <span class="dash-mtext">{{ __('Clientes') }}</span>
+        </a>
+    </li>
+    @endcan
+
+    @can('Manage Orders')
+    <li class="dash-item dash-hasmenu {{ Request::segment(1) == 'orders' ? ' active dash-trigger' : 'collapsed' }}">
+        <a href="#!" class="dash-link">
+            <span class="dash-micon"><i class="ti ti-shopping-cart"></i></span>
+            <span class="dash-mtext">{{ __('Pedidos') }}</span>
+            <span class="badge badge-info ml-auto">{{ \App\Models\Order::pending()->count() }}</span>
+            <span class="dash-arrow"><i data-feather="chevron-right"></i></span>
+        </a>
+        <ul class="dash-submenu {{ Request::segment(1) == 'orders' ? ' show' : '' }}">
+            <li class="dash-item {{ Request::route()->getName() == 'orders.index' ? ' active' : '' }}">
+                <a class="dash-link" href="{{ route('orders.index') }}">{{ __('Todos pedidos') }}</a>
+            </li>
+        </ul>
+    </li>
+    @endcan
+
+    @can('Manage Products')
+    <li class="dash-item {{ Request::segment(1) == 'products' ? ' active' : '' }}">
+        <a href="{{ route('products.index') }}" class="dash-link">
+            <span class="dash-micon"><i class="ti ti-box"></i></span>
+            <span class="dash-mtext">{{ __('Produtos') }}</span>
+        </a>
+    </li>
+    @endcan
+
+    @can('Manage Promotions')
+    <li class="dash-item {{ Request::segment(1) == 'promotions' ? ' active' : '' }}">
+        <a href="{{ route('promotions.index') }}" class="dash-link">
+            <span class="dash-micon"><i class="ti ti-tag"></i></span>
+            <span class="dash-mtext">{{ __('Promoções') }}</span>
+        </a>
+    </li>
+    @endcan
+    
                     <li class="dash-item dash-hasmenu {{ Request::segment(1) == 'dashboard' || Request::segment(1) == 'storeanalytic' || Request::route()->getName() == 'orders.show' ? ' active dash-trigger' : 'collapsed' }}">
                         <a href="#!" class="dash-link ">
                             <span class="dash-micon">
