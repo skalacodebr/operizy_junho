@@ -394,7 +394,7 @@ body.custom-color .dash-sidebar.light-sidebar .dash-navbar > .dash-item.active >
 }
 
 .dash-sidebar.light-sidebar .dash-navbar > .dash-item > .dash-link {
-    border-radius: 7px;
+    border-radius: 5px;
     margin-left: 15px;
     margin-right: 15px;
     padding: 7px 10px 7px 7px;
