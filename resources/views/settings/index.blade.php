@@ -174,7 +174,7 @@
                     aria-selected="false">{{ __('Chat GPT Settings') }}</a>
             </li>
         @else
-            <li class="nav-item col-xxl-2 col-xl-3 col-md-4 col-sm-6  col-12 text-center">
+            <li class="nav-item col-xxl-2 col-xl-3 col-md-4 col-sm-6  col-12 text-center d-none">
                 <a class="nav-link active border border-primary common-radius" id="pills-brand_setting-tab" data-bs-toggle="pill" href="#pills-brand-setting"
                     role="tab" aria-controls="pills-brandsetting" aria-selected="false">{{ __('Brand Settings') }}</a>
             </li>
