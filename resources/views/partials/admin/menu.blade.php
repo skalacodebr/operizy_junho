@@ -194,8 +194,7 @@
     <a href="#!" class="dash-link">
         <span class="dash-micon"><i class="ti ti-server"></i></span>
         <span class="dash-mtext">Provedor virtual</span>
-        <span class="badge badge-danger ml-auto">✕</span>
-        <span class="badge badge-warning ml-1">Novo</span>
+
     </a>
 </li>
 
@@ -216,7 +215,7 @@
     <a href="#!" class="dash-link">
         <span class="dash-micon"><i class="ti ti-user-plus"></i></span>
         <span class="dash-mtext">Programa de afiliados</span>
-        <span class="badge badge-danger ml-auto">✕</span>
+       
     </a>
 </li>
 
@@ -234,7 +233,6 @@
     <a href="#!" class="dash-link">
         <span class="dash-micon"><i class="ti ti-shopping-cart"></i></span>
         <span class="dash-mtext">Pedidos</span>
-        <span class="badge badge-info ml-auto">5</span>
         <span class="dash-arrow"><i data-feather="chevron-right"></i></span>
     </a>
     <ul class="dash-submenu">
