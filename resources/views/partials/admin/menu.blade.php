@@ -355,6 +355,38 @@
 </nav>
 
 <style>
+
+      /* -----------------------COLLAPSED STATE (RETRAÍDO)----------------------- */
+  body.custom-color nav.dash-sidebar.light-sidebar:not(:hover) .dash-navbar > .dash-item.active > .dash-link,
+  body.custom-color nav.dash-sidebar.light-sidebar:not(:hover) .dash-navbar > .dash-item:active > .dash-link,
+  body.custom-color nav.dash-sidebar.light-sidebar:not(:hover) .dash-navbar > .dash-item:focus > .dash-link,
+  body.custom-color nav.dash-sidebar.light-sidebar:not(:hover) .dash-navbar > .dash-item:hover > .dash-link,
+  body.custom-color nav.dash-sidebar:not(.light-sidebar) .dash-navbar > .dash-item.active > .dash-link,
+  body.custom-color nav.dash-sidebar:not(.light-sidebar) .dash-navbar > .dash-item:active > .dash-link,
+  body.custom-color nav.dash-sidebar:not(.light-sidebar) .dash-navbar > .dash-item:focus > .dash-link,
+  body.custom-color nav.dash-sidebar:not(.light-sidebar) .dash-navbar > .dash-item:hover > .dash-link {
+    background: linear-gradient(141.55deg, var(--color-customColor) 3.46%, var(--color-customColor) 99.86%), var(--color-customColor) !important;
+    color: #fff !important;
+    box-shadow: 0 5px 7px -1px rgba(146, 44, 136, 0.3) !important;
+    width: 40px !important;
+    height: 51px !important;
+    border-radius: 31px !important;
+  }
+
+  /* -----------------------EXPANDED STATE (EXPANDIDO)----------------------- */
+  body.custom-color nav.dash-sidebar.light-sidebar:hover .dash-navbar > .dash-item.active > .dash-link,
+  body.custom-color nav.dash-sidebar.light-sidebar:hover .dash-navbar > .dash-item:active > .dash-link,
+  body.custom-color nav.dash-sidebar.light-sidebar:hover .dash-navbar > .dash-item:focus > .dash-link,
+  body.custom-color nav.dash-sidebar.light-sidebar:hover .dash-navbar > .dash-item:hover > .dash-link,
+  body.custom-color nav.dash-sidebar .dash-navbar > .dash-item.active > .dash-link,
+  body.custom-color nav.dash-sidebar .dash-navbar > .dash-item:active > .dash-link,
+  body.custom-color nav.dash-sidebar .dash-navbar > .dash-item:focus > .dash-link,
+  body.custom-color nav.dash-sidebar .dash-navbar > .dash-item:hover > .dash-link {
+    background: linear-gradient(141.55deg, var(--color-customColor) 3.46%, var(--color-customColor) 99.86%), var(--color-customColor) !important;
+    color: #fff !important;
+    box-shadow: 0 5px 7px -1px rgba(146, 44, 136, 0.3) !important;
+    /* width, height e border-radius voltam ao padrão */
+  }
   /* ====== SIDEBAR BASE ====== */
   nav.dash-sidebar.light-sidebar {
     width: 60px !important;
