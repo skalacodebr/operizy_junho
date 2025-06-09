@@ -75,11 +75,8 @@
 <body class="{{ $themeColor }}">
     <!-- [custom-login] start -->
     <div class="custom-login">
-        <div class="login-bg-img">
-            <img src="{{ isset($setting['color_flag']) && $setting['color_flag'] == 'false' ? asset('assets/images/auth/'.$color.'.svg') : asset('assets/images/auth/theme-1.svg') }}" class="login-bg-1">
-            <img src="{{ asset('assets/images/auth/common.svg') }}" class="login-bg-2">
-        </div>
-        <div class="bg-login bg-primary"></div>
+        
+   
         <div class="custom-login-inner">
             <!-- <header class="dash-header">
                 <nav class="navbar navbar-expand-md default">
