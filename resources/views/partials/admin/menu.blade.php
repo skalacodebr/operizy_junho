@@ -383,10 +383,28 @@ body.custom-color .dash-sidebar .dash-navbar > .dash-item.active > .dash-link .d
 body.custom-color .dash-sidebar .dash-navbar > .dash-item:active > .dash-link .dash-micon,
 body.custom-color .dash-sidebar .dash-navbar > .dash-item:focus > .dash-link .dash-micon,
 body.custom-color .dash-sidebar .dash-navbar > .dash-item:hover > .dash-link .dash-micon {
-  background-color: #000000;
+  background-color:rgba(0, 0, 0, 0);
   /* ajuste o box-shadow se quiser outro estilo no ícone */
+  color: #fff;
   box-shadow: -3px 4px 23px rgba(0, 0, 0, 0.1);
 }
 
+.dash-sidebar.light-sidebar .dash-navbar > .dash-item > .dash-link {
+    border-radius: 7px;
+    margin-left: 15px;
+    margin-right: 15px;
+    padding: 7px 10px 7px 7px;
+}
+
+.dash-sidebar .dash-micon {
+    margin-right: 15px;
+    border-radius: 5px;
+    height: 35px;
+    width: 35px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+}
 </style>
 
