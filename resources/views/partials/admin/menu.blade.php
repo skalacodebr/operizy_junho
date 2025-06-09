@@ -386,7 +386,7 @@ body.custom-color .dash-sidebar .dash-navbar > .dash-item:hover > .dash-link .da
   background-color:#fa6b2a;
   /* ajuste o box-shadow se quiser outro estilo no ícone */
   color: #fff;
-  box-shadow: -3px 4px 23px rgba(0, 0, 0, 0.1);
+  box-shadow: -3px 4px 23px rgba(0, 0, 0, 0);
 }
 
 body.custom-color .dash-sidebar.light-sidebar .dash-navbar > .dash-item.active > .dash-link i, body.custom-color .dash-sidebar.light-sidebar .dash-navbar > .dash-item:active > .dash-link i, body.custom-color .dash-sidebar.light-sidebar .dash-navbar > .dash-item:focus > .dash-link i, body.custom-color .dash-sidebar.light-sidebar .dash-navbar > .dash-item:hover > .dash-link i, body.custom-color .dash-sidebar .dash-navbar > .dash-item.active > .dash-link i, body.custom-color .dash-sidebar .dash-navbar > .dash-item:active > .dash-link i, body.custom-color .dash-sidebar .dash-navbar > .dash-item:focus > .dash-link i, body.custom-color .dash-sidebar .dash-navbar > .dash-item:hover > .dash-link i {
