@@ -3701,14 +3701,21 @@
                                                                 </div>
                                                                 <div class="choose-files mt-4">
                                                                     <label for="logo">
-                                                                        <div class=" bg-primary logo_update"> <i
-                                                                                class="ti ti-upload px-1"></i>{{ __('Choose file here') }}
-                                                                        </div>
-                                                                        <input type="file" class="form-control file"
-                                                                            name="logo" id="logo"
-                                                                            data-filename="logo_update"
-                                                                            onchange="document.getElementById('storeLogo').src = window.URL.createObjectURL(this.files[0])">
-                                                                    </label>
+  <div class="bg-primary logo_update">
+    <i class="ti ti-upload px-1"></i> Escolha o arquivo aqui
+  </div>
+  <input
+    type="file"
+    class="form-control file"
+    name="logo"
+    id="logo"
+    onchange="
+      const img = document.getElementById('storeLogoPreview');
+      if (img && this.files && this.files[0]) {
+        img.src = window.URL.createObjectURL(this.files[0]);
+      }
+    ">
+</label>
                                                                 </div>
                                                                 @error('logo')
                                                                     <div class="row">
