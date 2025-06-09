@@ -129,6 +129,134 @@
                         </li>
                     @endcan
                 @else
+                <li class="menu-title">APLICATIVOS</li>
+
+<li class="dash-item">
+    <a href="#" class="dash-link">
+        <span class="dash-micon"><i class="ti ti-bookmark"></i></span>
+        <span class="dash-mtext">Favoritos</span>
+    </a>
+</li>
+
+<li class="dash-item dash-hasmenu collapsed">
+    <a href="#!" class="dash-link">
+        <span class="dash-micon"><i class="ti ti-star"></i></span>
+        <span class="dash-mtext">Avaliações</span>
+        <span class="dash-arrow"><i data-feather="chevron-right"></i></span>
+    </a>
+    <ul class="dash-submenu">
+        <li class="dash-item">
+            <a class="dash-link" href="#">Todas Avaliações</a>
+        </li>
+    </ul>
+</li>
+
+<li class="dash-item dash-hasmenu collapsed">
+    <a href="#!" class="dash-link">
+        <span class="dash-micon"><i class="ti ti-refresh"></i></span>
+        <span class="dash-mtext">Trocas e devoluções</span>
+        <span class="dash-arrow"><i data-feather="chevron-right"></i></span>
+    </a>
+    <ul class="dash-submenu">
+        <li class="dash-item">
+            <a class="dash-link" href="#">Listar trocas/devoluções</a>
+        </li>
+    </ul>
+</li>
+
+<li class="dash-item dash-hasmenu collapsed">
+    <a href="#!" class="dash-link">
+        <span class="dash-micon"><i class="ti ti-video"></i></span>
+        <span class="dash-mtext">Video commerce</span>
+        <span class="dash-arrow"><i data-feather="chevron-right"></i></span>
+    </a>
+    <ul class="dash-submenu">
+        <li class="dash-item">
+            <a class="dash-link" href="#">Configurar vídeos</a>
+        </li>
+    </ul>
+</li>
+
+<li class="dash-item dash-hasmenu collapsed">
+    <a href="#!" class="dash-link">
+        <span class="dash-micon"><i class="ti ti-message-circle"></i></span>
+        <span class="dash-mtext">Comentários</span>
+        <span class="dash-arrow"><i data-feather="chevron-right"></i></span>
+    </a>
+    <ul class="dash-submenu">
+        <li class="dash-item">
+            <a class="dash-link" href="#">Todos Comentários</a>
+        </li>
+    </ul>
+</li>
+
+<li class="dash-item disabled">
+    <a href="#!" class="dash-link">
+        <span class="dash-micon"><i class="ti ti-server"></i></span>
+        <span class="dash-mtext">Provedor virtual</span>
+        <span class="badge badge-danger ml-auto">✕</span>
+        <span class="badge badge-warning ml-1">Novo</span>
+    </a>
+</li>
+
+<li class="dash-item dash-hasmenu collapsed">
+    <a href="#!" class="dash-link">
+        <span class="dash-micon"><i class="ti ti-flash"></i></span>
+        <span class="dash-mtext">Izi Lead</span>
+        <span class="dash-arrow"><i data-feather="chevron-right"></i></span>
+    </a>
+    <ul class="dash-submenu">
+        <li class="dash-item">
+            <a class="dash-link" href="#">Painel Izi Lead</a>
+        </li>
+    </ul>
+</li>
+
+<li class="dash-item disabled">
+    <a href="#!" class="dash-link">
+        <span class="dash-micon"><i class="ti ti-user-plus"></i></span>
+        <span class="dash-mtext">Programa de afiliados</span>
+        <span class="badge badge-danger ml-auto">✕</span>
+    </a>
+</li>
+
+{{-- === VENDAS === --}}
+<li class="menu-title">VENDAS</li>
+
+<li class="dash-item">
+    <a href="#" class="dash-link">
+        <span class="dash-micon"><i class="ti ti-user"></i></span>
+        <span class="dash-mtext">Clientes</span>
+    </a>
+</li>
+
+<li class="dash-item dash-hasmenu collapsed">
+    <a href="#!" class="dash-link">
+        <span class="dash-micon"><i class="ti ti-shopping-cart"></i></span>
+        <span class="dash-mtext">Pedidos</span>
+        <span class="badge badge-info ml-auto">5</span>
+        <span class="dash-arrow"><i data-feather="chevron-right"></i></span>
+    </a>
+    <ul class="dash-submenu">
+        <li class="dash-item">
+            <a class="dash-link" href="#">Todos Pedidos</a>
+        </li>
+    </ul>
+</li>
+
+<li class="dash-item">
+    <a href="#" class="dash-link">
+        <span class="dash-micon"><i class="ti ti-box"></i></span>
+        <span class="dash-mtext">Produtos</span>
+    </a>
+</li>
+
+<li class="dash-item">
+    <a href="#" class="dash-link">
+        <span class="dash-micon"><i class="ti ti-tag"></i></span>
+        <span class="dash-mtext">Promoções</span>
+    </a>
+</li>
                     <li class="dash-item dash-hasmenu {{ Request::segment(1) == 'dashboard' || Request::segment(1) == 'storeanalytic' || Request::route()->getName() == 'orders.show' ? ' active dash-trigger' : 'collapsed' }}">
                         <a href="#!" class="dash-link ">
                             <span class="dash-micon">
