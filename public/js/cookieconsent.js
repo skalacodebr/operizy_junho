@@ -313,16 +313,7 @@
                     c.appendChild(d), b.appendChild(c), E.appendChild(b), sa.appendChild(E), sa.appendChild(q))
             },
             fb = function () {
-                L = k("div");
-                L.id = "cc--main";
-                L.style.position = "fixed";
-                L.style.zIndex = "1000000";
-                L.innerHTML = '';
-                sa = L.children[0];
-                var a = e.current_lang;
-                Q && La(a);
-                ab(a);
-                (eb || document.body).appendChild(L)
+                
             };
         m.updateLanguage = function (a, b) {
             if ("string" ===
