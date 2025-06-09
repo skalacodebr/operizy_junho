@@ -354,5 +354,15 @@
     </div>
 </nav>
 
+<style>
+body .dash-sidebar.light-sidebar .dash-link .dash-micon {
+    background-color: #25252900;
+    box-shadow: -3px 4px 23px rgba(0, 0, 0, 0.1);
+}
 
+body .dash-sidebar.light-sidebar .dash-item .dash-link .dash-micon {
+    background-color: #000000 !important;
+    box-shadow: -3px 4px 23px rgba(0, 0, 0, 0.1) !important;
+}
+</style>
 
