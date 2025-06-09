@@ -360,9 +360,33 @@ body .dash-sidebar.light-sidebar .dash-link .dash-micon {
     box-shadow: -3px 4px 23px rgba(0, 0, 0, 0.1);
 }
 
-body .dash-sidebar.light-sidebar .dash-item .dash-link .dash-micon {
-    background-color: #000000 !important;
-    box-shadow: -3px 4px 23px rgba(0, 0, 0, 0.1) !important;
+/* CSS original que faz o link virar laranja */
+body.custom-color .dash-sidebar.light-sidebar .dash-navbar > .dash-item.active > .dash-link,
+body.custom-color .dash-sidebar.light-sidebar .dash-navbar > .dash-item:active > .dash-link,
+body.custom-color .dash-sidebar.light-sidebar .dash-navbar > .dash-item:focus > .dash-link,
+body.custom-color .dash-sidebar.light-sidebar .dash-navbar > .dash-item:hover > .dash-link,
+body.custom-color .dash-sidebar .dash-navbar > .dash-item.active > .dash-link,
+body.custom-color .dash-sidebar .dash-navbar > .dash-item:active > .dash-link,
+body.custom-color .dash-sidebar .dash-navbar > .dash-item:focus > .dash-link,
+body.custom-color .dash-sidebar .dash-navbar > .dash-item:hover > .dash-link {
+  background: linear-gradient(141.55deg, var(--color-customColor) 3.46%, var(--color-customColor) 99.86%), var(--color-customColor);
+  color: #fff;
+  box-shadow: 0 5px 7px -1px rgba(146, 44, 136, 0.3);
 }
+
+/* <—– Coloque este bloco logo em seguida: */
+body.custom-color .dash-sidebar.light-sidebar .dash-navbar > .dash-item.active > .dash-link .dash-micon,
+body.custom-color .dash-sidebar.light-sidebar .dash-navbar > .dash-item:active > .dash-link .dash-micon,
+body.custom-color .dash-sidebar.light-sidebar .dash-navbar > .dash-item:focus > .dash-link .dash-micon,
+body.custom-color .dash-sidebar.light-sidebar .dash-navbar > .dash-item:hover > .dash-link .dash-micon,
+body.custom-color .dash-sidebar .dash-navbar > .dash-item.active > .dash-link .dash-micon,
+body.custom-color .dash-sidebar .dash-navbar > .dash-item:active > .dash-link .dash-micon,
+body.custom-color .dash-sidebar .dash-navbar > .dash-item:focus > .dash-link .dash-micon,
+body.custom-color .dash-sidebar .dash-navbar > .dash-item:hover > .dash-link .dash-micon {
+  background-color: #000000;
+  /* ajuste o box-shadow se quiser outro estilo no ícone */
+  box-shadow: -3px 4px 23px rgba(0, 0, 0, 0.1);
+}
+
 </style>
 
