@@ -71,8 +71,6 @@ $logo = \App\Models\Utility::get_file('uploads/logo');
 </style>
 
 @include('partials.admin.head')
-<!-- Sidebar Toggle System -->
-<link rel="stylesheet" href="{{ asset('assets/css/sidebar-toggle.css') }}?v={{ time() }}">
 <body class="{{ $themeColor }}">
     <!-- [ Pre-loader ] start -->
     <div class="loader-bg">
@@ -149,9 +147,6 @@ $logo = \App\Models\Utility::get_file('uploads/logo');
     @if ($settings['enable_cookie'] == 'on')
         @include('layouts.cookie_consent')
     @endif
-    
-    <!-- Sidebar Toggle System -->
-    <script src="{{ asset('assets/js/sidebar-toggle.js') }}?v={{ time() }}"></script>
 </body>
 
 
