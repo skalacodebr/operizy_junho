@@ -347,6 +347,9 @@
         <li class="dash-item">
             <a class="dash-link" href="{{ route('review.campanhas') }}">Campanhas</a>
         </li>
+        <li class="dash-item">
+            <a class="dash-link" href="{{ route('review.perguntas') }}">Avaliações e Perguntas</a>
+        </li>
     </ul>
 </li>
 
