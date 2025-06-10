@@ -1,11 +1,11 @@
 @extends('layouts.admin')
 
 @section('page-title')
-    Leads
+    Review
 @endsection
 
 @section('breadcrumb')
-    <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Leads</a></li>
+    <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Review</a></li>
     <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
 @endsection
 
