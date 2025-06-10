@@ -645,5 +645,10 @@ body.custom-color .dash-sidebar.light-sidebar .dash-navbar > .dash-item.active >
     justify-content: center;
     vertical-align: middle;
 }
+
+.fix-logo {
+    height: 40px;
+    width: 120px;
+}
 </style>
 
