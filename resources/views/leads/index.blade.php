@@ -84,6 +84,226 @@
             </div>
         </div>
     </div>
+
+<div class="container-fluid ranking-section">
+    <!-- FILTRO DE PERÍODO -->
+    <div class="row mb-4">
+        <div class="col-md-3">
+            <label for="daterangeRanking">Período:</label>
+            <input type="text" id="daterangeRanking" class="form-control"/>
+        </div>
+    </div>
+
+    <div class="card">
+        <!-- cabeçalho com abas -->
+        <div class="card-header">
+            <ul class="nav nav-tabs card-header-tabs" id="rankingTabs" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="mais-avaliacoes-tab" data-toggle="tab" href="#mais-avaliacoes" role="tab">
+                        Produtos com mais avaliações
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="melhores-avaliados-tab" data-toggle="tab" href="#melhores-avaliados" role="tab">
+                        Produtos melhores avaliados
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="mais-perguntas-tab" data-toggle="tab" href="#mais-perguntas" role="tab">
+                        Produtos com mais perguntas
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- conteúdo das abas -->
+        <div class="card-body">
+            <div class="tab-content" id="rankingTabsContent">
+                {{-- Aba: Mais avaliações --}}
+                <div class="tab-pane fade show active" id="mais-avaliacoes" role="tabpanel">
+                    <table class="table table-borderless mb-0">
+                        <thead>
+                            <tr class="text-secondary">
+                                <th style="width: 5%;">Ranking</th>
+                                <th style="width: 35%;">Produto</th>
+                                <th style="width: 20%;">Avaliações</th>
+                                <th style="width: 20%;">Perguntas</th>
+                                <th style="width: 10%;">Visualizar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{-- item 1 --}}
+                            <tr>
+                                <td class="align-middle">
+                                    <strong>1<sup>º</sup></strong>
+                                </td>
+                                <td class="d-flex align-items-center">
+                                    <img src="https://via.placeholder.com/60" alt="Blusa de Botão" class="rounded mr-3" width="60" height="60">
+                                    <div>
+                                        <div><strong>Blusa de Botão</strong></div>
+                                        <small class="text-muted">SKU: 7804456</small>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div>
+                                        <i class="fas fa-star text-warning"></i>
+                                        <strong>5.0</strong>
+                                        <small>(6 avaliações)</small>
+                                    </div>
+                                    <small class="text-success">+2 novas</small>
+                                </td>
+                                <td>
+                                    <div>
+                                        <i class="fas fa-question-circle"></i>
+                                        <strong>1 pergunta respondida</strong>
+                                    </div>
+                                    <small class="text-success">+2 novas</small>
+                                </td>
+                                <td class="text-center">
+                                    <a href="#" class="text-secondary"><i class="fas fa-external-link-alt"></i></a>
+                                </td>
+                            </tr>
+                            {{-- item 2 --}}
+                            <tr>
+                                <td class="align-middle"><strong>2<sup>º</sup></strong></td>
+                                <td class="d-flex align-items-center">
+                                    <img src="https://via.placeholder.com/60" alt="Blusa de Botão" class="rounded mr-3" width="60" height="60">
+                                    <div>
+                                        <div><strong>Blusa de Botão</strong></div>
+                                        <small class="text-muted">SKU: 7804456</small>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div>
+                                        <i class="fas fa-star text-warning"></i>
+                                        <strong>3.5</strong>
+                                        <small>(6 avaliações)</small>
+                                    </div>
+                                    <small class="text-success">+2 novas</small>
+                                </td>
+                                <td>
+                                    <div>
+                                        —
+                                    </div>
+                                    <small class="text-muted">0 perguntas</small>
+                                </td>
+                                <td class="text-center">
+                                    <a href="#" class="text-secondary"><i class="fas fa-external-link-alt"></i></a>
+                                </td>
+                            </tr>
+                            {{-- item 3 --}}
+                            <tr>
+                                <td class="align-middle"><strong>3<sup>º</sup></strong></td>
+                                <td class="d-flex align-items-center">
+                                    <img src="https://via.placeholder.com/60" alt="Tênis Casual" class="rounded mr-3" width="60" height="60">
+                                    <div>
+                                        <div><strong>Tênis Casual</strong></div>
+                                        <small class="text-muted">SKU: 7804456</small>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div>
+                                        <i class="fas fa-star text-warning"></i>
+                                        <strong>5.0</strong>
+                                        <small>(6 avaliações)</small>
+                                    </div>
+                                    <small class="text-success">+2 novas</small>
+                                </td>
+                                <td>
+                                    <div>
+                                        <i class="fas fa-question-circle"></i>
+                                        <strong>1 pergunta respondida</strong>
+                                    </div>
+                                    <small class="text-success">+2 novas</small>
+                                </td>
+                                <td class="text-center">
+                                    <a href="#" class="text-secondary"><i class="fas fa-external-link-alt"></i></a>
+                                </td>
+                            </tr>
+                            {{-- item 4 --}}
+                            <tr>
+                                <td class="align-middle"><strong>4<sup>º</sup></strong></td>
+                                <td class="d-flex align-items-center">
+                                    <img src="https://via.placeholder.com/60" alt="Tênis Casual" class="rounded mr-3" width="60" height="60">
+                                    <div>
+                                        <div><strong>Tênis Casual</strong></div>
+                                        <small class="text-muted">SKU: 7804456</small>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div>
+                                        <i class="fas fa-star text-warning"></i>
+                                        <strong>4.5</strong>
+                                        <small>(6 avaliações)</small>
+                                    </div>
+                                    <small class="text-success">+2 novas</small>
+                                </td>
+                                <td>
+                                    <div>
+                                        <i class="fas fa-question-circle"></i>
+                                        <strong>5 perguntas respondidas</strong>
+                                    </div>
+                                    <small class="text-success">+2 novas</small>
+                                </td>
+                                <td class="text-center">
+                                    <a href="#" class="text-secondary"><i class="fas fa-external-link-alt"></i></a>
+                                </td>
+                            </tr>
+                            {{-- item 5 --}}
+                            <tr>
+                                <td class="align-middle"><strong>5<sup>º</sup></strong></td>
+                                <td class="d-flex align-items-center">
+                                    <img src="https://via.placeholder.com/60" alt="Blusa de Botão" class="rounded mr-3" width="60" height="60">
+                                    <div>
+                                        <div><strong>Blusa de Botão</strong></div>
+                                        <small class="text-muted">SKU: 7804456</small>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div>
+                                        <i class="fas fa-star text-warning"></i>
+                                        <strong>2.5</strong>
+                                        <small>(6 avaliações)</small>
+                                    </div>
+                                    <small class="text-success">+2 novas</small>
+                                </td>
+                                <td>
+                                    <div>
+                                        <i class="fas fa-question-circle"></i>
+                                        <strong>7 perguntas respondidas</strong>
+                                    </div>
+                                    <small class="text-success">+2 novas</small>
+                                </td>
+                                <td class="text-center">
+                                    <a href="#" class="text-secondary"><i class="fas fa-external-link-alt"></i></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <!-- botão Ver mais -->
+                    <div class="text-center mt-4">
+                        <button class="btn btn-purple">
+                            <i class="fas fa-plus"></i> Ver mais
+                        </button>
+                    </div>
+                </div>
+
+                {{-- aba “Produtos melhores avaliados” --}}
+                <div class="tab-pane fade" id="melhores-avaliados" role="tabpanel">
+                    <!-- repita a tabela acima com outro conjunto de dados -->
+                    {{-- ... --}}
+                </div>
+
+                {{-- aba “Produtos com mais perguntas” --}}
+                <div class="tab-pane fade" id="mais-perguntas" role="tabpanel">
+                    <!-- repita a tabela acima com outro conjunto de dados -->
+                    {{-- ... --}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 @endsection
 
 @push('script-page')
@@ -171,5 +391,19 @@
             }
         });
     });
+
+
+    document.addEventListener('DOMContentLoaded', function(){
+    $('#daterangeRanking').daterangepicker({
+        locale: { format: 'DD/MM/YYYY' },
+        startDate: moment().startOf('month'),
+        endDate: moment().endOf('month'),
+    });
+    // ativa as abas Bootstrap
+    $('#rankingTabs a').on('click', function (e) {
+        e.preventDefault();
+        $(this).tab('show');
+    });
+});
     </script>
 @endpush
