@@ -138,7 +138,7 @@
                                     <strong>1<sup>º</sup></strong>
                                 </td>
                                 <td class="d-flex align-items-center">
-                                    <img src="/storege/uploads/theme1/avatar/avatar.png" alt="Blusa de Botão" class="rounded mr-3" width="60" height="60">
+                                    <img src="{{ asset('assets/images/user/avatar-1.jpg') }}" alt="Blusa de Botão" class="rounded mr-3" width="60" height="60">
                                     <div>
                                         <div><strong>Blusa de Botão</strong></div>
                                         <small class="text-muted">SKU: 7804456</small>
@@ -167,7 +167,7 @@
                             <tr>
                                 <td class="align-middle"><strong>2<sup>º</sup></strong></td>
                                 <td class="d-flex align-items-center">
-                                    <img src="https://via.placeholder.com/60" alt="Blusa de Botão" class="rounded mr-3" width="60" height="60">
+                                    <img src="{{ asset('assets/images/user/avatar-1.jpg') }}" alt="Blusa de Botão" class="rounded mr-3" width="60" height="60">
                                     <div>
                                         <div><strong>Blusa de Botão</strong></div>
                                         <small class="text-muted">SKU: 7804456</small>
@@ -195,7 +195,7 @@
                             <tr>
                                 <td class="align-middle"><strong>3<sup>º</sup></strong></td>
                                 <td class="d-flex align-items-center">
-                                    <img src="https://via.placeholder.com/60" alt="Tênis Casual" class="rounded mr-3" width="60" height="60">
+                                    <img src="{{ asset('assets/images/user/avatar-1.jpg') }}" alt="Tênis Casual" class="rounded mr-3" width="60" height="60">
                                     <div>
                                         <div><strong>Tênis Casual</strong></div>
                                         <small class="text-muted">SKU: 7804456</small>
@@ -224,7 +224,7 @@
                             <tr>
                                 <td class="align-middle"><strong>4<sup>º</sup></strong></td>
                                 <td class="d-flex align-items-center">
-                                    <img src="https://via.placeholder.com/60" alt="Tênis Casual" class="rounded mr-3" width="60" height="60">
+                                    <img src="{{ asset('assets/images/user/avatar-1.jpg') }}" alt="Tênis Casual" class="rounded mr-3" width="60" height="60">
                                     <div>
                                         <div><strong>Tênis Casual</strong></div>
                                         <small class="text-muted">SKU: 7804456</small>
@@ -253,7 +253,7 @@
                             <tr>
                                 <td class="align-middle"><strong>5<sup>º</sup></strong></td>
                                 <td class="d-flex align-items-center">
-                                    <img src="https://via.placeholder.com/60" alt="Blusa de Botão" class="rounded mr-3" width="60" height="60">
+                                    <img src="{{ asset('assets/images/user/avatar-1.jpg') }}" alt="Blusa de Botão" class="rounded mr-3" width="60" height="60">
                                     <div>
                                         <div><strong>Blusa de Botão</strong></div>
                                         <small class="text-muted">SKU: 7804456</small>
