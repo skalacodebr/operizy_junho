@@ -26,7 +26,7 @@
         <div class="row mb-4">
             <div class="col-md-3">
                 <label for="daterange">Período:</label>
-                <input type="text" id="daterange" class="form-control" />
+                <input type="date" id="daterange" class="form-control" />
             </div>
         </div>
 
