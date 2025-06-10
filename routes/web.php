@@ -62,7 +62,7 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\XenditController;
 use App\Http\Controllers\AplicativosController;
-use App\Http\Controllers\LeadController;
+use App\Http\Controllers\ReviewsController;
 use Illuminate\Http\Request;
 
 /*
@@ -76,7 +76,8 @@ use Illuminate\Http\Request;
 |
  */
 
-Route::get('/leads', [LeadController::class, 'index'])->name('leads.index');
+Route::get('/review', [ReviewsController::class, 'index'])->name('review.index');
+Route::get('/campanhas', [ReviewsController::class, 'review_campanhas'])->name('review.campanhas');
 
 Route::get('/', [DashboardController::class, 'index'])->name('start')->middleware(['XSS', '2fa']);
 
