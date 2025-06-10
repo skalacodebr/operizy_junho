@@ -16,4 +16,12 @@ class ReviewsController extends Controller
     {
         return view('reviews.campanhas');
     }
+    public function review_perguntas()
+    {
+        return view('reviews.perguntas');
+    }
+    public function review_avaliacao()
+    {
+        return view('reviews.perguntas');
+    }
 }
