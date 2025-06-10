@@ -213,96 +213,6 @@
         </a>
     </li>
 @endcan
-@canany([
-    'Manage Products',
-    'Manage Product category',
-    'Manage Product Tax',
-    'Manage Product Coupan',
-    'Manage Subscriber',
-    'Manage Shipping',
-    'Manage Custom Page',
-    'Manage Blog',
-    'Manage Testimonial'
-])
-    <li class="dash-item dash-hasmenu {{ Request::segment(1) == 'product' || Request::segment(1) == 'product_categorie' || Request::segment(1) == 'product_tax' || Request::segment(1) == 'product-coupon' || Request::segment(1) == 'shipping' || Request::segment(1) == 'subscriptions' || Request::segment(1) == 'custom-page' || Request::segment(1) == 'blog' || Request::segment(1) == 'products' ? ' active dash-trigger' : 'collapsed' }}">
-        <a href="#!" class="dash-link">
-            <span class="dash-micon">
-                <i class="ti ti-license"></i>
-            </span>
-            <span class="dash-mtext">{{ __('Shop') }}</span>
-            <span class="dash-arrow">
-                <i data-feather="chevron-right"></i>
-            </span>
-        </a>
-        <ul class="dash-submenu {{ Request::segment(1) == 'product.index' ? ' show' : '' }}">
-            @can('Manage Products')
-                <li
-                    class="dash-item {{ Request::route()->getName() == 'product.index' || Request::route()->getName() == 'product.create' || Request::route()->getName() == 'product.edit' || Request::route()->getName() == 'product.show' || Request::route()->getName() == 'product.grid' ? ' active' : '' }}">
-                    <a class="dash-link" href="{{ route('product.index') }}">{{ __('Products') }}</a>
-                </li>
-            @endcan
-            @can('Manage Product category')
-                <li
-                    class="dash-item {{ Request::route()->getName() == 'product_categorie.index' ? ' active' : '' }}">
-                    <a class="dash-link"
-                        href="{{ route('product_categorie.index') }}">{{ __('Product Category') }}</a>
-                </li>
-            @endcan
-            @can('Manage Product Tax')
-                <li
-                    class="dash-item {{ Request::route()->getName() == 'product_tax.index' ? ' active' : '' }}">
-                    <a class="dash-link"
-                        href="{{ route('product_tax.index') }}">{{ __('Product Tax') }}</a>
-                </li>
-            @endcan
-            @can('Manage Product Coupan')
-                <li
-                    class="dash-item {{ Request::route()->getName() == 'product-coupon.index' || Request::route()->getName() == 'product-coupon.show' ? ' active' : '' }}">
-                    <a class="dash-link"
-                        href="{{ route('product-coupon.index') }}">{{ __('Product Coupon') }}</a>
-                </li>
-            @endcan
-            @can('Manage Subscriber')
-                <li
-                    class="dash-item {{ Request::route()->getName() == 'subscriptions.index' ? ' active' : '' }}">
-                    <a class="dash-link"
-                        href="{{ route('subscriptions.index') }}">{{ __('Subscriber') }}</a>
-                </li>
-            @endcan
-            @if (isset($plan->shipping_method) && $plan->shipping_method == 'on')
-                @can('Manage Shipping')
-                    <li
-                        class="dash-item {{ Request::route()->getName() == 'shipping.index' ? ' active' : '' }}">
-                        <a class="dash-link" href="{{ route('shipping.index') }}">{{ __('Shipping') }}</a>
-                    </li>
-                @endcan
-            @endif
-            @if (isset($plan->additional_page) && $plan->additional_page == 'on')
-                @can('Manage Custom Page')
-                    <li
-                        class="dash-item {{ Request::route()->getName() == 'custom-page.index' ? ' active' : '' }}">
-                        <a class="dash-link"
-                            href="{{ route('custom-page.index') }}">{{ __('Custom Page') }}</a>
-                    </li>
-                @endcan
-            @endif
-            @if (isset($plan->blog) && $plan->blog == 'on')
-                @can('Manage Blog')
-                    <li
-                        class="dash-item {{ Request::route()->getName() == 'blog.index' ? ' active' : '' }}">
-                        <a class="dash-link" href="{{ route('blog.index') }}">{{ __('Blog') }}</a>
-                    </li>
-                @endcan
-            @endif
-            @can('Manage Testimonial')
-                <li
-                    class="dash-item {{ Request::route()->getName() == 'testimonial.index' ? ' active' : '' }}">
-                    <a class="dash-link" href="{{ route('testimonial.index') }}">{{ __('Testimonial') }}</a>
-                </li>
-            @endcan
-        </ul>
-    </li>
-@endcanany
 
 @can('Manage Plans')
     <li class="dash-item dash-hasmenu {{ Request::segment(1) == 'plans' || Request::route()->getName() == 'stripe' ? ' active dash-trigger' : 'collapsed' }}">
@@ -471,12 +381,97 @@
     </ul>
 </li>
 
-<li class="dash-item">
-    <a href="#" class="dash-link">
-        <span class="dash-micon"><i class="ti ti-box"></i></span>
-        <span class="dash-mtext">Produtos</span>
-    </a>
-</li>
+@canany([
+    'Manage Products',
+    'Manage Product category',
+    'Manage Product Tax',
+    'Manage Product Coupan',
+    'Manage Subscriber',
+    'Manage Shipping',
+    'Manage Custom Page',
+    'Manage Blog',
+    'Manage Testimonial'
+])
+    <li class="dash-item dash-hasmenu {{ Request::segment(1) == 'product' || Request::segment(1) == 'product_categorie' || Request::segment(1) == 'product_tax' || Request::segment(1) == 'product-coupon' || Request::segment(1) == 'shipping' || Request::segment(1) == 'subscriptions' || Request::segment(1) == 'custom-page' || Request::segment(1) == 'blog' || Request::segment(1) == 'products' ? ' active dash-trigger' : 'collapsed' }}">
+        <a href="#!" class="dash-link">
+            <span class="dash-micon">
+                <i class="ti ti-license"></i>
+            </span>
+            <span class="dash-mtext">Produtos</span>
+            <span class="dash-arrow">
+                <i data-feather="chevron-right"></i>
+            </span>
+        </a>
+        <ul class="dash-submenu {{ Request::segment(1) == 'product.index' ? ' show' : '' }}">
+            @can('Manage Products')
+                <li
+                    class="dash-item {{ Request::route()->getName() == 'product.index' || Request::route()->getName() == 'product.create' || Request::route()->getName() == 'product.edit' || Request::route()->getName() == 'product.show' || Request::route()->getName() == 'product.grid' ? ' active' : '' }}">
+                    <a class="dash-link" href="{{ route('product.index') }}">{{ __('Products') }}</a>
+                </li>
+            @endcan
+            @can('Manage Product category')
+                <li
+                    class="dash-item {{ Request::route()->getName() == 'product_categorie.index' ? ' active' : '' }}">
+                    <a class="dash-link"
+                        href="{{ route('product_categorie.index') }}">{{ __('Product Category') }}</a>
+                </li>
+            @endcan
+            @can('Manage Product Tax')
+                <li
+                    class="dash-item {{ Request::route()->getName() == 'product_tax.index' ? ' active' : '' }}">
+                    <a class="dash-link"
+                        href="{{ route('product_tax.index') }}">{{ __('Product Tax') }}</a>
+                </li>
+            @endcan
+            @can('Manage Product Coupan')
+                <li
+                    class="dash-item {{ Request::route()->getName() == 'product-coupon.index' || Request::route()->getName() == 'product-coupon.show' ? ' active' : '' }}">
+                    <a class="dash-link"
+                        href="{{ route('product-coupon.index') }}">{{ __('Product Coupon') }}</a>
+                </li>
+            @endcan
+            @can('Manage Subscriber')
+                <li
+                    class="dash-item {{ Request::route()->getName() == 'subscriptions.index' ? ' active' : '' }}">
+                    <a class="dash-link"
+                        href="{{ route('subscriptions.index') }}">{{ __('Subscriber') }}</a>
+                </li>
+            @endcan
+            @if (isset($plan->shipping_method) && $plan->shipping_method == 'on')
+                @can('Manage Shipping')
+                    <li
+                        class="dash-item {{ Request::route()->getName() == 'shipping.index' ? ' active' : '' }}">
+                        <a class="dash-link" href="{{ route('shipping.index') }}">{{ __('Shipping') }}</a>
+                    </li>
+                @endcan
+            @endif
+            @if (isset($plan->additional_page) && $plan->additional_page == 'on')
+                @can('Manage Custom Page')
+                    <li
+                        class="dash-item {{ Request::route()->getName() == 'custom-page.index' ? ' active' : '' }}">
+                        <a class="dash-link"
+                            href="{{ route('custom-page.index') }}">{{ __('Custom Page') }}</a>
+                    </li>
+                @endcan
+            @endif
+            @if (isset($plan->blog) && $plan->blog == 'on')
+                @can('Manage Blog')
+                    <li
+                        class="dash-item {{ Request::route()->getName() == 'blog.index' ? ' active' : '' }}">
+                        <a class="dash-link" href="{{ route('blog.index') }}">{{ __('Blog') }}</a>
+                    </li>
+                @endcan
+            @endif
+            @can('Manage Testimonial')
+                <li
+                    class="dash-item {{ Request::route()->getName() == 'testimonial.index' ? ' active' : '' }}">
+                    <a class="dash-link" href="{{ route('testimonial.index') }}">{{ __('Testimonial') }}</a>
+                </li>
+            @endcan
+        </ul>
+    </li>
+@endcanany
+
 
 <li class="dash-item">
     <a href="#" class="dash-link">
