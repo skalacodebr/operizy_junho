@@ -13,7 +13,7 @@ use App\Http\Controllers\LocationController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PageOptionController;
 use App\Http\Controllers\PaymentController;
-use App\Http\Controllers\PaymentWallController;
+// use App\Http\Controllers\PaymentWallController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\PaypalController;
 use App\Http\Controllers\PaytabController;
@@ -61,6 +61,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\XenditController;
+use App\Http\Controllers\AplicativosController;
 use Illuminate\Http\Request;
 /*
 |--------------------------------------------------------------------------
@@ -179,6 +180,11 @@ Route::group(['middleware' => ['verified']], function () {
     Route::get('settings', [SettingController::class, 'index'])->name('settings');
     Route::get('themes',[themeController::class,'index'])->name('themes.theme')->middleware(['auth','XSS']);
     Route::post('pwa-settings/{id}',[StoreController::class,'pwasetting'])->name('setting.pwa')->middleware(['auth','XSS']);
+    
+    // Aplicativos Routes
+    Route::get('/aplicativos', [AplicativosController::class, 'index'])->name('aplicativos.index')->middleware(['auth', 'XSS']);
+    Route::get('/aplicativos/{id}', [AplicativosController::class, 'show'])->name('aplicativos.show')->middleware(['auth', 'XSS']);
+    Route::post('/aplicativos/{id}/subscribe', [AplicativosController::class, 'subscribe'])->name('aplicativos.subscribe')->middleware(['auth', 'XSS']);
     // Route::resource('store-resource', StoreController::class)->middleware(['auth', 'XSS']);
 
     Route::get('profile', [DashboardController::class, 'profile'])->name('profile')->middleware(['auth', 'XSS']);
@@ -268,7 +274,7 @@ Route::group(['middleware' => ['verified']], function () {
     Route::get('blog-social', [BlogController::class, 'socialBlog'])->name('blog.social')->middleware(['auth', 'XSS']);
     Route::post('store-social-blog', [BlogController::class, 'storeSocialblog'])->name('store.socialblog')->middleware(['auth', 'XSS']);
 
-    Route::get('/plan/error/{flag}', ['as' => 'error.plan.show', 'uses' => 'PaymentWallController@planerror']);
+    // Route::get('/plan/error/{flag}', ['as' => 'error.plan.show', 'uses' => 'PaymentWallController@planerror']);
     Route::get('/plans', [PlanController::class, 'index'])->name('plans.index')->middleware(['auth', 'XSS']);
     Route::get('/plans/create', [PlanController::class, 'create'])->name('plans.create')->middleware(['auth', 'XSS']);
     Route::post('/plans', [PlanController::class, 'store'])->name('plans.store')->middleware(['auth', 'XSS']);
@@ -435,8 +441,8 @@ Route::group(['middleware' => ['verified']], function () {
     // Route::get('store/{slug?}/login', [CustomerLoginController::class, 'showLoginForm'])->name('customer.loginform');
     Route::get('{slug?}/edit-products/{theme?}', [StoreController::class, 'Editproducts'])->name('store.editproducts')->middleware(['auth', 'XSS']);
     //PLAN PAYMENTWALL
-    Route::post('/planpayment', [PaymentWallController::class, 'planpay'])->name('paymentwall')->middleware(['auth', 'XSS']);
-    Route::post('/paymentwall-payment/{plan}', [PaymentWallController::class, 'planPayWithPaymentWall'])->name('paymentwall.payment')->middleware(['auth', 'XSS']);
+    // Route::post('/planpayment', [PaymentWallController::class, 'planpay'])->name('paymentwall')->middleware(['auth', 'XSS']);
+    // Route::post('/paymentwall-payment/{plan}', [PaymentWallController::class, 'planPayWithPaymentWall'])->name('paymentwall.payment')->middleware(['auth', 'XSS']);
 
     //  Bank Transfer
     Route::post('/bank_transfer', [PaymentController::class, 'bank_transfer'])->name('plan.bank_transfer');
@@ -579,9 +585,9 @@ Route::get('skrill/callback', [PaymentController::class, 'skrillCallback'])->nam
 
 //ORDER PAYMENTWALL
 Route::post('{slug}/paymentwall/store-slug/', [StoreController::class, 'paymentwallstoresession'])->name('paymentwall.session.store');
-Route::any('{slug}/order/error/{flag}', [PaymentWallController::class, 'orderpaymenterror'])->name('order.callback.error');
-Route::any('/{slug}/paymentwall/order', [PaymentWallController::class, 'orderindex'])->name('paymentwall.index');
-Route::post('/{slug}/order-pay-with-paymentwall/', [PaymentWallController::class, 'orderPayWithPaymentwall'])->name('order.pay.with.paymentwall');
+    // Route::any('{slug}/order/error/{flag}', [PaymentWallController::class, 'orderpaymenterror'])->name('order.callback.error');
+    // Route::any('/{slug}/paymentwall/order', [PaymentWallController::class, 'orderindex'])->name('paymentwall.index');
+    // Route::post('/{slug}/order-pay-with-paymentwall/', [PaymentWallController::class, 'orderPayWithPaymentwall'])->name('order.pay.with.paymentwall');
 
 //payment toyyibpay
 

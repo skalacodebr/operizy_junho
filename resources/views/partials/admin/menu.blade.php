@@ -344,6 +344,13 @@
 
 <li class="menu-title" style="margin-left: 28px;">APLICATIVOS</li>
 
+<li class="dash-item {{ Request::segment(1) == 'aplicativos' ? ' active' : 'collapsed' }}">
+    <a href="{{ route('aplicativos.index') }}" class="dash-link {{ request()->is('aplicativos') ? 'active' : '' }}">
+        <span class="dash-micon"><i class="ti ti-apps"></i></span>
+        <span class="dash-mtext">{{ __('Aplicativos') }}</span>
+    </a>
+</li>
+
 <li class="dash-item">
     <a href="#" class="dash-link">
         <span class="dash-micon"><i class="ti ti-bookmark"></i></span>
