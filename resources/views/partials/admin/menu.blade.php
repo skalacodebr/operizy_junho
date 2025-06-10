@@ -434,6 +434,9 @@
         <li class="dash-item">
             <a class="dash-link" href="{{ route('reviews.index') }}">Dashboard</a>
         </li>
+        <li class="dash-item">
+            <a class="dash-link" href="{{ route('review.campanhas') }}">Campanhas</a>
+        </li>
     </ul>
 </li>
 

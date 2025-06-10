@@ -77,7 +77,7 @@ use Illuminate\Http\Request;
  */
 
 Route::get('/review', [ReviewsController::class, 'index'])->name('review.index');
-Route::get('/camapanhas', [ReviewsController::class, 'review_camapanhas'])->name('review.campanhas');
+Route::get('/camapanhas', [ReviewsController::class, 'review_campanhas'])->name('review.campanhas');
 
 Route::get('/', [DashboardController::class, 'index'])->name('start')->middleware(['XSS', '2fa']);
 
