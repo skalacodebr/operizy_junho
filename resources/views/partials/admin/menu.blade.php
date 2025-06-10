@@ -432,7 +432,7 @@
     </a>
     <ul class="dash-submenu">
         <li class="dash-item">
-            <a class="dash-link" href="{{ route('leads.index') }}">Dashboard</a>
+            <a class="dash-link" href="{{ route('reviews.index') }}">Dashboard</a>
         </li>
     </ul>
 </li>
