@@ -419,6 +419,19 @@
     </a>
     <ul class="dash-submenu">
         <li class="dash-item">
+            <a class="dash-link" href="#">Dashboard</a>
+        </li>
+    </ul>
+</li>
+
+<li class="dash-item dash-hasmenu collapsed">
+    <a href="#!" class="dash-link">
+       <span class="dash-micon"><i data-feather="star"></i></span>
+        <span class="dash-mtext">Izi Review</span>
+        <span class="dash-arrow"><i data-feather="chevron-right"></i></span>
+    </a>
+    <ul class="dash-submenu">
+        <li class="dash-item">
             <a class="dash-link" href="{{ route('leads.index') }}">Dashboard</a>
         </li>
     </ul>

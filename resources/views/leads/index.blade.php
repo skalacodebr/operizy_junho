@@ -137,7 +137,7 @@
                                 <td class="align-middle">
                                     <strong>1<sup>º</sup></strong>
                                 </td>
-                                <td class="d-flex align-items-center">
+                                <td class="d-flex align-items-center gap-2">
                                     <img src="{{ asset('assets/images/user/avatar-1.jpg') }}" alt="Blusa de Botão" class="rounded mr-3" width="60" height="60">
                                     <div>
                                         <div><strong>Blusa de Botão</strong></div>
@@ -166,7 +166,7 @@
                             {{-- item 2 --}}
                             <tr>
                                 <td class="align-middle"><strong>2<sup>º</sup></strong></td>
-                                <td class="d-flex align-items-center">
+                                <td class="d-flex align-items-center gap-2">
                                     <img src="{{ asset('assets/images/user/avatar-1.jpg') }}" alt="Blusa de Botão" class="rounded mr-3" width="60" height="60">
                                     <div>
                                         <div><strong>Blusa de Botão</strong></div>
@@ -194,7 +194,7 @@
                             {{-- item 3 --}}
                             <tr>
                                 <td class="align-middle"><strong>3<sup>º</sup></strong></td>
-                                <td class="d-flex align-items-center">
+                                <td class="d-flex align-items-center gap-2 gap-2">
                                     <img src="{{ asset('assets/images/user/avatar-1.jpg') }}" alt="Tênis Casual" class="rounded mr-3" width="60" height="60">
                                     <div>
                                         <div><strong>Tênis Casual</strong></div>
@@ -223,7 +223,7 @@
                             {{-- item 4 --}}
                             <tr>
                                 <td class="align-middle"><strong>4<sup>º</sup></strong></td>
-                                <td class="d-flex align-items-center">
+                                <td class="d-flex align-items-center gap-2">
                                     <img src="{{ asset('assets/images/user/avatar-1.jpg') }}" alt="Tênis Casual" class="rounded mr-3" width="60" height="60">
                                     <div>
                                         <div><strong>Tênis Casual</strong></div>
@@ -252,7 +252,7 @@
                             {{-- item 5 --}}
                             <tr>
                                 <td class="align-middle"><strong>5<sup>º</sup></strong></td>
-                                <td class="d-flex align-items-center">
+                                <td class="d-flex align-items-center gap-2">
                                     <img src="{{ asset('assets/images/user/avatar-1.jpg') }}" alt="Blusa de Botão" class="rounded mr-3" width="60" height="60">
                                     <div>
                                         <div><strong>Blusa de Botão</strong></div>
