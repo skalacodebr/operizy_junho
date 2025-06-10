@@ -40,7 +40,7 @@
                     </div>
                     <div class="card-body text-center">
                         <canvas id="chartAvaliacoes" height="200"></canvas>
-                        <h3 class="mt-3">{{ $totalAvaliacoes }}</h3>
+                        <h3 class="mt-3" id="totalAvaliacoes">380</h3>
                     </div>
                 </div>
             </div>
@@ -52,7 +52,7 @@
                     </div>
                     <div class="card-body text-center">
                         <canvas id="chartPerguntas" height="200"></canvas>
-                        <h3 class="mt-3">{{ $totalPerguntas }}</h3>
+                        <h3 class="mt-3" id="totalPerguntas">380</h3>
                     </div>
                 </div>
             </div>
@@ -94,116 +94,79 @@
 
     <script>
     document.addEventListener('DOMContentLoaded', function () {
-        // 1) Inicializa o date range picker
+        // 1) Inicializa o date range picker (só visual)
         $('#daterange').daterangepicker({
             locale: { format: 'DD/MM/YYYY' },
             startDate: moment().startOf('month'),
             endDate: moment().endOf('month'),
-        }, function(start, end) {
-            // ao selecionar, recarrega a página com query params
-            window.location.search = '?start='+ start.format('YYYY-MM-DD') +'&end='+ end.format('YYYY-MM-DD');
         });
 
-        // 2) Dados vindos do controller (preenchidos em PHP)
-        const avaliacoesData   = [{{ $avaliacoesNovas }}, {{ $avaliacoesPendentes }}, {{ $avaliacoesRespondidas }}];
-        const perguntasData    = [{{ $perguntasNovas }}, {{ $perguntasPendentes }}, {{ $perguntasRespondidas }}];
+        // 2) DADOS FICTÍCIOS
+        const avaliacoesData    = [120, 45, 200];   // novas, pendentes, respondidas
+        const perguntasData     = [120, 45, 200];
+        const totalAvaliacoes   = avaliacoesData.reduce((a,b)=>a+b, 0);
+        const totalPerguntas    = perguntasData.reduce((a,b)=>a+b, 0);
 
-        const mesesLabels      = @json(['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez']);
-        const cuponsGerados    = @json($evolucaoCuponsGerados);    // ex: [50,55,60,…]
-        const cuponsUsados     = @json($evolucaoCuponsUsados);     // ex: [30,25,40,…]
-        const taxasConversao   = @json($evolucaoTaxasConversao);   // ex: [120,150,130,…]
-        const tendenciaConversao = taxasConversao.map((v, i, a) => {
-            // plota a própria série como tendência só para exemplo
-            return v;
-        });
+        const mesesLabels       = ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'];
+        const cuponsGerados     = [50,55,60,65,75,90,110,100,120,130,140,150];
+        const cuponsUsados      = [30,25,40,55,60,65,95,90,100,105,110,120];
+        const taxasConversao    = [120,150,130,170,200,180,210,195,220,250,230,240];
+        const tendenciaConv     = [...taxasConversao]; // só espelhando para linha
 
-        // 3) Configuração comum dos donuts
+        // 3) Atualiza totais no HTML
+        document.getElementById('totalAvaliacoes').textContent = totalAvaliacoes;
+        document.getElementById('totalPerguntas').textContent  = totalPerguntas;
+
+        // 4) Opções comuns para doughnut
         const donutOptions = {
             cutout: '70%',
-            plugins: {
-                legend: { position: 'right' },
-            }
+            plugins: { legend: { position: 'right' } }
         };
 
-        // 4) Cria os charts
-        new Chart(document.getElementById('chartAvaliacoes'), {
+        // 5) Cria charts
+        new Chart('chartAvaliacoes', {
             type: 'doughnut',
             data: {
                 labels: ['Novas','Pendentes','Respondidas'],
-                datasets: [{
-                    data: avaliacoesData,
-                    backgroundColor: ['#9c27b0','#ffb300','#4caf50']
-                }]
+                datasets: [{ data: avaliacoesData, backgroundColor: ['#9c27b0','#ffb300','#4caf50'] }]
             },
             options: donutOptions
         });
 
-        new Chart(document.getElementById('chartPerguntas'), {
+        new Chart('chartPerguntas', {
             type: 'doughnut',
             data: {
                 labels: ['Novas','Pendentes','Respondidas'],
-                datasets: [{
-                    data: perguntasData,
-                    backgroundColor: ['#9c27b0','#ffb300','#4caf50']
-                }]
+                datasets: [{ data: perguntasData, backgroundColor: ['#9c27b0','#ffb300','#4caf50'] }]
             },
             options: donutOptions
         });
 
-        // 5) Gráfico de barras empilhadas (cupons)
-        new Chart(document.getElementById('chartCupons'), {
+        new Chart('chartCupons', {
             type: 'bar',
             data: {
                 labels: mesesLabels,
                 datasets: [
-                    {
-                        label: 'Cupons gerados',
-                        data: cuponsGerados,
-                        backgroundColor: 'rgba(220,53,69,0.7)'
-                    },
-                    {
-                        label: 'Cupons usados',
-                        data: cuponsUsados,
-                        backgroundColor: 'rgba(255,193,7,0.7)'
-                    }
+                    { label: 'Cupons gerados', data: cuponsGerados, backgroundColor: 'rgba(220,53,69,0.7)' },
+                    { label: 'Cupons usados',  data: cuponsUsados,  backgroundColor: 'rgba(255,193,7,0.7)' }
                 ]
             },
             options: {
-                scales: {
-                    x: { stacked: true },
-                    y: { stacked: true, beginAtZero: true }
-                }
+                scales: { x: { stacked: true }, y: { stacked: true, beginAtZero: true } }
             }
         });
 
-        // 6) Gráfico de barras + linha (taxa de conversão)
-        new Chart(document.getElementById('chartConversao'), {
+        new Chart('chartConversao', {
             data: {
                 labels: mesesLabels,
                 datasets: [
-                    {
-                        type: 'bar',
-                        label: 'Taxa mensal (%)',
-                        data: taxasConversao,
-                        yAxisID: 'y'
-                    },
-                    {
-                        type: 'line',
-                        label: 'Tendência',
-                        data: tendenciaConversao,
-                        yAxisID: 'y',
-                        tension: 0.3,
-                        fill: false,
-                        borderWidth: 2
-                    }
+                    { type: 'bar',  label: 'Taxa mensal (%)', data: taxasConversao,  yAxisID: 'y' },
+                    { type: 'line', label: 'Tendência',       data: tendenciaConv,   yAxisID: 'y', tension:0.3, fill:false, borderWidth:2 }
                 ]
             },
             options: {
                 scales: {
-                    y: {
-                        beginAtZero: true,
-                        position: 'left'
-                    }
+                    y: { beginAtZero: true, position: 'left' }
                 }
             }
         });
