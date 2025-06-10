@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Sidebar Colapsável - Documentação</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background: #f8fafc;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2, h3 {
+            color: #2d3748;
+        }
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        .feature-card {
+            background: #f7fafc;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #4299e1;
+        }
+        .code-block {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 15px;
+            border-radius: 6px;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+        .keyboard-shortcut {
+            background: #edf2f7;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-weight: bold;
+        }
+        .demo-section {
+            background: #fff5f5;
+            border: 2px dashed #fed7d7;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        .status-indicator {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+        .status-active { background: #48bb78; }
+        .status-inactive { background: #a0aec0; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎯 Sistema de Sidebar Colapsável</h1>
+            <p><strong>Versão:</strong> 2.0 | <strong>Última atualização:</strong> Janeiro 2025</p>
+            <div style="margin: 20px 0;">
+                <span class="status-indicator status-active"></span> Sistema Ativo
+                <span class="status-indicator status-active"></span> Responsivo
+                <span class="status-indicator status-active"></span> Acessível
+                <span class="status-indicator status-active"></span> Performance Otimizada
+            </div>
+        </header>
+
+        <section>
+            <h2>📋 Visão Geral</h2>
+            <p>Sistema avançado de sidebar colapsável implementado para o projeto <strong>Operizy</strong>, oferecendo uma experiência de usuário superior com recursos modernos de UX/UI.</p>
+        </section>
+
+        <section>
+            <h2>✨ Funcionalidades Principais</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h3>🖥️ Desktop & Mobile</h3>
+                    <p>Responsivo completo com comportamentos específicos para cada dispositivo.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>💾 Persistência</h3>
+                    <p>Salva preferências do usuário no localStorage automaticamente.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>⚡ Animações Suaves</h3>
+                    <p>Transições CSS otimizadas com cubic-bezier para máxima fluidez.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>♿ Acessibilidade</h3>
+                    <p>Suporte completo a screen readers e navegação por teclado.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>🎯 Tooltips Inteligentes</h3>
+                    <p>Tooltips automáticos quando a sidebar está colapsada.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>🔧 API Pública</h3>
+                    <p>Métodos JavaScript para controle programático.</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>⌨️ Atalhos de Teclado</h2>
+            <ul>
+                <li><span class="keyboard-shortcut">Ctrl/Cmd + B</span> - Toggle sidebar</li>
+                <li><span class="keyboard-shortcut">Esc</span> - Fechar sidebar mobile</li>
+                <li><span class="keyboard-shortcut">↑ ↓</span> - Navegar pelos itens do menu</li>
+                <li><span class="keyboard-shortcut">Home/End</span> - Ir para primeiro/último item</li>
+                <li><span class="keyboard-shortcut">Tab</span> - Navegação com foco trap (mobile)</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>🔧 API JavaScript</h2>
+            <p>Controle programático através da instância global <code>window.sidebarToggle</code>:</p>
+
+            <div class="code-block">
+// Colapsar sidebar
+window.sidebarToggle.collapse();
+
+// Expandir sidebar  
+window.sidebarToggle.expand();
+
+// Toggle (alternar estado)
+window.sidebarToggle.toggle();
+
+// Verificar estado
+console.log(window.sidebarToggle.isCollapsed());
+console.log(window.sidebarToggle.isMobileOpen());
+            </div>
+        </section>
+
+        <section>
+            <h2>📱 Eventos Customizados</h2>
+            <p>O sistema emite eventos customizados que você pode escutar:</p>
+
+            <div class="code-block">
+// Escutar eventos de sidebar
+document.addEventListener('sidebarCollapsed', (e) => {
+    console.log('Sidebar colapsada:', e.detail);
+});
+
+document.addEventListener('sidebarExpanded', (e) => {
+    console.log('Sidebar expandida:', e.detail);
+});
+
+document.addEventListener('mobileSidebarOpened', (e) => {
+    console.log('Sidebar mobile aberta:', e.detail);
+});
+
+document.addEventListener('mobileSidebarClosed', (e) => {
+    console.log('Sidebar mobile fechada:', e.detail);
+});
+            </div>
+        </section>
+
+        <section>
+            <h2>🎨 Estados Visuais</h2>
+            <h3>Desktop:</h3>
+            <ul>
+                <li><strong>Expandida:</strong> Sidebar com largura total (280px)</li>
+                <li><strong>Colapsada:</strong> Sidebar com ícones apenas (70px)</li>
+                <li><strong>Tooltips:</strong> Aparecem ao hover nos ícones quando colapsada</li>
+            </ul>
+
+            <h3>Mobile:</h3>
+            <ul>
+                <li><strong>Fechada:</strong> Sidebar fora da tela</li>
+                <li><strong>Aberta:</strong> Sidebar slide-in com overlay escuro</li>
+                <li><strong>Focus Trap:</strong> Navegação fica limitada à sidebar</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>⚙️ Configurações CSS</h2>
+            <p>Personalize através das variáveis CSS:</p>
+
+            <div class="code-block">
+:root {
+    --sidebar-width: 280px;                    /* Largura expandida */
+    --sidebar-collapsed-width: 70px;           /* Largura colapsada */
+    --animation-duration: 0.3s;                /* Duração das animações */
+    --animation-easing: cubic-bezier(0.25, 0.8, 0.25, 1); /* Curva de animação */
+}
+            </div>
+        </section>
+
+        <section>
+            <h2>🚀 Performance</h2>
+            <ul>
+                <li><strong>Will-change:</strong> Propriedades otimizadas para GPU</li>
+                <li><strong>Debounce:</strong> Redimensionamento da janela otimizado</li>
+                <li><strong>Reduced Motion:</strong> Respeita preferências de acessibilidade</li>
+                <li><strong>Memory Management:</strong> Cleanup automático de event listeners</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>♿ Acessibilidade</h2>
+            <ul>
+                <li><strong>ARIA Labels:</strong> Rotulagem semântica completa</li>
+                <li><strong>Live Regions:</strong> Anúncios para screen readers</li>
+                <li><strong>Focus Management:</strong> Controle inteligente do foco</li>
+                <li><strong>High Contrast:</strong> Suporte a modo alto contraste</li>
+                <li><strong>Keyboard Navigation:</strong> Navegação completa por teclado</li>
+            </ul>
+        </section>
+
+        <div class="demo-section">
+            <h3>🎮 Como Testar</h3>
+            <p><strong>1.</strong> Acesse o painel administrativo do sistema</p>
+            <p><strong>2.</strong> Clique no botão de toggle na barra superior (ícone de menu)</p>
+            <p><strong>3.</strong> Use <span class="keyboard-shortcut">Ctrl+B</span> para alternar rapidamente</p>
+            <p><strong>4.</strong> Redimensione a janela para testar responsividade</p>
+            <p><strong>5.</strong> Em mobile, use o hamburger menu para abrir/fechar</p>
+        </div>
+
+        <section>
+            <h2>🔍 Solução de Problemas</h2>
+            <h3>Sidebar não colapsa:</h3>
+            <ul>
+                <li>Verifique se os arquivos CSS/JS estão carregados</li>
+                <li>Confirme que não há erros JavaScript no console</li>
+                <li>Teste em modo privado para descartar cache</li>
+            </ul>
+
+            <h3>Animações não funcionam:</h3>
+            <ul>
+                <li>Verifique se <code>prefers-reduced-motion</code> não está ativo</li>
+                <li>Confirme que as propriedades CSS estão sendo aplicadas</li>
+                <li>Teste em diferentes navegadores</li>
+            </ul>
+        </section>
+
+        <footer style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #e2e8f0; text-align: center;">
+            <p><strong>Sidebar Toggle System v2.0</strong></p>
+            <p>Desenvolvido para <strong>Operizy</strong> | Janeiro 2025</p>
+            <p style="font-size: 0.9em; color: #718096;">
+                Sistema otimizado para performance, acessibilidade e experiência do usuário
+            </p>
+        </footer>
+    </div>
+</body>
+</html> 

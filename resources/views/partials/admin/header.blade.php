@@ -26,6 +26,11 @@
                     </div>
                 </a>
             </li>
+            <li class="dash-h-item desktop-sidebar-toggle d-none d-lg-block">
+                <a href="#!" class="dash-head-link sidebar-toggle-btn" id="sidebar-toggle" title="Toggle Sidebar">
+                    <i class="ti ti-menu-2 sidebar-toggle-icon"></i>
+                </a>
+            </li>
             <li class="dropdown dash-h-item drp-company">
                 <a class="dash-head-link dropdown-toggle arrow-none m-0" data-bs-toggle="dropdown" href="#"
                     role="button" aria-haspopup="false" aria-expanded="false">
