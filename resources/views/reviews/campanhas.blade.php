@@ -22,14 +22,12 @@
 
 @section('content')
     <div class="container-fluid">
-        <!-- FILTRO DE PERÍODO -->
         <div class="row mb-4">
             <div class="col-md-3">
                 <label for="daterange">Período:</label>
                 <input type="date" id="daterange" class="form-control" />
             </div>
         </div>
-
     </div>
 
 
