@@ -62,7 +62,9 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\XenditController;
 use App\Http\Controllers\AplicativosController;
+use App\Http\Controllers\LeadController;
 use Illuminate\Http\Request;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -73,6 +75,9 @@ use Illuminate\Http\Request;
 | contains the "web" middleware group. Now create something great!
 |
  */
+
+Route::get('/leads', [LeadController::class, 'index'])->name('leads.index');
+
 Route::get('/', [DashboardController::class, 'index'])->name('start')->middleware(['XSS', '2fa']);
 
 Route::get('login/{lang?}', function () {
