@@ -28,4 +28,8 @@ class ReviewsController extends Controller
     {
         return view('reviews.perguntas_respostas');
     }
+    public function review_extracao()
+    {
+        return view('reviews.extracao');
+    }
 }

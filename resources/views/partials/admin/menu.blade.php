@@ -350,6 +350,9 @@
         <li class="dash-item">
             <a class="dash-link" href="{{ route('review.perguntas') }}">Avaliações e Perguntas</a>
         </li>
+        <li class="dash-item">
+            <a class="dash-link" href="{{ route('review.extracao') }}">Extração de Comentários</a>
+        </li>
     </ul>
 </li>
 
