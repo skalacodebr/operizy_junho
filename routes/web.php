@@ -80,6 +80,7 @@ Route::get('/review', [ReviewsController::class, 'index'])->name('review.index')
 Route::get('/campanhas', [ReviewsController::class, 'review_campanhas'])->name('review.campanhas');
 Route::get('/perguntas', [ReviewsController::class, 'review_perguntas'])->name('review.perguntas');
 Route::get('/avaliacao', [ReviewsController::class, 'review_avaliacao'])->name('review.avaliacao');
+Route::get('/perguntas/respostas', [ReviewsController::class, 'review_perguntas_respostas'])->name('review.perguntas_respsotas');
 
 Route::get('/', [DashboardController::class, 'index'])->name('start')->middleware(['XSS', '2fa']);
 

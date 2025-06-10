@@ -22,6 +22,10 @@ class ReviewsController extends Controller
     }
     public function review_avaliacao()
     {
-        return view('reviews.perguntas');
+        return view('reviews.avaliacao');
+    }
+    public function review_perguntas_respostas()
+    {
+        return view('reviews.perguntas_respostas');
     }
 }

@@ -6,12 +6,12 @@
 
 @section('breadcrumb')
     <li class="breadcrumb-item"><a href="#">Review</a></li>
-    <li class="breadcrumb-item active" aria-current="page">Perguntas</li>
+    <li class="breadcrumb-item active" aria-current="page">Avaliações e Perguntas</li>
 @endsection
 
 @section('title')
     <div class="d-inline-block">
-        <h5 class="h4 d-inline-block text-white font-weight-bold mb-0">Perguntas</h5>
+        <h5 class="h4 d-inline-block text-white font-weight-bold mb-0">Avaliações e Perguntas</h5>
     </div>
 @endsection
 
@@ -62,76 +62,33 @@
                         <tr>
                             <td class="d-flex align-items-center gap-2">
                                 <img src="{{ asset('assets/images/user/avatar-1.jpg') }}"
-                                     alt="Tênis Casual"
-                                     class="rounded mr-3"
-                                     width="60" height="60">
-                                <strong>Tênis Casual</strong>
-                            </td>
-                            <td>
-                                <i class="fas fa-star text-warning"></i>
-                                <strong>5.0</strong>
-                                <small>(6 avaliações)</small><br>
-                                <small class="text-success">+2 novas</small>
-                            </td>
-                            <td>
-                                <i class="fas fa-question-circle"></i>
-                                <strong>1 pergunta respondida</strong><br>
-                                <small class="text-success">+2 novas</small>
-                            </td>
-                            <td>
-                                <span class="badge badge-success">Tudo certo por aqui</span>
-                            </td>
-                            <td class="text-center">
-                                <a href="#" class="text-secondary">
-                                    <i data-feather="external-link"></i>
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="d-flex align-items-center gap-2">
-                                <img src="{{ asset('assets/images/user/avatar-1.jpg') }}"
-                                     alt="Camisa Lily"
-                                     class="rounded mr-3"
-                                     width="60" height="60">
-                                <strong>Camisa Lily</strong>
-                            </td>
-                            <td>
-                                <i class="fas fa-star text-warning"></i>
-                                <strong>3.5</strong>
-                                <small>(6 avaliações)</small><br>
-                                <small class="text-success">+2 novas</small>
-                            </td>
-                            <td>
-                                <span class="text-muted">0 perguntas</span>
-                            </td>
-                            <td>
-                                <span class="badge badge-success">Tudo certo por aqui</span>
-                            </td>
-                            <td class="text-center">
-                                <a href="#" class="text-secondary">
-                                    <i data-feather="external-link"></i>
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="d-flex align-items-center gap-2">
-                                <img src="{{ asset('assets/images/user/avatar-1.jpg') }}"
                                      alt="Camiseta Ovni"
                                      class="rounded mr-3"
                                      width="60" height="60">
                                 <strong>Camiseta Ovni</strong>
                             </td>
                             <td>
-                                <i class="fas fa-star text-warning"></i>
-                                <strong>5.0</strong>
-                                <small>(6 avaliações)</small><br>
-                                <small class="text-success">+2 novas</small>
+                                <a href="{{ route('review.perguntas') }}"
+                                        class="btn border rounded-pill w-100 text-left d-flex justify-content-between align-items-center py-2">
+                                    <div>
+                                    <i class="fas fa-star text-warning mr-1"></i>
+                                    <strong>5.0</strong>
+                                    <small class="text-muted">(6 avaliações)</small>
+                                    </div>
+                                    <small class="text-success">+2 novas</small>
+                                </a>
                             </td>
-                            <td>
-                                <i class="fas fa-question-circle"></i>
-                                <strong>1 pergunta respondida</strong><br>
-                                <small class="text-success">+2 novas</small>
+                            <td style="width:20%;">
+                                <a href="{{ route('review.perguntas_respsotas') }}"
+                                        class="btn border rounded-pill w-100 text-left d-flex justify-content-between align-items-center py-2">
+                                    <div class="d-flex align-items-center">
+                                    <i class="fas fa-question-circle text-secondary mr-1"></i>
+                                    <strong>1 pergunta respondida</strong>
+                                    </div>
+                                    <small class="text-success">+2 novas</small>
+                                </a>
                             </td>
+
                             <td>
                                 <span class="badge badge-warning">3 perguntas aguardando resposta</span>
                             </td>
