@@ -132,7 +132,7 @@
 
 
 
-<li class="menu-title" style="margin-left: 28px;">INICIOS</li>
+<li class="menu-title" style="margin-left: 28px;">INICIO</li>
              
 <li class="dash-item dash-hasmenu {{ Request::segment(1) == 'dashboard' || Request::segment(1) == 'storeanalytic' || Request::route()->getName() == 'orders.show' ? ' active dash-trigger' : 'collapsed' }}">
     <a href="#!" class="dash-link ">
