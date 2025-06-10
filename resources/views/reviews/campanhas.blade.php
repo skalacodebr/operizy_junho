@@ -5,7 +5,7 @@
 @endsection
 
 @section('breadcrumb')
-    <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Review</a></li>
+    <li class="breadcrumb-item"><a href="#">Review</a></li>
     <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
 @endsection
 
@@ -22,22 +22,14 @@
 
 @section('content')
     <div class="container-fluid">
-        <div class="row mb-4">
-            <div class="col-md-3">
-                <label for="daterange">Período:</label>
-                <input type="date" id="daterange" class="form-control" />
-            </div>
-        </div>
+        <
     </div>
 
 
 @endsection
 
 @push('script-page')
-    <!-- Dependências: Moment.js, DateRangePicker e Chart.js -->
-    <script src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-    <script src="//cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  
 
     <script>
 
