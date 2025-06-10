@@ -15,23 +15,14 @@
     </div>
 @endsection
 
-@push('css-page')
-    <!-- Date Range Picker CSS -->
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
-@endpush
-
 @section('content')
     <div class="container-fluid">
-        <
+        
     </div>
 
 
 @endsection
 
 @push('script-page')
-  
 
-    <script>
-
-    </script>
 @endpush
