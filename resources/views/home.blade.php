@@ -18,21 +18,16 @@ $company_logo = \App\Models\Utility::getValByName('company_logo');
 @push('script-page')
     <script>
         var timezone = '{{ !empty($setting['timezone']) ? $setting['timezone'] : 'Asia/Kolkata' }}';
-
-        let today = new Date(new Date().toLocaleString("en-US", {
-            timeZone: timezone
-        }));
+        let today = new Date(new Date().toLocaleString("en-US", { timeZone: timezone }));
         var curHr = today.getHours()
         var target = document.getElementById("greetings");
-
         if (curHr < 12) {
-            target.innerHTML = "Good Morning,";
+            target.innerHTML = "Olá, {{ Auth::user()->name }}! Que bom te ver por aqui.";
         } else if (curHr < 17) {
-            target.innerHTML = "Good Afternoon,";
+            target.innerHTML = "Olá, {{ Auth::user()->name }}! Que bom te ver por aqui.";
         } else {
-            target.innerHTML = "Good Evening,";
+            target.innerHTML = "Olá, {{ Auth::user()->name }}! Que bom te ver por aqui.";
         }
-
     </script>
     <script>
         $(document).on('click', '#code-generate', function() {
