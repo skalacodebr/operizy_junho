@@ -15,6 +15,7 @@ use App\Models\Expresscheckout;
 use App\Models\Store;
 use App\Models\User;
 use App\Models\Utility;
+use App\Models\SalesChannel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -35,19 +36,31 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        if(\Auth::user()->can('Manage Products')){
+        if(\Auth::user()->can('Manage Products'))
+        {
             $user = \Auth::user();
-            $store_id = Store::where('id', $user->current_store)->first();
-            $products = Product::where('store_id', $store_id->id)->orderBy('id', 'DESC')->get();
-            $productcategorie = ProductCategorie::where('store_id', $store_id->id)->where('created_by', \Auth::user()->creatorId())->get()->pluck('name', 'id');
-            return view('product.index', compact('products', 'productcategorie'));
-        }
-        else{
-            return redirect()->back()->with('error', 'Permission denied.');
-        }
+            $products = Product::where('created_by', \Auth::user()->creatorId());
 
+            // Filtrar por canal se especificado
+            if ($request->has('channel')) {
+                $channel = SalesChannel::where('slug', $request->channel)->firstOrFail();
+                $products = $products->whereHas('salesChannels', function($query) use ($channel) {
+                    $query->where('sales_channels.id', $channel->id);
+                });
+            }
+
+            $products = $products->get();
+            
+            $productImg = \App\Models\Utility::get_file('uploads/is_cover_image/');
+
+            return view('product.index', compact('products', 'productImg'));
+        }
+        else
+        {
+            return redirect()->back()->with('error', __('Permission denied.'));
+        }
     }
 
     /**
@@ -365,6 +378,11 @@ class ProductController extends Controller
                     $msg['msg']  = __('Product Created Failed');
                 }
 
+                // Salvar canais de venda selecionados
+                if($request->has('sales_channels')) {
+                    $product->salesChannels()->sync($request->sales_channels);
+                }
+
                 return $msg;
             } else {
                 $msg['flag'] = 'error';
@@ -473,269 +491,23 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $product)
+    public function update(Request $request, Product $product)
     {
-        //
-    }
-
-    public function productUpdate(Request $request, $product_id)
-    {
-        if(\Auth::user()->can('Edit Products')){
-            $product = Product::find($product_id);
-
-            $user = \Auth::user();
-            $store_id = Store::where('id', $user->current_store)->first();
-
+        if(\Auth::user()->can('Edit Products'))
+        {
             $validator = \Validator::make(
-                $request->all(),
-                [
+                $request->all(), [
                     'name' => 'required|max:120',
                 ]
             );
-            if ($request->enable_product_variant == '') {
-                $validator = \Validator::make(
-                    $request->all(),
-                    [
-                        'price' => 'required',
-                        'quantity' => 'required',
-                        'is_cover_image' => 'mimes:jpeg,png,jpg,gif,svg,pdf,doc|max:20480',
-                        'downloadable_prodcut' => 'mimes:jpeg,png,jpg,gif,svg,pdf,doc|max:20480',
-                    ]
-                );
-            }
-            if ($request->enable_product_variant == 'on') {
-                if (!empty($request->verians || $request->variants)) {
-                    if (!empty($request->verians)) {
-                        foreach ($request->verians as $k => $items) {
-                            foreach ($items as $item_k => $item) {
-                                if (!isset($item)) {
-                                    $msg['flag'] = 'error';
-                                    $msg['msg'] = __('Please Fill The Form');
 
-                                    return $msg;
-                                }
-                            }
-                        }
-                    } else {
-                        foreach ($request->variants as $k => $items) {
-                            foreach ($items as $item_k => $item) {
-                                if (!isset($item)) {
-                                    $msg['flag'] = 'error';
-                                    $msg['msg'] = __('Please Fill The Form');
-
-                                    return $msg;
-                                }
-                            }
-                        }
-                    }
-                } else {
-                    $msg['flag'] = 'error';
-                    $msg['msg'] = __('Please Add Variants');
-                    return $msg;
-                }
-            }
-            if ($validator->fails()) {
+            if($validator->fails())
+            {
                 $messages = $validator->getMessageBag();
-
-                $msg['flag'] = 'error';
-                $msg['msg'] = $messages->first();
-
-                return $msg;
+                return redirect()->back()->with('error', $messages->first());
             }
 
-            $file_name = [];
-
-            if (!empty($request->multiple_files) && count($request->multiple_files) > 0) {
-
-                foreach ($request->multiple_files as $key => $file) {
-
-                    $image_size = $file->getSize();
-                    $result = Utility::updateStorageLimit(\Auth::user()->creatorId(), $image_size);
-
-                    if($result==1){
-                        $filenameWithExt = $file->getClientOriginalName();
-                        $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-                        $extension = $file->getClientOriginalExtension();
-                        $fileNameToStore = $filename . '_' . time() . '.' . $extension;
-                        // $file_name[] = $fileNameToStore;
-                        $settings = Utility::getStorageSetting();
-
-                        $dir = 'uploads/product_image/';
-                        $path = Utility::keyWiseUpload_file($request, 'multiple_files', $fileNameToStore, $dir, $key, []);
-
-                        if ($path['flag'] == 1) {
-                            $url = $path['url'];
-                            $file_name[] = $fileNameToStore;
-                        }
-                    }
-                    // $dir             = storage_path('uploads/product_image/');
-                    // if(!file_exists($dir))
-                    // {
-                    //     mkdir($dir, 0777, true);
-                    // }
-                    // $path = $file->storeAs('uploads/product_image/', $fileNameToStore);
-                }
-            }
-
-            if (!empty($request->attachment)) {
-                // if (asset(Storage::exists('uploads/is_cover_image/' . $product->attachment))) {
-                //     asset(Storage::delete('uploads/is_cover_image/' . $product->attachment));
-                // }
-                $fileName = $product->attachment !== 'default.jpg' ? $product->attachment : '' ;
-                $filePath ='uploads/is_cover_image/'. $fileName;
-
-                $image_size = $request->file('attachment')->getSize();
-                $result = Utility::updateStorageLimit(\Auth::user()->creatorId(), $image_size);
-
-                if($result==1){
-                    Utility::changeStorageLimit(\Auth::user()->creatorId(),$filePath);
-                    $filenameWithExt = $request->file('attachment')->getClientOriginalName();
-                    $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-                    $extension = $request->file('attachment')->getClientOriginalExtension();
-                    $fileAttachment = $filename . '_' . time() . '.' . $extension;
-                    $settings = Utility::getStorageSetting();
-
-                    if ($settings['storage_setting'] == 'local') {
-                        $dir = 'uploads/is_cover_image/';
-                    } else {
-                        $dir = 'uploads/is_cover_image/';
-                    }
-                    $path = Utility::upload_file($request, 'attachment', $fileAttachment, $dir, []);
-
-                    if ($path['flag'] == 1) {
-                        $url = $path['url'];
-                    } else {
-                        $msg['flag'] = 'error';
-                        $msg['msg'] = $path['msg'];
-
-                        return $msg;
-                        // return redirect()->back()->with('error', __($path['msg']));
-                    }
-                }
-
-                // $dir             = storage_path('uploads/is_cover_image/');
-                // if(!file_exists($dir))
-                // {
-                //     mkdir($dir, 0777, true);
-                // }
-                // $path = $request->file('attachment')->storeAs('uploads/is_cover_image/', $fileAttachment);
-            }
-
-            if (!empty($request->downloadable_prodcut)) {
-
-                // if (asset(Storage::exists('uploads/is_cover_image/' . $product->downloadable_prodcut))) {
-                //     asset(Storage::delete('uploads/is_cover_image/' . $product->downloadable_prodcut));
-                // }
-
-                $fileName = $product->downloadable_prodcut !== 'default.jpg' ? $product->downloadable_prodcut : '' ;
-                $filePath ='uploads/downloadable_prodcut/'. $fileName;
-
-                $image_size = $request->file('downloadable_prodcut')->getSize();
-                $result = Utility::updateStorageLimit(\Auth::user()->creatorId(), $image_size);
-
-                if($result==1){
-                    Utility::changeStorageLimit(\Auth::user()->creatorId(),$filePath);
-                    $filenameWithExt = $request->file('downloadable_prodcut')->getClientOriginalName();
-                    $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-                    $extension = $request->file('downloadable_prodcut')->getClientOriginalExtension();
-                    $filedownloadable1 = $filename . '_' . time() . '.' . $extension;
-                    $settings = Utility::getStorageSetting();
-
-                    if ($settings['storage_setting'] == 'local') {
-                        $dir = 'uploads/downloadable_prodcut/';
-                    } else {
-                        $dir = 'uploads/downloadable_prodcut/';
-                    }
-
-                    $filedownloadable = str_replace(' ', '_', $filedownloadable1);
-                    $path = Utility::upload_file($request, 'downloadable_prodcut', $filedownloadable, $dir, []);
-
-                    if ($path['flag'] == 1) {
-                        $url = $path['url'];
-                    } else {
-                        $msg['flag'] = 'error';
-                        $msg['msg'] = $path['msg'];
-
-                        return $msg;
-                        // return redirect()->back()->with('error', __($path['msg']));
-                    }
-                }
-                // $dir               = storage_path('uploads/downloadable_prodcut/');
-                // if(!file_exists($dir))
-                // {
-                //     mkdir($dir, 0777, true);
-                // }
-                // $filedownloadable = str_replace(' ', '_', $filedownloadable1);
-
-                // $path = $request->file('downloadable_prodcut')->storeAs('uploads/downloadable_prodcut/', $filedownloadable);
-            }
-
-            if (!empty($request->is_cover_image)) {
-                // if (asset(Storage::exists('uploads/is_cover_image/' . $product->is_cover))) {
-                //     asset(Storage::delete('uploads/is_cover_image/' . $product->is_cover));
-                // }
-                $fileName = $product->is_cover !== 'default.jpg' ? $product->is_cover : '' ;
-                $filePath ='uploads/is_cover_image/'. $fileName;
-
-                $image_size = $request->file('is_cover_image')->getSize();
-                $result = Utility::updateStorageLimit(\Auth::user()->creatorId(), $image_size);
-
-                if($result==1){
-                    Utility::changeStorageLimit(\Auth::user()->creatorId(),$filePath);
-                    $filenameWithExt = $request->file('is_cover_image')->getClientOriginalName();
-                    $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-                    $extension = $request->file('is_cover_image')->getClientOriginalExtension();
-                    $fileNameToStores = $filename . '_' . time() . '.' . $extension;
-                    $settings = Utility::getStorageSetting();
-
-                    if ($settings['storage_setting'] == 'local') {
-                        $dir = 'uploads/is_cover_image/';
-                    } else {
-                        $dir = 'uploads/is_cover_image/';
-                    }
-                    $path = Utility::upload_file($request, 'is_cover_image', $fileNameToStores, $dir, []);
-
-                    if ($path['flag'] == 1) {
-                        $url = $path['url'];
-                    } else {
-                        $msg['flag'] = 'error';
-                        $msg['msg'] = $path['msg'];
-
-                        return $msg;
-                        // return redirect()->back()->with('error', __($path['msg']));
-                    }
-                }
-
-                // $dir              = storage_path('uploads/is_cover_image/');
-                // if(!file_exists($dir))
-                // {
-                //     mkdir($dir, 0777, true);
-                // }
-                // $path = $request->file('is_cover_image')->storeAs('uploads/is_cover_image/', $fileNameToStores);
-            }
-
-            if (!empty($request->product_tax)) {
-                if (count($request->product_tax) > 1 && in_array(0, $request->product_tax)) {
-                    $msg['flag'] = 'error';
-                    $msg['msg'] = __('Please select valid tax');
-
-                    return $msg;
-                    // return redirect()->back()->with('error', __('Please select valid tax'));
-                }
-            }
-
-            if (!empty($request->product_categorie)) {
-                if (count($request->product_categorie) > 1 && in_array(0, $request->product_categorie)) {
-                    $msg['flag'] = 'error';
-                    $msg['msg'] = __('Please select valid Categorie');
-
-                    return $msg;
-                    // return redirect()->back()->with('error', __('Please select valid Categorie'));
-                }
-            }
-
-            $product['store_id'] = $store_id->id;
-            $product['name'] = $request->name;
+            $product->name = $request->name;
             if (!empty($request->product_categorie)) {
                 $product['product_categorie'] = implode(',', $request->product_categorie);
             } else {
@@ -894,10 +666,18 @@ class ProductController extends Controller
                 $msg['msg'] = __('Product Created Failed');
             }
 
+            // Atualizar canais de venda selecionados
+            if($request->has('sales_channels')) {
+                $product->salesChannels()->sync($request->sales_channels);
+            } else {
+                $product->salesChannels()->sync([]);
+            }
+
             return $msg;
         }
-        else{
-            return redirect()->back()->with('error', 'Permission denied.');
+        else
+        {
+            return redirect()->back()->with('error', __('Permission denied.'));
         }
     }
 

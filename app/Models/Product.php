@@ -137,4 +137,11 @@ class Product extends Model
         $dsji = ProductVariantOption::where('product_id',$id)->get();
             return $dsji;
     }
+
+    public function salesChannels()
+    {
+        return $this->belongsToMany(SalesChannel::class, 'product_sales_channel')
+            ->withPivot('is_active')
+            ->withTimestamps();
+    }
 }
