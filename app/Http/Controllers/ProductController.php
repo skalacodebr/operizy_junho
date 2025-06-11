@@ -281,6 +281,10 @@ class ProductController extends Controller
                 if (!empty($request->quantity)) {
                     $product['quantity'] = !empty($request->quantity) ? $request->quantity : '0';
                 }
+                $product['min_stock'] = !empty($request->min_stock) ? $request->min_stock : '0';
+                $product['max_stock'] = !empty($request->max_stock) ? $request->max_stock : '0';
+                $product['min_order'] = !empty($request->min_order) ? $request->min_order : '0';
+                $product['max_order'] = !empty($request->max_order) ? $request->max_order : '0';
                 $product['SKU'] = $request->SKU;
                 if (!empty($request->product_tax)) {
                     $product['product_tax'] = implode(',', $request->product_tax);
@@ -744,6 +748,10 @@ class ProductController extends Controller
             if (!empty($request->quantity)) {
                 $product['quantity'] = !empty($request->quantity) ? $request->quantity : '0';
             }
+            $product['min_stock'] = !empty($request->min_stock) ? $request->min_stock : '0';
+            $product['max_stock'] = !empty($request->max_stock) ? $request->max_stock : '0';
+            $product['min_order'] = !empty($request->min_order) ? $request->min_order : '0';
+            $product['max_order'] = !empty($request->max_order) ? $request->max_order : '0';
             $product['SKU'] = $request->SKU;
             if (!empty($request->product_tax)) {
                 $product['product_tax'] = implode(',', $request->product_tax);
