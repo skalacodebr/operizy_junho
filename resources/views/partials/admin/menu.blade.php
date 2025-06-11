@@ -506,6 +506,23 @@
     </a>
 </li>
 
+@can('Manage Products')
+    <li class="dash-item {{ Request::route()->getName() == 'product.collections.index' ? ' active' : '' }}">
+        <a class="dash-link" href="{{ route('product.collections.index') }}">{{ __('Collections') }}</a>
+    </li>
+
+    <li class="dash-item {{ Request::route()->getName() == 'product.brands.index' ? ' active' : '' }}">
+        <a class="dash-link" href="{{ route('product.brands.index') }}">{{ __('Brands') }}</a>
+    </li>
+
+    <li class="dash-item {{ Request::route()->getName() == 'product.tags.index' ? ' active' : '' }}">
+        <a class="dash-link" href="{{ route('product.tags.index') }}">{{ __('Tags & Seals') }}</a>
+    </li>
+
+    <li class="dash-item {{ Request::route()->getName() == 'product.filters.index' ? ' active' : '' }}">
+        <a class="dash-link" href="{{ route('product.filters.index') }}">{{ __('Filters') }}</a>
+    </li>
+@endcan
 
                 @endif
             </ul>
