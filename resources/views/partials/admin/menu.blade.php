@@ -54,7 +54,7 @@
                             </a>
                         </li>
                     @endcan
-
+<!-- 
                     @can('Manage Plans')
                         <li
                             class="dash-item dash-hasmenu {{ Request::segment(1) == 'plans' || Request::route()->getName() == 'stripe' ? ' active dash-trigger' : 'collapsed' }}">
@@ -66,7 +66,7 @@
                                 <span class="dash-mtext">{{ __('Plans') }}</span>
                             </a>
                         </li>
-                    @endcan
+                    @endcan -->
 
                     @can('Manage Plan Request')
                         <li
@@ -168,7 +168,7 @@
         @endcan -->
     </ul>
 </li>
-@can('Manage Themes')
+<!-- @can('Manage Themes')
     <li class="dash-item {{ Request::segment(1) == 'themes' ? ' active' : 'collapsed' }}">
         <a href="{{ route('themes.theme') }}"
             class="dash-link {{ request()->is('themes') ? 'active' : '' }}">
@@ -178,7 +178,7 @@
             <span class="dash-mtext">{{ __('Themes') }}</span>
         </a>
     </li>
-@endcan
+@endcan  -->
 @canany(['Manage Role', 'Manage User'])
     <li class="dash-item dash-hasmenu {{ Request::segment(1) == 'users' || Request::segment(1) == 'roles' ? ' active dash-trigger' : 'collapsed' }}">
         <a href="#!" class="dash-link ">
@@ -218,7 +218,7 @@
     </li>
 @endcan
 
-@can('Manage Plans')
+<!-- @can('Manage Plans')
     <li class="dash-item dash-hasmenu {{ Request::segment(1) == 'plans' || Request::route()->getName() == 'stripe' ? ' active dash-trigger' : 'collapsed' }}">
         <a href="{{ route('plans.index') }}"
             class="dash-link {{ request()->is('plans') ? 'active' : '' }}">
@@ -228,7 +228,7 @@
             <span class="dash-mtext">{{ __('Plans') }}</span>
         </a>
     </li>
-@endcan
+@endcan -->
 
 @if (Auth::user()->type == 'Owner')
     <!-- <li class="dash-item dash-hasmenu  {{ Request::segment(1) == 'referral-program' ? 'active' : '' }}">
