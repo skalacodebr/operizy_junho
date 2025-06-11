@@ -33,7 +33,7 @@
                         <img class="border border-2 border-primary rounded theme-avtar" alt="#" style="width: 100%; height: 100%;"
                             src="{{ !empty($users->avatar) ? $profile . '/' . $users->avatar : $profile . '/avatar.png' }}">
                     </span>
-                    <span class="hide-mob">{{ 'Hi,' }}{{ Auth::user()->name }}!</span>
+                    <span class="hide-mob">{{ 'Olá,' }}{{ Auth::user()->name }}!</span>
                     <i class="ti ti-chevron-down drp-arrow nocolor hide-mob"></i>
                 </a>
                 <div class="dropdown-menu dash-h-dropdown">
