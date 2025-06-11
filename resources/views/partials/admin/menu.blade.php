@@ -54,19 +54,6 @@
                             </a>
                         </li>
                     @endcan
-<!-- 
-                    @can('Manage Plans')
-                        <li
-                            class="dash-item dash-hasmenu {{ Request::segment(1) == 'plans' || Request::route()->getName() == 'stripe' ? ' active dash-trigger' : 'collapsed' }}">
-                            <a href="{{ route('plans.index') }}"
-                                class="dash-link {{ request()->is('plans') ? 'active' : '' }}">
-                                <span class="dash-micon">
-                                    <i class="ti ti-trophy"></i>
-                                </span>
-                                <span class="dash-mtext">{{ __('Plans') }}</span>
-                            </a>
-                        </li>
-                    @endcan -->
 
                     @can('Manage Plan Request')
                         <li
@@ -112,22 +99,7 @@
                         </li>
                     @endcan
                     @include('landingpage::menu.landingpage')
-                    <!-- @can('Manage Settings')
-                        <li class="dash-item dash-hasmenu {{ Request::segment(1) == 'settings' || Request::route()->getName() == 'store.editproducts' ? ' active dash-trigger' : 'collapsed' }}">
-                            <a href="{{ route('settings') }}" class="dash-link {{ request()->is('settings') ? 'active' : '' }}">
-                                <span class="dash-micon">
-                                    <i class="ti ti-settings"></i>
-                                </span>
-                                <span class="dash-mtext">
-                                    @if (Auth::user()->type == 'super admin')
-                                        {{ __('Settings') }}
-                                    @else
-                                        {{ __('Store Settings') }}
-                                    @endif
-                                </span>
-                            </a>
-                        </li>
-                    @endcan -->
+
                 @else
 
 
@@ -161,24 +133,9 @@
                 <a class="dash-link" href="/academy">Academy</a>
             </li>
   
-        <!-- @can('Manage Orders')
-            <li class="dash-item {{ Request::segment(1) == 'orders.index' || Request::route()->getName() == 'orders.show' ? ' active dash-trigger' : 'collapsed' }}">
-                <a class="dash-link" href="{{ route('orders.index') }}">Pedidos</a>
-            </li>
-        @endcan -->
     </ul>
 </li>
-<!-- @can('Manage Themes')
-    <li class="dash-item {{ Request::segment(1) == 'themes' ? ' active' : 'collapsed' }}">
-        <a href="{{ route('themes.theme') }}"
-            class="dash-link {{ request()->is('themes') ? 'active' : '' }}">
-            <span class="dash-micon">
-                <i class="ti ti-layout-2"></i>
-            </span>
-            <span class="dash-mtext">{{ __('Themes') }}</span>
-        </a>
-    </li>
-@endcan  -->
+
 @canany(['Manage Role', 'Manage User'])
     <li class="dash-item dash-hasmenu {{ Request::segment(1) == 'users' || Request::segment(1) == 'roles' ? ' active dash-trigger' : 'collapsed' }}">
         <a href="#!" class="dash-link ">
@@ -218,25 +175,7 @@
     </li>
 @endcan
 
-<!-- @can('Manage Plans')
-    <li class="dash-item dash-hasmenu {{ Request::segment(1) == 'plans' || Request::route()->getName() == 'stripe' ? ' active dash-trigger' : 'collapsed' }}">
-        <a href="{{ route('plans.index') }}"
-            class="dash-link {{ request()->is('plans') ? 'active' : '' }}">
-            <span class="dash-micon">
-                <i class="ti ti-trophy"></i>
-            </span>
-            <span class="dash-mtext">{{ __('Plans') }}</span>
-        </a>
-    </li>
-@endcan -->
-
 @if (Auth::user()->type == 'Owner')
-    <!-- <li class="dash-item dash-hasmenu  {{ Request::segment(1) == 'referral-program' ? 'active' : '' }}">
-        <a href="{{ route('referral-program.company') }}" class="dash-link">
-            <span class="dash-micon"><i class="ti ti-discount-2"></i></span><span
-                class="dash-mtext">{{ __('Referral Program') }}</span>
-        </a>
-    </li> -->
 @endif
 
 @can('Manage Settings')
@@ -440,21 +379,6 @@
                         href="{{ route('product-coupon.index') }}">{{ __('Product Coupon') }}</a>
                 </li>
             @endcan
-            <!-- @can('Manage Subscriber')
-                <li
-                    class="dash-item {{ Request::route()->getName() == 'subscriptions.index' ? ' active' : '' }}">
-                    <a class="dash-link"
-                        href="{{ route('subscriptions.index') }}">{{ __('Subscriber') }}</a>
-                </li>
-            @endcan -->
-            <!-- @if (isset($plan->shipping_method) && $plan->shipping_method == 'on')
-                @can('Manage Shipping')
-                    <li
-                        class="dash-item {{ Request::route()->getName() == 'shipping.index' ? ' active' : '' }}">
-                        <a class="dash-link" href="{{ route('shipping.index') }}">{{ __('Shipping') }}</a>
-                    </li>
-                @endcan
-            @endif -->
             @if (isset($plan->additional_page) && $plan->additional_page == 'on')
                 @can('Manage Custom Page')
                     <li
@@ -472,12 +396,6 @@
                     </li>
                 @endcan
             @endif
-            <!-- @can('Manage Testimonial')
-                <li
-                    class="dash-item {{ Request::route()->getName() == 'testimonial.index' ? ' active' : '' }}">
-                    <a class="dash-link" href="{{ route('testimonial.index') }}">{{ __('Testimonial') }}</a>
-                </li>
-            @endcan -->
         </ul>
     </li>
 @endcanany
