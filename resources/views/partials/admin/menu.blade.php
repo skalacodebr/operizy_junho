@@ -158,7 +158,7 @@
         </li>
         @endcan
             <li class="dash-item {{ Request::segment(1) == 'orders.index' || Request::route()->getName() == 'orders.show' ? ' active dash-trigger' : 'collapsed' }}">
-                <a class="dash-link" href="/academy">Academy</a>
+                <a class="dash-link" href="{{ route('academy.index')}}">Academy</a>
             </li>
   
         <!-- @can('Manage Orders')

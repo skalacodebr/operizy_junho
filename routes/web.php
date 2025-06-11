@@ -63,6 +63,7 @@ use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\XenditController;
 use App\Http\Controllers\AplicativosController;
 use App\Http\Controllers\ReviewsController;
+use App\Http\Controllers\AcademyController;
 use Illuminate\Http\Request;
 
 /*
@@ -82,6 +83,64 @@ Route::get('/perguntas', [ReviewsController::class, 'review_perguntas'])->name('
 Route::get('/avaliacao', [ReviewsController::class, 'review_avaliacao'])->name('review.avaliacao');
 Route::get('/perguntas/respostas', [ReviewsController::class, 'review_perguntas_respostas'])->name('review.perguntas_respsotas');
 Route::get('/extracao', [ReviewsController::class, 'review_extracao'])->name('review.extracao');
+
+Route::get('/academy', [AcademyController::class, 'index'])->name('academy.index');
+
+
+// Listar categorias
+Route::get('/academy/video-categories', [AcademyController::class, 'videoCategoriesIndex'])
+     ->name('video-categories.index');
+
+// Formulário de criação
+Route::get('/academy/video-categories/create', [AcademyController::class, 'videoCategoriesCreate'])
+     ->name('video-categories.create');
+
+// Gravar nova categoria
+Route::post('/academy/video-categories', [AcademyController::class, 'videoCategoriesStore'])
+     ->name('video-categories.store');
+
+// Formulário de edição
+Route::get('/academy/video-categories/{id}/edit', [AcademyController::class, 'videoCategoriesEdit'])
+     ->name('video-categories.edit');
+
+// Atualizar categoria existente
+Route::put('/academy/video-categories/{id}', [AcademyController::class, 'videoCategoriesUpdate'])
+     ->name('video-categories.update');
+
+// Remover categoria
+Route::delete('/academy/video-categories/{id}', [AcademyController::class, 'videoCategoriesDestroy'])
+     ->name('video-categories.destroy');
+
+
+// ─── VÍDEOS ───────────────────────────────────────────────────────────────────
+
+// Listar vídeos
+Route::get('/academy/videos', [AcademyController::class, 'videosIndex'])
+     ->name('videos.index');
+
+// Formulário de upload
+Route::get('/academy/videos/create', [AcademyController::class, 'videosCreate'])
+     ->name('videos.create');
+
+// Gravar novo vídeo (upload + registro)
+Route::post('/academy/videos', [AcademyController::class, 'videosStore'])
+     ->name('videos.store');
+
+// Formulário de edição
+Route::get('/academy/videos/{id}/edit', [AcademyController::class, 'videosEdit'])
+     ->name('videos.edit');
+
+// Atualizar vídeo (trocar arquivo opcionalmente)
+Route::put('/academy/videos/{id}', [AcademyController::class, 'videosUpdate'])
+     ->name('videos.update');
+
+// Excluir vídeo
+Route::delete('/academy/videos/{id}', [AcademyController::class, 'videosDestroy'])
+     ->name('videos.destroy');
+
+
+
+     
 
 Route::get('/', [DashboardController::class, 'index'])->name('start')->middleware(['XSS', '2fa']);
 
