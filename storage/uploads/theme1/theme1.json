@@ -1,433 +1,430 @@
 [
-
-    {
-      "section_name": "Home-Header",
-      "section_slug": "homepage-header",
-      "section_enable": "on",
-      "array_type": "inner-list",
-      "loop_number": "1",
-      "inner-list": [
-        {
-          "field_name": "Title",
-          "field_slug": "homepage-header-title",
-          "field_help_text": "Please add title text here",
-          "field_default_text": "Home Accessories",
-          "field_type": "text"
-        },
-        {
-          "field_name": "Sub text",
-          "field_slug": "homepage-sub-text",
-          "field_help_text": "Please add sub text here",
-          "field_default_text": "Discover elegant and functional home accessories designed to add charm, comfort, and personality to every corner of your space.",
-          "field_type": "text area"
-        },
-        {
-          "field_name": "Button",
-          "field_slug": "homepage-header-button",
-          "field_help_text": "Please add button text here",
-          "field_default_text": "Start shopping",
-          "field_type": "text"
-        },
-        {
-          "field_name": "Background Image",
-          "field_slug": "homepage-header-bg-image",
-          "field_help_text": "",
-          "field_default_text": "theme1/header/header_img_1.png",
-          "field_type": "photo upload"
-        }
-      ]
-    },
-    {
-      "section_name": "Home-Promotions",
-      "section_slug": "homepage-promotions",
-      "section_enable": "on",
-      "array_type": "multi-inner-list",
-      "loop_number": "3",
-      "inner-list": [
-        {
-          "field_name": "Font Icon",
-          "field_slug": "homepage-promotions-font-icon",
-          "field_help_text": "Please click here to find font... fontawesome.com",
-          "field_default_text": "<i class='fa fa-tags'></i>",
-          "field_type": "text"
-        },
-        {
-          "field_name": "Title",
-          "field_slug": "homepage-promotions-title",
-          "field_help_text": "Please add title here",
-          "field_default_text": "Many promotions",
-          "field_type": "text"
-        },
-        {
-          "field_name": "Description",
-          "field_slug": "homepage-promotions-description",
-          "field_help_text": "Please add description here",
-          "field_default_text": "From pixel-perfect icons and scalable vector graphics, to full user flows",
-          "field_type": "text area"
-        }
-      ]
-    },
-    {
-      "section_name": "Home-Email-Subscriber",
-      "section_slug": "homepage-email-subscriber",
-      "section_enable": "on",
-      "array_type": "inner-list",
-      "loop_number": "1",
-      "inner-list": [
-        {
-          "field_name": "Subscriber Background Image",
-          "field_slug": "homepage-subscriber-bg-image",
-          "field_help_text": "",
-          "field_default_text": "theme1/subscriber/email_subscriber_1.png",
-          "field_type": "photo upload"
-        },
-        {
-          "field_name": "Subscriber Title",
-          "field_slug": "homepage-subscriber-title",
-          "field_help_text": "Please add title here",
-          "field_default_text": "Always on time",
-          "field_type": "text"
-        },
-        {
-          "field_name": "Subscriber Description",
-          "field_slug": "homepage-subscriber-description",
-          "field_help_text": "Please add description here",
-          "field_default_text": "Subscribe to stay updated with our latest arrivals, exclusive offers, and styling tips—delivered right on time to your inbox.",
-          "field_type": "text area"
-        },
-        {
-          "field_name": "Subscribe Button Text",
-          "field_slug": "homepage-subscriber-button",
-          "field_help_text": "Please add button text here",
-          "field_default_text": "Subscribe",
-          "field_type": "text"
-        }
-      ]
-    },
-    {
-      "section_name": "Home-Categories",
-      "section_slug": "homepage-categories",
-      "section_enable": "on",
-      "array_type": "inner-list",
-      "loop_number": "1",
-      "inner-list": [
-        {
-          "field_name": "Title",
-          "field_slug": "homepage-categories-title",
-          "field_help_text": "Please add title text here",
-          "field_default_text": "Categories",
-          "field_type": "text"
-        },
-        {
-          "field_name": "Description",
-          "field_slug": "homepage-categories-description",
-          "field_help_text": "Please add description text here",
-          "field_default_text": "Explore our curated categories filled with stylish home accessories, thoughtfully organized to help you find the perfect pieces with ease.",
-          "field_type": "text area"
-        }
-      ]
-    },
-    {
-      "section_name": "Home-Testimonial",
-      "section_slug": "homepage-testimonial",
-      "section_enable": "on",
-      "array_type": "inner-list",
-      "loop_number": "1",
-      "inner-list": [
-        {
-          "field_name": "Heading",
-          "field_slug": "homepage-testimonial-heading",
-          "field_help_text": "Please add heading text here",
-          "field_default_text": "Testimonial",
-          "field_type": "text"
-        },
-        {
-          "field_name": "Heading Sub Text",
-          "field_slug": "homepage-testimonial-sub-heading",
-          "field_help_text": "Please add sub text here",
-          "field_default_text": "Read what our customers have to say about the quality, style, and uniqueness of our home accessories and their shopping experience.",
-          "field_type": "text area"
-        }
-      ]
-    },
-    {
-      "section_name": "Home-Brand-Logo",
-      "section_slug": "homepage-brand-logo",
-      "section_enable": "on",
-      "array_type": "inner-list",
-      "loop_number": "1",
-      "inner-list": [
-        {
-          "field_name": "Brand Logo",
-          "field_slug": "homepage-brand-logo-input",
-          "field_help_text": "",
-          "field_default_text": "theme1/brand_logo/brand_logo.png",
-          "field_type": "multi file upload"
-        }
-      ]
-    },
-    {
-      "section_name": "Home-Footer-1",
-      "section_slug": "homepage-footer-1",
-      "section_enable": "on",
-      "array_type": "inner-list",
-      "loop_number": "1",
-      "inner-list": [
-        {
-          "field_name": "Footer Logo",
-          "field_slug": "homepage-footer-logo",
-          "field_help_text": "",
-          "field_default_text": "theme1/footer/footer_logo.png",
-          "field_type": "photo upload"
-        },
-        {
-            "field_name": "Footer Description",
-            "field_slug": "footer-description",
-            "field_help_text": "Please add sub text here",
-            "field_default_text": "As paddle boarders, we have a special connection to nature. Learn how to minimize your environmental impact while enjoying the water.",
-            "field_type": "text area"
-        }
-      ]
-    },
-    {
-      "section_name": "Home-Footer-1",
-      "section_slug": "homepage-footer-1",
-      "section_enable": "on",
-      "array_type": "inner-list",
-      "loop_number": "1",
-      "inner-list": [
-        {
-            "field_name": "Enable Quick Link 1",
-            "field_slug": "homepage-quick-link-enable",
-            "field_help_text": "",
-            "field_default_text": "on",
-            "field_type": "checkbox"
-        },
-        {
-          "field_name": "Footer Quick Link Header Name 1",
-          "field_slug": "homepage-footer-header-quick-link-name-1",
-          "field_help_text": "",
-          "field_default_text": "Theme Pages",
-          "field_type": "text"
-        }
-      ]
-    },
-    {
-      "section_name": "Home-Footer-1",
-      "section_slug": "homepage-footer-1",
-      "section_enable": "on",
-      "array_type": "multi-inner-list",
-      "loop_number": "4",
-      "inner-list": [
-        {
-          "field_name": "Quick Link",
-          "field_slug": "homepage-header-quick-link-name-1",
-          "field_help_text": "Please add link name here",
-          "field_default_text": "Home Pages",
-          "field_type": "text"
-        },
-        {
-          "field_name": "Quick Link Url",
-          "field_slug": "homepage-header-quick-link-1",
-          "field_help_text": "Please add link here",
-          "field_default_text": "#",
-          "field_type": "text"
-        }
-      ]
-    },
-    {
-      "section_name": "Home-Footer-1",
-      "section_slug": "homepage-footer-1",
-      "section_enable": "on",
-      "array_type": "inner-list",
-      "loop_number": "1",
-      "inner-list": [
-        {
-            "field_name": "Enable Quick Link 2",
-            "field_slug": "homepage-quick-link-enable",
-            "field_help_text": "",
-            "field_default_text": "on",
-            "field_type": "checkbox"
-        },
-        {
-          "field_name": "Footer Quick Link Header Name 2",
-          "field_slug": "homepage-footer-header-quick-link-name-2",
-          "field_help_text": "",
-          "field_default_text": "About",
-          "field_type": "text"
-        }
-      ]
-    },
-    {
-      "section_name": "Home-Footer-1",
-      "section_slug": "homepage-footer-1",
-      "section_enable": "on",
-      "array_type": "multi-inner-list",
-      "loop_number": "4",
-      "inner-list": [
-        {
-          "field_name": "Quick Link",
-          "field_slug": "homepage-header-quick-link-name-2",
-          "field_help_text": "Please add link name here",
-          "field_default_text": "Blog",
-          "field_type": "text"
-        },
-        {
-          "field_name": "Quick Link Url",
-          "field_slug": "homepage-header-quick-link-2",
-          "field_help_text": "Please add link here",
-          "field_default_text": "#",
-          "field_type": "text"
-        }
-      ]
-    },
-    {
-      "section_name": "Home-Footer-1",
-      "section_slug": "homepage-footer-1",
-      "section_enable": "on",
-      "array_type": "inner-list",
-      "loop_number": "1",
-      "inner-list": [
-        {
-          "field_name": "Footer Quick Link Header Name 3",
-          "field_slug": "homepage-footer-header-quick-link-name-3",
-          "field_help_text": "",
-          "field_default_text": "Company",
-          "field_type": "text"
-        },
-        {
-          "field_name": "Enable Quick Link 3",
-          "field_slug": "homepage-quick-link-enable",
-          "field_help_text": "",
-          "field_default_text": "on",
-          "field_type": "checkbox"
-        }
-      ]
-    },
-    {
-      "section_name": "Home-Footer-1",
-      "section_slug": "homepage-footer-1",
-      "section_enable": "on",
-      "array_type": "multi-inner-list",
-      "loop_number": "4",
-      "inner-list": [
-        {
-          "field_name": "Quick Link",
-          "field_slug": "homepage-header-quick-link-name-3",
-          "field_help_text": "Please add link name here",
-          "field_default_text": "Terms and Policy",
-          "field_type": "text"
-        },
-        {
-          "field_name": "Quick Link Url",
-          "field_slug": "homepage-header-quick-link-3",
-          "field_help_text": "Please add link here",
-          "field_default_text": "#",
-          "field_type": "text"
-        }
-      ]
-    },
-    {
-      "section_name": "Home-Footer-1",
-      "section_slug": "homepage-footer-1",
-      "section_enable": "on",
-      "array_type": "inner-list",
-      "loop_number": "1",
-      "inner-list": [
-        {
-          "field_name": "Footer Quick Link Header Name 4",
-          "field_slug": "homepage-footer-header-quick-link-name-4",
-          "field_help_text": "",
-          "field_default_text": "Company",
-          "field_type": "text"
-        },
-        {
-          "field_name": "Enable Quick Link 4",
-          "field_slug": "homepage-quick-link-enable",
-          "field_help_text": "",
-          "field_default_text": "on",
-          "field_type": "checkbox"
-        }
-      ]
-    },
-    {
-      "section_name": "Home-Footer-1",
-      "section_slug": "homepage-footer-1",
-      "section_enable": "on",
-      "array_type": "multi-inner-list",
-      "loop_number": "4",
-      "inner-list": [
-        {
-          "field_name": "Quick Link",
-          "field_slug": "homepage-header-quick-link-name-4",
-          "field_help_text": "Please add link name here",
-          "field_default_text": "Terms and Policy",
-          "field_type": "text"
-        },
-        {
-          "field_name": "Quick Link Url",
-          "field_slug": "homepage-header-quick-link-4",
-          "field_help_text": "Please add link here",
-          "field_default_text": "#",
-          "field_type": "text"
-        }
-      ]
-    },
-    {
-      "section_name": "Home-Footer-2",
-      "section_slug": "home-footer-2",
-      "section_enable": "on",
-      "array_type": "inner-list",
-      "loop_number": "1",
-      "inner-list": [
-        {
-          "field_name": "Footer Note",
-          "field_slug": "homepage-footer-2-note",
-          "field_help_text": "Please add footer note here",
-          "field_default_text": "2025 My Store. All rights reserved",
-          "field_type": "text"
-        }
-      ]
-    },
-
-    {
-      "section_name": "Home-Footer-2",
-      "section_slug": "home-footer-2",
-      "section_enable": "on",
-      "array_type": "multi-inner-list",
-      "loop_number": "6",
-      "inner-list": [
-        {
-          "field_name": "Social Link Icon",
-          "field_slug": "homepage-footer-2-social-icon",
-          "field_help_text": "Please click here to find font... fontawesome.com",
-          "field_default_text": "<i class='fab fa-youtube'></i>",
-          "field_type": "text"
-        },
-        {
-          "field_name": "Social Link",
-          "field_slug": "homepage-footer-2-social-link",
-          "field_help_text": "Please add social link here",
-          "field_default_text": "https://www.youtube.com/",
-          "field_type": "text"
-        }
-      ]
-    },
-
-    {
-      "section_name": "Home-Footer-2",
-      "section_slug": "home-footer-2",
-      "section_enable": "on",
-      "array_type": "inner-list",
-      "loop_number": "1",
-      "inner-list": [
-        {
-          "field_name": "Store Custom JS",
-          "field_slug": "homepage-footer-2-custom-js",
-          "field_help_text": "Please add custom js here",
-          "field_default_text": "console.log('Hello World!');",
-          "field_type": "text area"
-        }
-      ]
-    }
-  ]
+  {
+    "section_name": "Cabeçalho da Página Inicial",
+    "section_slug": "homepage-header",
+    "section_enable": "on",
+    "array_type": "inner-list",
+    "loop_number": "1",
+    "inner-list": [
+      {
+        "field_name": "Título",
+        "field_slug": "homepage-header-title",
+        "field_help_text": "Por favor, insira o texto do título aqui",
+        "field_default_text": "Acessórios para Casa",
+        "field_type": "text"
+      },
+      {
+        "field_name": "Subtítulo",
+        "field_slug": "homepage-sub-text",
+        "field_help_text": "Por favor, insira o subtítulo aqui",
+        "field_default_text": "Descubra acessórios elegantes e funcionais para a casa, projetados para adicionar charme, conforto e personalidade a cada canto do seu espaço.",
+        "field_type": "text area"
+      },
+      {
+        "field_name": "Botão",
+        "field_slug": "homepage-header-button",
+        "field_help_text": "Por favor, insira o texto do botão aqui",
+        "field_default_text": "Começar a Comprar",
+        "field_type": "text"
+      },
+      {
+        "field_name": "Imagem de Fundo",
+        "field_slug": "homepage-header-bg-image",
+        "field_help_text": "",
+        "field_default_text": "theme1/header/header_img_1.png",
+        "field_type": "photo upload"
+      }
+    ]
+  },
+  {
+    "section_name": "Promoções da Página Inicial",
+    "section_slug": "homepage-promotions",
+    "section_enable": "on",
+    "array_type": "multi-inner-list",
+    "loop_number": "3",
+    "inner-list": [
+      {
+        "field_name": "Ícone de Fonte",
+        "field_slug": "homepage-promotions-font-icon",
+        "field_help_text": "Clique aqui para encontrar ícones... fontawesome.com",
+        "field_default_text": "<i class='fa fa-tags'></i>",
+        "field_type": "text"
+      },
+      {
+        "field_name": "Título",
+        "field_slug": "homepage-promotions-title",
+        "field_help_text": "Por favor, insira o título aqui",
+        "field_default_text": "Muitas Promoções",
+        "field_type": "text"
+      },
+      {
+        "field_name": "Descrição",
+        "field_slug": "homepage-promotions-description",
+        "field_help_text": "Por favor, insira a descrição aqui",
+        "field_default_text": "De ícones em alta resolução e gráficos vetoriais escaláveis, até fluxos completos de usuário.",
+        "field_type": "text area"
+      }
+    ]
+  },
+  {
+    "section_name": "Assinatura por Email na Página Inicial",
+    "section_slug": "homepage-email-subscriber",
+    "section_enable": "on",
+    "array_type": "inner-list",
+    "loop_number": "1",
+    "inner-list": [
+      {
+        "field_name": "Imagem de Fundo do Assinante",
+        "field_slug": "homepage-subscriber-bg-image",
+        "field_help_text": "",
+        "field_default_text": "theme1/subscriber/email_subscriber_1.png",
+        "field_type": "photo upload"
+      },
+      {
+        "field_name": "Título do Assinante",
+        "field_slug": "homepage-subscriber-title",
+        "field_help_text": "Por favor, insira o título aqui",
+        "field_default_text": "Sempre Pontual",
+        "field_type": "text"
+      },
+      {
+        "field_name": "Descrição do Assinante",
+        "field_slug": "homepage-subscriber-description",
+        "field_help_text": "Por favor, insira a descrição aqui",
+        "field_default_text": "Inscreva-se para receber nossas últimas novidades, ofertas exclusivas e dicas de estilo—entregues perfeitamente no seu e-mail.",
+        "field_type": "text area"
+      },
+      {
+        "field_name": "Texto do Botão de Inscrição",
+        "field_slug": "homepage-subscriber-button",
+        "field_help_text": "Por favor, insira o texto do botão aqui",
+        "field_default_text": "Inscrever-se",
+        "field_type": "text"
+      }
+    ]
+  },
+  {
+    "section_name": "Categorias da Página Inicial",
+    "section_slug": "homepage-categories",
+    "section_enable": "on",
+    "array_type": "inner-list",
+    "loop_number": "1",
+    "inner-list": [
+      {
+        "field_name": "Título",
+        "field_slug": "homepage-categories-title",
+        "field_help_text": "Por favor, insira o título aqui",
+        "field_default_text": "Categorias",
+        "field_type": "text"
+      },
+      {
+        "field_name": "Descrição",
+        "field_slug": "homepage-categories-description",
+        "field_help_text": "Por favor, insira a descrição aqui",
+        "field_default_text": "Explore nossas categorias selecionadas, repletas de acessórios para casa elegantes, organizadas de forma pensada para ajudá-lo a encontrar as peças perfeitas com facilidade.",
+        "field_type": "text area"
+      }
+    ]
+  },
+  {
+    "section_name": "Depoimentos da Página Inicial",
+    "section_slug": "homepage-testimonial",
+    "section_enable": "on",
+    "array_type": "inner-list",
+    "loop_number": "1",
+    "inner-list": [
+      {
+        "field_name": "Cabeçalho",
+        "field_slug": "homepage-testimonial-heading",
+        "field_help_text": "Por favor, insira o texto do cabeçalho aqui",
+        "field_default_text": "Depoimento",
+        "field_type": "text"
+      },
+      {
+        "field_name": "Subtítulo do Cabeçalho",
+        "field_slug": "homepage-testimonial-sub-heading",
+        "field_help_text": "Por favor, insira o subtítulo aqui",
+        "field_default_text": "Leia o que nossos clientes têm a dizer sobre a qualidade, estilo e exclusividade de nossos acessórios para casa e sua experiência de compra.",
+        "field_type": "text area"
+      }
+    ]
+  },
+  {
+    "section_name": "Logotipo de Marca da Página Inicial",
+    "section_slug": "homepage-brand-logo",
+    "section_enable": "on",
+    "array_type": "inner-list",
+    "loop_number": "1",
+    "inner-list": [
+      {
+        "field_name": "Logotipo da Marca",
+        "field_slug": "homepage-brand-logo-input",
+        "field_help_text": "",
+        "field_default_text": "theme1/brand_logo/brand_logo.png",
+        "field_type": "multi file upload"
+      }
+    ]
+  },
+  {
+    "section_name": "Rodapé 1 da Página Inicial",
+    "section_slug": "homepage-footer-1",
+    "section_enable": "on",
+    "array_type": "inner-list",
+    "loop_number": "1",
+    "inner-list": [
+      {
+        "field_name": "Logotipo do Rodapé",
+        "field_slug": "homepage-footer-logo",
+        "field_help_text": "",
+        "field_default_text": "theme1/footer/footer_logo.png",
+        "field_type": "photo upload"
+      },
+      {
+        "field_name": "Descrição do Rodapé",
+        "field_slug": "footer-description",
+        "field_help_text": "Por favor, insira o texto do rodapé aqui",
+        "field_default_text": "Como praticantes de paddle board, temos uma conexão especial com a natureza. Saiba como minimizar seu impacto ambiental enquanto aproveita a água.",
+        "field_type": "text area"
+      }
+    ]
+  },
+  {
+    "section_name": "Rodapé 1 da Página Inicial",
+    "section_slug": "homepage-footer-1",
+    "section_enable": "on",
+    "array_type": "inner-list",
+    "loop_number": "1",
+    "inner-list": [
+      {
+        "field_name": "Habilitar Link Rápido 1",
+        "field_slug": "homepage-quick-link-enable",
+        "field_help_text": "",
+        "field_default_text": "on",
+        "field_type": "checkbox"
+      },
+      {
+        "field_name": "Nome do Cabeçalho do Link Rápido 1",
+        "field_slug": "homepage-footer-header-quick-link-name-1",
+        "field_help_text": "",
+        "field_default_text": "Páginas de Tema",
+        "field_type": "text"
+      }
+    ]
+  },
+  {
+    "section_name": "Rodapé 1 da Página Inicial",
+    "section_slug": "homepage-footer-1",
+    "section_enable": "on",
+    "array_type": "multi-inner-list",
+    "loop_number": "4",
+    "inner-list": [
+      {
+        "field_name": "Link Rápido",
+        "field_slug": "homepage-header-quick-link-name-1",
+        "field_help_text": "Por favor, insira o nome do link aqui",
+        "field_default_text": "Páginas Iniciais",
+        "field_type": "text"
+      },
+      {
+        "field_name": "URL do Link Rápido",
+        "field_slug": "homepage-header-quick-link-1",
+        "field_help_text": "Por favor, insira o link aqui",
+        "field_default_text": "#",
+        "field_type": "text"
+      }
+    ]
+  },
+  {
+    "section_name": "Rodapé 1 da Página Inicial",
+    "section_slug": "homepage-footer-1",
+    "section_enable": "on",
+    "array_type": "inner-list",
+    "loop_number": "1",
+    "inner-list": [
+      {
+        "field_name": "Habilitar Link Rápido 2",
+        "field_slug": "homepage-quick-link-enable",
+        "field_help_text": "",
+        "field_default_text": "on",
+        "field_type": "checkbox"
+      },
+      {
+        "field_name": "Nome do Cabeçalho do Link Rápido 2",
+        "field_slug": "homepage-footer-header-quick-link-name-2",
+        "field_help_text": "",
+        "field_default_text": "Sobre",
+        "field_type": "text"
+      }
+    ]
+  },
+  {
+    "section_name": "Rodapé 1 da Página Inicial",
+    "section_slug": "homepage-footer-1",
+    "section_enable": "on",
+    "array_type": "multi-inner-list",
+    "loop_number": "4",
+    "inner-list": [
+      {
+        "field_name": "Link Rápido",
+        "field_slug": "homepage-header-quick-link-name-2",
+        "field_help_text": "Por favor, insira o nome do link aqui",
+        "field_default_text": "Blog",
+        "field_type": "text"
+      },
+      {
+        "field_name": "URL do Link Rápido",
+        "field_slug": "homepage-header-quick-link-2",
+        "field_help_text": "Por favor, insira o link aqui",
+        "field_default_text": "#",
+        "field_type": "text"
+      }
+    ]
+  },
+  {
+    "section_name": "Rodapé 1 da Página Inicial",
+    "section_slug": "homepage-footer-1",
+    "section_enable": "on",
+    "array_type": "inner-list",
+    "loop_number": "1",
+    "inner-list": [
+      {
+        "field_name": "Nome do Cabeçalho do Link Rápido 3",
+        "field_slug": "homepage-footer-header-quick-link-name-3",
+        "field_help_text": "",
+        "field_default_text": "Empresa",
+        "field_type": "text"
+      },
+      {
+        "field_name": "Habilitar Link Rápido 3",
+        "field_slug": "homepage-quick-link-enable",
+        "field_help_text": "",
+        "field_default_text": "on",
+        "field_type": "checkbox"
+      }
+    ]
+  },
+  {
+    "section_name": "Rodapé 1 da Página Inicial",
+    "section_slug": "homepage-footer-1",
+    "section_enable": "on",
+    "array_type": "multi-inner-list",
+    "loop_number": "4",
+    "inner-list": [
+      {
+        "field_name": "Link Rápido",
+        "field_slug": "homepage-header-quick-link-name-3",
+        "field_help_text": "Por favor, insira o nome do link aqui",
+        "field_default_text": "Termos e Política",
+        "field_type": "text"
+      },
+      {
+        "field_name": "URL do Link Rápido",
+        "field_slug": "homepage-header-quick-link-3",
+        "field_help_text": "Por favor, insira o link aqui",
+        "field_default_text": "#",
+        "field_type": "text"
+      }
+    ]
+  },
+  {
+    "section_name": "Rodapé 1 da Página Inicial",
+    "section_slug": "homepage-footer-1",
+    "section_enable": "on",
+    "array_type": "inner-list",
+    "loop_number": "1",
+    "inner-list": [
+      {
+        "field_name": "Nome do Cabeçalho do Link Rápido 4",
+        "field_slug": "homepage-footer-header-quick-link-name-4",
+        "field_help_text": "",
+        "field_default_text": "Empresa",
+        "field_type": "text"
+      },
+      {
+        "field_name": "Habilitar Link Rápido 4",
+        "field_slug": "homepage-quick-link-enable",
+        "field_help_text": "",
+        "field_default_text": "on",
+        "field_type": "checkbox"
+      }
+    ]
+  },
+  {
+    "section_name": "Rodapé 1 da Página Inicial",
+    "section_slug": "homepage-footer-1",
+    "section_enable": "on",
+    "array_type": "multi-inner-list",
+    "loop_number": "4",
+    "inner-list": [
+      {
+        "field_name": "Link Rápido",
+        "field_slug": "homepage-header-quick-link-name-4",
+        "field_help_text": "Por favor, insira o nome do link aqui",
+        "field_default_text": "Termos e Política",
+        "field_type": "text"
+      },
+      {
+        "field_name": "URL do Link Rápido",
+        "field_slug": "homepage-header-quick-link-4",
+        "field_help_text": "Por favor, insira o link aqui",
+        "field_default_text": "#",
+        "field_type": "text"
+      }
+    ]
+  },
+  {
+    "section_name": "Rodapé 2 da Página Inicial",
+    "section_slug": "home-footer-2",
+    "section_enable": "on",
+    "array_type": "inner-list",
+    "loop_number": "1",
+    "inner-list": [
+      {
+        "field_name": "Nota do Rodapé",
+        "field_slug": "homepage-footer-2-note",
+        "field_help_text": "Por favor, insira a nota do rodapé aqui",
+        "field_default_text": "2025 My Store. All rights reserved",
+        "field_type": "text"
+      }
+    ]
+  },
+  {
+    "section_name": "Rodapé 2 da Página Inicial",
+    "section_slug": "home-footer-2",
+    "section_enable": "on",
+    "array_type": "multi-inner-list",
+    "loop_number": "6",
+    "inner-list": [
+      {
+        "field_name": "Ícone de Link Social",
+        "field_slug": "homepage-footer-2-social-icon",
+        "field_help_text": "Clique aqui para encontrar ícones... fontawesome.com",
+        "field_default_text": "<i class='fab fa-youtube'></i>",
+        "field_type": "text"
+      },
+      {
+        "field_name": "Link Social",
+        "field_slug": "homepage-footer-2-social-link",
+        "field_help_text": "Por favor, insira o link social aqui",
+        "field_default_text": "https://www.youtube.com/",
+        "field_type": "text"
+      }
+    ]
+  },
+  {
+    "section_name": "Rodapé 2 da Página Inicial",
+    "section_slug": "home-footer-2",
+    "section_enable": "on",
+    "array_type": "inner-list",
+    "loop_number": "1",
+    "inner-list": [
+      {
+        "field_name": "JS Personalizado da Loja",
+        "field_slug": "homepage-footer-2-custom-js",
+        "field_help_text": "Por favor, insira o JS personalizado aqui",
+        "field_default_text": "console.log('Hello World!');",
+        "field_type": "text area"
+      }
+    ]
+  }
+]
