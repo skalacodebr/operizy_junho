@@ -485,6 +485,24 @@
                 </div>
 
             </div>
+            <div class="form-group">
+                <label class="form-label">{{ __('Canais de Venda') }}</label>
+                <div class="channel-options">
+                    @foreach(\App\Models\SalesChannel::where('is_active', true)->get() as $channel)
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" 
+                            class="custom-control-input" 
+                            id="channel_{{ $channel->id }}" 
+                            name="sales_channels[]" 
+                            value="{{ $channel->id }}"
+                            @if(isset($product) && $product->salesChannels->contains($channel->id)) checked @endif>
+                        <label class="custom-control-label" for="channel_{{ $channel->id }}">
+                            <i class="{{ $channel->icon }}"></i> {{ $channel->name }}
+                        </label>
+                    </div>
+                    @endforeach
+                </div>
+            </div>
             <input type="submit" value="{{__('Create')}}" class="product-submit-button d-none btn btn-primary ms-2">
         </div>
         {{ Form::close() }}

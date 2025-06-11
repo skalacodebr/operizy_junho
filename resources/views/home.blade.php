@@ -18,21 +18,16 @@ $company_logo = \App\Models\Utility::getValByName('company_logo');
 @push('script-page')
     <script>
         var timezone = '{{ !empty($setting['timezone']) ? $setting['timezone'] : 'Asia/Kolkata' }}';
-
-        let today = new Date(new Date().toLocaleString("en-US", {
-            timeZone: timezone
-        }));
+        let today = new Date(new Date().toLocaleString("en-US", { timeZone: timezone }));
         var curHr = today.getHours()
         var target = document.getElementById("greetings");
-
         if (curHr < 12) {
-            target.innerHTML = "Good Morning,";
+            target.innerHTML = "Olá, {{ Auth::user()->name }}! Que bom te ver por aqui.";
         } else if (curHr < 17) {
-            target.innerHTML = "Good Afternoon,";
+            target.innerHTML = "Olá, {{ Auth::user()->name }}! Que bom te ver por aqui.";
         } else {
-            target.innerHTML = "Good Evening,";
+            target.innerHTML = "Olá, {{ Auth::user()->name }}! Que bom te ver por aqui.";
         }
-
     </script>
     <script>
         $(document).on('click', '#code-generate', function() {
@@ -137,11 +132,7 @@ $company_logo = \App\Models\Utility::getValByName('company_logo');
                                         @can('Create Products')
                                             <a class="dropdown-item" href="{{ route('product.create') }}" data-bs-placement="top"  data-bs-toggle="tooltip" title="{{ __('Add New Product') }}">{{ __('Add new product') }}</a>
                                         @endcan
-                                        @can('Create Product Tax')
-                                            <a href="#" data-size="md" data-url="{{ route('product_tax.create') }}" data-ajax-popup="true" data-title="{{ __('Create New Product Tax') }}" class="dropdown-item" data-bs-placement="top"  data-bs-toggle="tooltip" title="{{ __('Add New Product Tax') }}">
-                                                <span>{{ __('Add new product tax') }}</span>
-                                            </a>
-                                        @endcan
+                                       
                                         @can('Create Product category')
                                             <a href="#" data-size="md" data-url="{{ route('product_categorie.create') }}" data-ajax-popup="true" data-title="{{ __('Create New Product Category') }}" class="dropdown-item" data-bs-placement="top"  data-bs-toggle="tooltip" title="{{ __('Add New Product Category') }}">
                                                 <span>{{ __('Add new product category') }}</span>

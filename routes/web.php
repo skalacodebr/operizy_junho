@@ -854,3 +854,60 @@ Route::get('request-amount/{id}/{status}', [ReferralProgramController::class, 'r
 
 Route::get('order/pdf/{id}', [OrderController::class, 'invoicePdf'])->name('invoice.pdf')->middleware(['XSS']);
 Route::get('order/download-pdf/{id}', [OrderController::class, 'invoiceStorePdf'])->name('invoice.store.pdf')->middleware(['SetLocale']);
+
+Route::group(['middleware' => ['auth', 'XSS']], function () {
+    // Coleções
+    Route::resource('product/collections', 'ProductCollectionController')->names([
+        'index' => 'product.collections.index',
+        'create' => 'product.collections.create',
+        'store' => 'product.collections.store',
+        'show' => 'product.collections.show',
+        'edit' => 'product.collections.edit',
+        'update' => 'product.collections.update',
+        'destroy' => 'product.collections.destroy',
+    ]);
+
+    // Marcas
+    Route::resource('product/brands', 'ProductBrandController')->names([
+        'index' => 'product.brands.index',
+        'create' => 'product.brands.create',
+        'store' => 'product.brands.store',
+        'show' => 'product.brands.show',
+        'edit' => 'product.brands.edit',
+        'update' => 'product.brands.update',
+        'destroy' => 'product.brands.destroy',
+    ]);
+
+    // Tags e Selos
+    Route::resource('product/tags', 'ProductTagController')->names([
+        'index' => 'product.tags.index',
+        'create' => 'product.tags.create',
+        'store' => 'product.tags.store',
+        'show' => 'product.tags.show',
+        'edit' => 'product.tags.edit',
+        'update' => 'product.tags.update',
+        'destroy' => 'product.tags.destroy',
+    ]);
+
+    // Filtros
+    Route::resource('product/filters', 'ProductFilterController')->names([
+        'index' => 'product.filters.index',
+        'create' => 'product.filters.create',
+        'store' => 'product.filters.store',
+        'show' => 'product.filters.show',
+        'edit' => 'product.filters.edit',
+        'update' => 'product.filters.update',
+        'destroy' => 'product.filters.destroy',
+    ]);
+
+    // Valores dos Filtros
+    Route::resource('product/filters/{filter}/values', 'ProductFilterValueController')->names([
+        'index' => 'product.filter.values.index',
+        'create' => 'product.filter.values.create',
+        'store' => 'product.filter.values.store',
+        'show' => 'product.filter.values.show',
+        'edit' => 'product.filter.values.edit',
+        'update' => 'product.filter.values.update',
+        'destroy' => 'product.filter.values.destroy',
+    ]);
+});

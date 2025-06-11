@@ -29,105 +29,73 @@
                             </a>
                         </li>
                     @endcan
-                    @can('Manage Store')
-                        <li
-                            class="dash-item dash-hasmenu {{ Request::segment(1) == 'store-resource' || Request::route()->getName() == 'store.grid' ? ' active dash-trigger' : 'collapsed' }}">
-                            <a href="{{ route('store-resource.index') }}"
-                                class="dash-link {{ request()->is('store-resource') ? 'active' : '' }}">
-                                <span class="dash-micon">
-                                    <i class="ti ti-user"></i>
-                                </span>
-                                <span class="dash-mtext">{{ __('Stores') }}</span>
-                            </a>
-                        </li>
-                    @endcan
 
-                    @can('Manage Coupans')
-                        <li
-                            class="dash-item dash-hasmenu {{ Request::segment(1) == 'coupons' ? ' active' : 'collapsed' }}">
-                            <a href="{{ route('coupons.index') }}"
-                                class="dash-link {{ request()->is('coupons') ? 'active' : '' }}">
-                                <span class="dash-micon">
-                                    <i class="ti ti-tag"></i>
-                                </span>
-                                <span class="dash-mtext">{{ __('Coupons') }}</span>
-                            </a>
-                        </li>
-                    @endcan
-
-                    @can('Manage Plans')
-                        <li
-                            class="dash-item dash-hasmenu {{ Request::segment(1) == 'plans' || Request::route()->getName() == 'stripe' ? ' active dash-trigger' : 'collapsed' }}">
-                            <a href="{{ route('plans.index') }}"
-                                class="dash-link {{ request()->is('plans') ? 'active' : '' }}">
-                                <span class="dash-micon">
-                                    <i class="ti ti-trophy"></i>
-                                </span>
-                                <span class="dash-mtext">{{ __('Plans') }}</span>
-                            </a>
-                        </li>
-                    @endcan
-
-                    @can('Manage Plan Request')
-                        <li
-                            class="dash-item dash-hasmenu {{ Request::segment(1) == 'plan_request' ? ' active' : 'collapsed' }}">
-                            <a href="{{ route('plan_request.index') }}"
-                                class="dash-link {{ request()->is('plan_request') ? 'active' : '' }}">
-                                <span class="dash-micon">
-                                    <i class="ti ti-brand-telegram"></i>
-                                </span>
-                                <span class="dash-mtext">{{ __('Plan Requests') }}</span>
-                            </a>
-                        </li>
-                    @endcan
-
-                    <li class="dash-item dash-hasmenu  {{ Request::segment(1) == 'referral-program' ? 'active' : '' }}">
-                        <a href="{{ route('referral-program.index') }}" class="dash-link">
-                            <span class="dash-micon"><i class="ti ti-discount-2"></i></span><span
-                                class="dash-mtext">{{ __('Referral Program') }}</span>
+                    <li class="dash-item disabled">
+                        <a href="#" class="dash-link disabled-link" onclick="return false;">
+                            <span class="dash-micon"><i class="ti ti-trophy"></i></span>
+                            <span class="dash-mtext">{{ __('Plans') }}</span>
+                            <span class="lock-icon"><i class="ti ti-lock"></i></span>
                         </a>
                     </li>
 
-                    <li
-                        class="dash-item dash-hasmenu {{ Request::segment(1) == 'custom_domain_request' ? ' active' : 'collapsed' }}">
-                        <a href="{{ route('custom_domain_request.index') }}"
-                            class="dash-link {{ request()->is('custom_domain_request') ? 'active' : '' }}">
-                            <span class="dash-micon">
-                                <i class="ti ti-browser"></i>
-                            </span>
-                            <span class="dash-mtext">{{ __('Domain Requests') }}</span>
+                    <li class="dash-item disabled">
+                        <a href="#" class="dash-link disabled-link" onclick="return false;">
+                            <span class="dash-micon"><i class="ti ti-layout-2"></i></span>
+                            <span class="dash-mtext">{{ __('Themes') }}</span>
+                            <span class="lock-icon"><i class="ti ti-lock"></i></span>
                         </a>
                     </li>
 
-                    @can('Manage Email Template')
-                        <li
-                            class="dash-item dash-hasmenu {{ Request::route()->getName() == 'manage.email.language' || Request::route()->getName() == 'manage.email.language' ? ' active dash-trigger' : 'collapsed' }}">
-                            <a href="{{ route('email_templates.index') }}"
-                                class="dash-link {{ request()->is('email_template') ? 'active' : '' }}">
-                                <span class="dash-micon">
-                                    <i class="ti ti-mail"></i>
-                                </span>
-                                <span class="dash-mtext">{{ __('Email Templates') }}</span>
+                    <li class="dash-item disabled">
+                        <a href="#" class="dash-link disabled-link" onclick="return false;">
+                            <span class="dash-micon"><i class="ti ti-settings"></i></span>
+                            <span class="dash-mtext">{{ __('Store Settings') }}</span>
+                            <span class="lock-icon"><i class="ti ti-lock"></i></span>
+                        </a>
+                    </li>
+
+                    <li class="dash-item disabled">
+                        <a href="#" class="dash-link disabled-link" onclick="return false;">
+                            <span class="dash-micon"><i class="ti ti-shopping-cart"></i></span>
+                            <span class="dash-mtext">{{ __('Orders') }}</span>
+                            <span class="lock-icon"><i class="ti ti-lock"></i></span>
+                        </a>
+                    </li>
+
+                    @if (Auth::user()->type == 'Owner')
+                        <li class="dash-item disabled">
+                            <a href="#" class="dash-link disabled-link" onclick="return false;">
+                                <span class="dash-micon"><i class="ti ti-discount-2"></i></span>
+                                <span class="dash-mtext">{{ __('Referral Program') }}</span>
+                                <span class="lock-icon"><i class="ti ti-lock"></i></span>
                             </a>
                         </li>
-                    @endcan
-                    @include('landingpage::menu.landingpage')
-                    @can('Manage Settings')
-                        <li class="dash-item dash-hasmenu {{ Request::segment(1) == 'settings' || Request::route()->getName() == 'store.editproducts' ? ' active dash-trigger' : 'collapsed' }}">
-                            <a href="{{ route('settings') }}" class="dash-link {{ request()->is('settings') ? 'active' : '' }}">
-                                <span class="dash-micon">
-                                    <i class="ti ti-settings"></i>
-                                </span>
-                                <span class="dash-mtext">
-                                    @if (Auth::user()->type == 'super admin')
-                                        {{ __('Settings') }}
-                                    @else
-                                        {{ __('Store Settings') }}
-                                    @endif
-                                </span>
-                            </a>
-                        </li>
-                    @endcan
+                    @endif
+
+                    <li class="dash-item disabled">
+                        <a href="#" class="dash-link disabled-link" onclick="return false;">
+                            <span class="dash-micon"><i class="ti ti-users"></i></span>
+                            <span class="dash-mtext">{{ __('Subscriber') }}</span>
+                            <span class="lock-icon"><i class="ti ti-lock"></i></span>
+                        </a>
+                    </li>
+
+                    <li class="dash-item disabled">
+                        <a href="#" class="dash-link disabled-link" onclick="return false;">
+                            <span class="dash-micon"><i class="ti ti-truck"></i></span>
+                            <span class="dash-mtext">{{ __('Shipping') }}</span>
+                            <span class="lock-icon"><i class="ti ti-lock"></i></span>
+                        </a>
+                    </li>
+
+                    <li class="dash-item disabled">
+                        <a href="#" class="dash-link disabled-link" onclick="return false;">
+                            <span class="dash-micon"><i class="ti ti-quote"></i></span>
+                            <span class="dash-mtext">{{ __('Testimonial') }}</span>
+                            <span class="lock-icon"><i class="ti ti-lock"></i></span>
+                        </a>
+                    </li>
+
                 @else
 
 
@@ -161,24 +129,9 @@
                 <a class="dash-link" href="{{ route('academy.index')}}">Academy</a>
             </li>
   
-        <!-- @can('Manage Orders')
-            <li class="dash-item {{ Request::segment(1) == 'orders.index' || Request::route()->getName() == 'orders.show' ? ' active dash-trigger' : 'collapsed' }}">
-                <a class="dash-link" href="{{ route('orders.index') }}">Pedidos</a>
-            </li>
-        @endcan -->
     </ul>
 </li>
-@can('Manage Themes')
-    <li class="dash-item {{ Request::segment(1) == 'themes' ? ' active' : 'collapsed' }}">
-        <a href="{{ route('themes.theme') }}"
-            class="dash-link {{ request()->is('themes') ? 'active' : '' }}">
-            <span class="dash-micon">
-                <i class="ti ti-layout-2"></i>
-            </span>
-            <span class="dash-mtext">{{ __('Themes') }}</span>
-        </a>
-    </li>
-@endcan
+
 @canany(['Manage Role', 'Manage User'])
     <li class="dash-item dash-hasmenu {{ Request::segment(1) == 'users' || Request::segment(1) == 'roles' ? ' active dash-trigger' : 'collapsed' }}">
         <a href="#!" class="dash-link ">
@@ -218,25 +171,7 @@
     </li>
 @endcan
 
-@can('Manage Plans')
-    <li class="dash-item dash-hasmenu {{ Request::segment(1) == 'plans' || Request::route()->getName() == 'stripe' ? ' active dash-trigger' : 'collapsed' }}">
-        <a href="{{ route('plans.index') }}"
-            class="dash-link {{ request()->is('plans') ? 'active' : '' }}">
-            <span class="dash-micon">
-                <i class="ti ti-trophy"></i>
-            </span>
-            <span class="dash-mtext">{{ __('Plans') }}</span>
-        </a>
-    </li>
-@endcan
-
 @if (Auth::user()->type == 'Owner')
-    <li class="dash-item dash-hasmenu  {{ Request::segment(1) == 'referral-program' ? 'active' : '' }}">
-        <a href="{{ route('referral-program.company') }}" class="dash-link">
-            <span class="dash-micon"><i class="ti ti-discount-2"></i></span><span
-                class="dash-mtext">{{ __('Referral Program') }}</span>
-        </a>
-    </li>
 @endif
 
 @can('Manage Settings')
@@ -440,21 +375,6 @@
                         href="{{ route('product-coupon.index') }}">{{ __('Product Coupon') }}</a>
                 </li>
             @endcan
-            <!-- @can('Manage Subscriber')
-                <li
-                    class="dash-item {{ Request::route()->getName() == 'subscriptions.index' ? ' active' : '' }}">
-                    <a class="dash-link"
-                        href="{{ route('subscriptions.index') }}">{{ __('Subscriber') }}</a>
-                </li>
-            @endcan -->
-            <!-- @if (isset($plan->shipping_method) && $plan->shipping_method == 'on')
-                @can('Manage Shipping')
-                    <li
-                        class="dash-item {{ Request::route()->getName() == 'shipping.index' ? ' active' : '' }}">
-                        <a class="dash-link" href="{{ route('shipping.index') }}">{{ __('Shipping') }}</a>
-                    </li>
-                @endcan
-            @endif -->
             @if (isset($plan->additional_page) && $plan->additional_page == 'on')
                 @can('Manage Custom Page')
                     <li
@@ -472,14 +392,25 @@
                     </li>
                 @endcan
             @endif
-            <!-- @can('Manage Testimonial')
-                <li
-                    class="dash-item {{ Request::route()->getName() == 'testimonial.index' ? ' active' : '' }}">
-                    <a class="dash-link" href="{{ route('testimonial.index') }}">{{ __('Testimonial') }}</a>
-                </li>
-            @endcan -->
         </ul>
     </li>
+    @can('Manage Products')
+    <li class="dash-item {{ Request::route()->getName() == 'product.collections.index' ? ' active' : '' }}">
+        <a class="dash-link" href="{{ route('product.collections.index') }}">{{ __('Collections') }}</a>
+    </li>
+
+    <li class="dash-item {{ Request::route()->getName() == 'product.brands.index' ? ' active' : '' }}">
+        <a class="dash-link" href="{{ route('product.brands.index') }}">{{ __('Brands') }}</a>
+    </li>
+
+    <li class="dash-item {{ Request::route()->getName() == 'product.tags.index' ? ' active' : '' }}">
+        <a class="dash-link" href="{{ route('product.tags.index') }}">{{ __('Tags & Seals') }}</a>
+    </li>
+
+    <li class="dash-item {{ Request::route()->getName() == 'product.filters.index' ? ' active' : '' }}">
+        <a class="dash-link" href="{{ route('product.filters.index') }}">{{ __('Filters') }}</a>
+    </li>
+@endcan
 @endcanany
 
 
@@ -492,123 +423,123 @@
 
 {{-- === CANAIS === --}}
 <li class="menu-title" style="margin-left: 28px;">CANAIS</li>
-
-<li class="dash-item dash-hasmenu collapsed">
-    <a href="#!" class="dash-link">
+<li class="dash-item disabled">
+    <a href="#" class="dash-link disabled-link" onclick="return false;">
         <span class="dash-micon"><i class="ti ti-truck-delivery"></i></span>
         <span class="dash-mtext">Dropshipping</span>
-        <span class="dash-arrow"><i data-feather="chevron-right"></i></span>
+        <span class="lock-icon"><i class="ti ti-lock"></i></span>
     </a>
-    <ul class="dash-submenu">
-        <li class="dash-item"><a class="dash-link" href="#">Drop. Nacional</a></li>
-        <li class="dash-item"><a class="dash-link" href="#">Drop. Internacional</a></li>
-        <li class="dash-item"><a class="dash-link" href="#">Drop. com link</a></li>
-    </ul>
 </li>
-
-<li class="dash-item dash-hasmenu collapsed">
-    <a href="#!" class="dash-link">
-        <span class="dash-micon"><i class="ti ti-refresh"></i></span>
-        <span class="dash-mtext">Trade by Fidelize</span>
-        <span class="dash-arrow"><i data-feather="chevron-right"></i></span>
-    </a>
-    <ul class="dash-submenu">
-        <li class="dash-item"><a class="dash-link" href="#">Meus Compartilhamentos</a></li>
-        <li class="dash-item"><a class="dash-link" href="#">Minha coleção de trade</a></li>
-        <li class="dash-item"><a class="dash-link" href="#">Minhas listas</a></li>
-    </ul>
-</li>
-
-<li class="dash-item dash-hasmenu collapsed">
-    <a href="#!" class="dash-link">
+<li class="dash-item disabled">
+    <a href="#" class="dash-link disabled-link" onclick="return false;">
         <span class="dash-micon"><i class="ti ti-building-store"></i></span>
-        <span class="dash-mtext">Venda B2B</span>
-        <span class="dash-arrow"><i data-feather="chevron-right"></i></span>
+        <span class="dash-mtext">Trade by Fidelize</span>
+        <span class="lock-icon"><i class="ti ti-lock"></i></span>
     </a>
-    <ul class="dash-submenu">
-        <li class="dash-item"><a class="dash-link" href="#">Empresas</a></li>
-        <li class="dash-item"><a class="dash-link" href="#">Catálogos</a></li>
-    </ul>
+</li>
+<li class="dash-item disabled">
+    <a href="#" class="dash-link disabled-link" onclick="return false;">
+        <span class="dash-micon"><i class="ti ti-building-factory"></i></span>
+        <span class="dash-mtext">Venda B2B</span>
+        <span class="lock-icon"><i class="ti ti-lock"></i></span>
+    </a>
 </li>
 
 {{-- === SUA LOJA === --}}
 <li class="menu-title" style="margin-left: 28px;">SUA LOJA</li>
-
-<li class="dash-item">
-    <a href="#" class="dash-link">
-        <span class="dash-micon"><i class="ti ti-eye"></i></span>
-        <span class="dash-mtext">Vitrine de recomendação</span>
-    </a>
-</li>
-
-<li class="dash-item">
-    <a href="#" class="dash-link">
+<li class="dash-item disabled">
+    <a href="#" class="dash-link disabled-link" onclick="return false;">
         <span class="dash-micon"><i class="ti ti-layout-grid"></i></span>
-        <span class="dash-mtext">Gerenciador de Widgets e apps</span>
+        <span class="dash-mtext">Vitrine de recomendação</span>
+        <span class="lock-icon"><i class="ti ti-lock"></i></span>
     </a>
 </li>
-
-<li class="dash-item">
-    <a href="#" class="dash-link">
-        <span class="dash-micon"><i class="ti ti-palette"></i></span>
-        <span class="dash-mtext">Personalizar loja</span>
+<li class="dash-item disabled">
+    <a href="#" class="dash-link disabled-link" onclick="return false;">
+        <span class="dash-micon"><i class="ti ti-apps"></i></span>
+        <span class="dash-mtext">Gerenciador de Widgets e apps</span>
+        <span class="lock-icon"><i class="ti ti-lock"></i></span>
     </a>
 </li>
 
 <li class="menu-title" style="margin-left: 28px;">REDES SOCIAIS</li>
-<li class="dash-item">
-    <a href="#" class="dash-link">
+<li class="dash-item disabled">
+    <a href="#" class="dash-link disabled-link" onclick="return false;">
         <span class="dash-micon"><i class="ti ti-brand-instagram"></i></span>
         <span class="dash-mtext">Instagram</span>
+        <span class="lock-icon"><i class="ti ti-lock"></i></span>
     </a>
 </li>
-<li class="dash-item">
-    <a href="#" class="dash-link">
+<li class="dash-item disabled">
+    <a href="#" class="dash-link disabled-link" onclick="return false;">
         <span class="dash-micon"><i class="ti ti-brand-tiktok"></i></span>
         <span class="dash-mtext">TikTok</span>
+        <span class="lock-icon"><i class="ti ti-lock"></i></span>
     </a>
 </li>
 
 {{-- === ATENDIMENTO === --}}
 <li class="menu-title" style="margin-left: 28px;">ATENDIMENTO</li>
-<li class="dash-item">
-    <a href="#" class="dash-link">
+<li class="dash-item disabled">
+    <a href="#" class="dash-link disabled-link" onclick="return false;">
         <span class="dash-micon"><i class="ti ti-headset"></i></span>
         <span class="dash-mtext">CRM omnichannel</span>
+        <span class="lock-icon"><i class="ti ti-lock"></i></span>
     </a>
 </li>
 
 {{-- === AUTOMAÇÕES === --}}
 <li class="menu-title" style="margin-left: 28px;">AUTOMAÇÕES</li>
-<li class="dash-item">
-    <a href="#" class="dash-link">
+<li class="dash-item disabled">
+    <a href="#" class="dash-link disabled-link" onclick="return false;">
         <span class="dash-micon"><i class="ti ti-bell"></i></span>
         <span class="dash-mtext">Notificações Manuais</span>
+        <span class="lock-icon"><i class="ti ti-lock"></i></span>
     </a>
 </li>
-<li class="dash-item">
-    <a href="#" class="dash-link">
+<li class="dash-item disabled">
+    <a href="#" class="dash-link disabled-link" onclick="return false;">
         <span class="dash-micon"><i class="ti ti-zap"></i></span>
         <span class="dash-mtext">Notificações inteligentes</span>
         <span class="badge badge-secondary ml-auto">AI</span>
+        <span class="lock-icon"><i class="ti ti-lock"></i></span>
     </a>
 </li>
-<li class="dash-item">
-    <a href="#" class="dash-link">
+<li class="dash-item disabled">
+    <a href="#" class="dash-link disabled-link" onclick="return false;">
         <span class="dash-micon"><i class="ti ti-settings"></i></span>
         <span class="dash-mtext">Configurações</span>
+        <span class="lock-icon"><i class="ti ti-lock"></i></span>
     </a>
 </li>
 
 {{-- === EXTRAS === --}}
 <li class="menu-title" style="margin-left: 28px;">EXTRAS</li>
-<li class="dash-item">
-    <a href="#" class="dash-link">
+<li class="dash-item disabled">
+    <a href="#" class="dash-link disabled-link" onclick="return false;">
         <span class="dash-micon"><i class="ti ti-gift"></i></span>
         <span class="dash-mtext">Recompensas</span>
+        <span class="lock-icon"><i class="ti ti-lock"></i></span>
     </a>
 </li>
 
+@can('Manage Products')
+    <li class="dash-item {{ Request::route()->getName() == 'product.collections.index' ? ' active' : '' }}">
+        <a class="dash-link" href="{{ route('product.collections.index') }}">{{ __('Collections') }}</a>
+    </li>
+
+    <li class="dash-item {{ Request::route()->getName() == 'product.brands.index' ? ' active' : '' }}">
+        <a class="dash-link" href="{{ route('product.brands.index') }}">{{ __('Brands') }}</a>
+    </li>
+
+    <li class="dash-item {{ Request::route()->getName() == 'product.tags.index' ? ' active' : '' }}">
+        <a class="dash-link" href="{{ route('product.tags.index') }}">{{ __('Tags & Seals') }}</a>
+    </li>
+
+    <li class="dash-item {{ Request::route()->getName() == 'product.filters.index' ? ' active' : '' }}">
+        <a class="dash-link" href="{{ route('product.filters.index') }}">{{ __('Filters') }}</a>
+    </li>
+@endcan
 
                 @endif
             </ul>

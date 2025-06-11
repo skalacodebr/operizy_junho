@@ -2,6 +2,11 @@
 @section('page-title')
     {{ __('Products') }}
 @endsection
+@section('title')
+    <div class="d-inline-block">
+        <h5 class="h4 d-inline-block text-white font-weight-bold mb-0">{{ __('Products') }}</h5>
+    </div>
+@endsection
 @section('breadcrumb')
 <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">{{ __('Home') }}</a></li>
 <li class="breadcrumb-item active" aria-current="page">{{ __('Products') }}</li>
@@ -40,10 +45,27 @@
 @endpush
 @section('content')
 <div class="row">
-    <!-- [ sample-page ] start -->
-    <div class="col-sm-12">
+    <div class="col-md-12">
         <div class="card">
-            <div class="card-body pb-0 table-border-style">
+            <div class="card-header">
+                <ul class="nav nav-tabs card-header-tabs">
+                    <li class="nav-item">
+                        <a class="nav-link {{ !request('channel') ? 'active' : '' }}" 
+                           href="{{ route('product.index') }}">
+                            {{ __('Todos') }}
+                        </a>
+                    </li>
+                    @foreach(\App\Models\SalesChannel::where('is_active', true)->get() as $channel)
+                        <li class="nav-item">
+                            <a class="nav-link {{ request('channel') == $channel->slug ? 'active' : '' }}" 
+                               href="{{ route('product.index', ['channel' => $channel->slug]) }}">
+                                <i class="{{ $channel->icon }}"></i> {{ $channel->name }}
+                            </a>
+                        </li>
+                    @endforeach
+                </ul>
+            </div>
+            <div class="card-body table-border-style">
                 <div class="table-responsive">
                     <table class="table dataTable" id="pc-dt-satetime-sorting">
                         <thead>
@@ -157,7 +179,6 @@
             </div>
         </div>
     </div>
-    <!-- [ sample-page ] end -->
 </div>
 @endsection
 @push('script-page')

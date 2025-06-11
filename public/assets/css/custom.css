@@ -217,7 +217,7 @@ background:#E1E9ED;
 }
 /* design issue fixing css end 6-5-2025  */
 
-/* Dashboard Cards */
+/* Dashboard Styles */
 .welcome-text {
     font-size: 24px;
     color: #333;
@@ -228,18 +228,23 @@ background:#E1E9ED;
     border-radius: 10px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     margin-bottom: 20px;
+    border: none;
 }
 
-.bg-purple {
-    background-color: #6f42c1;
+.card.bg-dark {
+    background-color: #1a1a1a !important;
 }
 
-.bg-info {
-    background-color: #17a2b8;
+.card.bg-purple {
+    background-color: #6f42c1 !important;
 }
 
-.card .fa-2x {
-    font-size: 2em;
+.card.bg-info {
+    background-color: #17a2b8 !important;
+}
+
+.card-body {
+    padding: 1.5rem;
 }
 
 .badge {
@@ -248,37 +253,292 @@ background:#E1E9ED;
     font-weight: 500;
 }
 
-.card-body {
-    padding: 20px;
+.badge.bg-danger {
+    background-color: #dc3545 !important;
 }
 
-.table th {
-    font-weight: 600;
-    color: #333;
+.btn {
+    padding: 8px 16px;
+    border-radius: 5px;
+    font-weight: 500;
 }
 
-.table td {
-    color: #666;
+.btn-primary {
+    background-color: #6f42c1;
+    border-color: #6f42c1;
 }
 
-/* Charts */
-#traffic-chart, #device-chart {
-    margin-top: 20px;
+.btn-primary:hover {
+    background-color: #5a32a3;
+    border-color: #5a32a3;
 }
 
-/* Responsive adjustments */
+.btn-secondary {
+    background-color: #6c757d;
+    border-color: #6c757d;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+    border-color: #5a6268;
+}
+
+.rounded-circle {
+    border: 2px solid #fff;
+}
+
+.review-item,
+.video-item,
+.message-item {
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 1rem;
+}
+
+.review-item:last-child,
+.video-item:last-child,
+.message-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+/* Responsive Adjustments */
 @media (max-width: 768px) {
-    .col-xxl-6 {
-        margin-bottom: 20px;
-    }
-    
     .welcome-text {
         font-size: 20px;
     }
+    
+    .card-body {
+        padding: 1rem;
+    }
+    
+    .btn {
+        padding: 6px 12px;
+    }
 }
 
-/* Action badges */
-.badge.bg-light {
-    background-color: rgba(255,255,255,0.9) !important;
-    color: #333 !important;
+/* Dashboard Cards */
+.dashboard-card {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    overflow: hidden;
+    height: 100%;
+}
+
+.dashboard-card .card-header {
+    background: none;
+    border-bottom: none;
+    padding: 1.5rem;
+}
+
+.dashboard-card .card-body {
+    padding: 1.5rem;
+}
+
+.dashboard-card .icon {
+    width: 48px;
+    height: 48px;
+    background: #f8f9fa;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.dashboard-card .icon i {
+    font-size: 24px;
+    color: #6f42c1;
+}
+
+.dashboard-card h4 {
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+
+.dashboard-card p {
+    color: #6c757d;
+    margin-bottom: 0;
+}
+
+/* Action Buttons */
+.action-btn {
+    padding: 6px 12px;
+    font-size: 14px;
+    border-radius: 15px;
+    text-transform: none;
+    font-weight: 500;
+}
+
+.action-btn.danger {
+    background-color: #ffebee;
+    color: #dc3545;
+    border: 1px solid #ffcdd2;
+}
+
+.action-btn.danger:hover {
+    background-color: #ffcdd2;
+}
+
+/* User Avatars */
+.user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Status Badges */
+.status-badge {
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.status-badge.pending {
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+.status-badge.completed {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+/* Quick Access Menu */
+.quick-access {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.quick-access-btn {
+    flex: 1;
+    text-align: center;
+    padding: 1rem;
+    border-radius: 10px;
+    background: #f8f9fa;
+    color: #333;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.quick-access-btn:hover {
+    background: #e9ecef;
+    transform: translateY(-2px);
+}
+
+/* Responsive Grid */
+@media (max-width: 992px) {
+    .dashboard-card {
+        margin-bottom: 1rem;
+    }
+    
+    .quick-access {
+        flex-direction: column;
+    }
+    
+    .quick-access-btn {
+        width: 100%;
+    }
+}
+
+/* Animation */
+.dashboard-card {
+    transition: transform 0.3s ease;
+}
+
+.dashboard-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+    .dashboard-card {
+        background: #2d2d2d;
+    }
+    
+    .dashboard-card h4 {
+        color: #fff;
+    }
+    
+    .dashboard-card p {
+        color: #adb5bd;
+    }
+    
+    .quick-access-btn {
+        background: #2d2d2d;
+        color: #fff;
+    }
+    
+    .quick-access-btn:hover {
+        background: #3d3d3d;
+    }
+}
+
+/* Disabled Menu Items */
+.dash-item.disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    position: relative;
+}
+
+.dash-item.disabled .dash-link {
+    pointer-events: none;
+}
+
+.dash-item.disabled .dash-link.disabled-link {
+    color: #6c757d !important;
+}
+
+.dash-item.disabled .dash-micon i {
+    color: #6c757d !important;
+}
+
+.lock-icon {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #6c757d;
+    font-size: 14px;
+}
+
+.dash-item.disabled:hover {
+    background: transparent !important;
+}
+
+.dash-item.disabled:hover .dash-link {
+    color: #6c757d !important;
+}
+
+/* Tooltip for disabled items */
+.dash-item.disabled::after {
+    content: "Recurso disponível em planos superiores";
+    position: absolute;
+    background: rgba(0,0,0,0.8);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    right: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: max-content;
+    max-width: 200px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.dash-item.disabled:hover::after {
+    opacity: 1;
+    visibility: visible;
+    right: calc(100% + 10px);
 }
