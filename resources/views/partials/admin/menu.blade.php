@@ -148,20 +148,20 @@
         class="dash-submenu {{ Request::segment(1) == 'dashboard' || Request::segment(1) == 'storeanalytic' ? ' show' : '' }}">
         @can('Manage Dashboard')
         <li class="dash-item {{ Request::route()->getName() == 'dashboard' ? ' active' : '' }}">
-            <a class="dash-link" href="{{ route('dashboard') }}">{{ __('Dashboard') }}</a>
+            <a class="dash-link" href="{{ route('dashboard') }}">Inicio</a>
         </li>
         @endcan
         @can('Manage Store Analytics')
         <li class="dash-item {{ Request::route()->getName() == 'storeanalytic' ? ' active' : '' }}">
             <a class="dash-link"
-                href="{{ route('storeanalytic') }}">{{ __('Store Analytics') }}</a>
+                href="{{ route('storeanalytic') }}">Estatisticas</a>
         </li>
         @endcan
-        @can('Manage Orders')
+        <!-- @can('Manage Orders')
             <li class="dash-item {{ Request::segment(1) == 'orders.index' || Request::route()->getName() == 'orders.show' ? ' active dash-trigger' : 'collapsed' }}">
-                <a class="dash-link" href="{{ route('orders.index') }}">{{ __('Orders') }}</a>
+                <a class="dash-link" href="{{ route('orders.index') }}">Pedidos</a>
             </li>
-        @endcan
+        @endcan -->
     </ul>
 </li>
 @can('Manage Themes')
