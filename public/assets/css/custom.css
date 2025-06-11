@@ -480,3 +480,65 @@ background:#E1E9ED;
         background: #3d3d3d;
     }
 }
+
+/* Disabled Menu Items */
+.dash-item.disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    position: relative;
+}
+
+.dash-item.disabled .dash-link {
+    pointer-events: none;
+}
+
+.dash-item.disabled .dash-link.disabled-link {
+    color: #6c757d !important;
+}
+
+.dash-item.disabled .dash-micon i {
+    color: #6c757d !important;
+}
+
+.lock-icon {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #6c757d;
+    font-size: 14px;
+}
+
+.dash-item.disabled:hover {
+    background: transparent !important;
+}
+
+.dash-item.disabled:hover .dash-link {
+    color: #6c757d !important;
+}
+
+/* Tooltip for disabled items */
+.dash-item.disabled::after {
+    content: "Recurso disponível em planos superiores";
+    position: absolute;
+    background: rgba(0,0,0,0.8);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    right: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: max-content;
+    max-width: 200px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.dash-item.disabled:hover::after {
+    opacity: 1;
+    visibility: visible;
+    right: calc(100% + 10px);
+}

@@ -112,7 +112,7 @@
                         </li>
                     @endcan
                     @include('landingpage::menu.landingpage')
-                    @can('Manage Settings')
+                    <!-- @can('Manage Settings')
                         <li class="dash-item dash-hasmenu {{ Request::segment(1) == 'settings' || Request::route()->getName() == 'store.editproducts' ? ' active dash-trigger' : 'collapsed' }}">
                             <a href="{{ route('settings') }}" class="dash-link {{ request()->is('settings') ? 'active' : '' }}">
                                 <span class="dash-micon">
@@ -127,7 +127,7 @@
                                 </span>
                             </a>
                         </li>
-                    @endcan
+                    @endcan -->
                 @else
 
 
@@ -231,12 +231,12 @@
 @endcan
 
 @if (Auth::user()->type == 'Owner')
-    <li class="dash-item dash-hasmenu  {{ Request::segment(1) == 'referral-program' ? 'active' : '' }}">
+    <!-- <li class="dash-item dash-hasmenu  {{ Request::segment(1) == 'referral-program' ? 'active' : '' }}">
         <a href="{{ route('referral-program.company') }}" class="dash-link">
             <span class="dash-micon"><i class="ti ti-discount-2"></i></span><span
                 class="dash-mtext">{{ __('Referral Program') }}</span>
         </a>
-    </li>
+    </li> -->
 @endif
 
 @can('Manage Settings')
@@ -265,17 +265,19 @@
     </a>
 </li>
 
-<li class="dash-item">
-    <a href="#" class="dash-link">
+<li class="dash-item disabled-menu-item">
+    <a href="#" class="dash-link" data-bs-toggle="tooltip" data-bs-placement="right" title="Recurso disponível no plano Premium">
         <span class="dash-micon"><i class="ti ti-bookmark"></i></span>
         <span class="dash-mtext">Favoritos</span>
+        <span class="premium-lock"><i class="ti ti-lock"></i></span>
     </a>
 </li>
 
-<li class="dash-item dash-hasmenu collapsed">
-    <a href="#!" class="dash-link">
+<li class="dash-item dash-hasmenu collapsed disabled-menu-item">
+    <a href="#!" class="dash-link" data-bs-toggle="tooltip" data-bs-placement="right" title="Recurso disponível no plano Premium">
         <span class="dash-micon"><i class="ti ti-star"></i></span>
         <span class="dash-mtext">Avaliações</span>
+        <span class="premium-lock"><i class="ti ti-lock"></i></span>
         <span class="dash-arrow"><i data-feather="chevron-right"></i></span>
     </a>
     <ul class="dash-submenu">
@@ -285,10 +287,11 @@
     </ul>
 </li>
 
-<li class="dash-item dash-hasmenu collapsed">
-    <a href="#!" class="dash-link">
+<li class="dash-item dash-hasmenu collapsed disabled-menu-item">
+    <a href="#!" class="dash-link" data-bs-toggle="tooltip" data-bs-placement="right" title="Recurso disponível no plano Premium">
         <span class="dash-micon"><i class="ti ti-refresh"></i></span>
         <span class="dash-mtext">Trocas e devoluções</span>
+        <span class="premium-lock"><i class="ti ti-lock"></i></span>
         <span class="dash-arrow"><i data-feather="chevron-right"></i></span>
     </a>
     <ul class="dash-submenu">
@@ -298,10 +301,11 @@
     </ul>
 </li>
 
-<li class="dash-item dash-hasmenu collapsed">
-    <a href="#!" class="dash-link">
+<li class="dash-item dash-hasmenu collapsed disabled-menu-item">
+    <a href="#!" class="dash-link" data-bs-toggle="tooltip" data-bs-placement="right" title="Recurso disponível no plano Premium">
         <span class="dash-micon"><i class="ti ti-video"></i></span>
         <span class="dash-mtext">Video commerce</span>
+        <span class="premium-lock"><i class="ti ti-lock"></i></span>
         <span class="dash-arrow"><i data-feather="chevron-right"></i></span>
     </a>
     <ul class="dash-submenu">
@@ -311,10 +315,11 @@
     </ul>
 </li>
 
-<li class="dash-item dash-hasmenu collapsed">
-    <a href="#!" class="dash-link">
+<li class="dash-item dash-hasmenu collapsed disabled-menu-item">
+    <a href="#!" class="dash-link" data-bs-toggle="tooltip" data-bs-placement="right" title="Recurso disponível no plano Premium">
         <span class="dash-micon"><i class="ti ti-message-circle"></i></span>
         <span class="dash-mtext">Comentários</span>
+        <span class="premium-lock"><i class="ti ti-lock"></i></span>
         <span class="dash-arrow"><i data-feather="chevron-right"></i></span>
     </a>
     <ul class="dash-submenu">
@@ -325,10 +330,11 @@
 </li>
 
 
-<li class="dash-item dash-hasmenu collapsed">
-    <a href="#!" class="dash-link">
+<li class="dash-item dash-hasmenu collapsed disabled-menu-item">
+    <a href="#!" class="dash-link" data-bs-toggle="tooltip" data-bs-placement="right" title="Recurso disponível no plano Premium">
         <span class="dash-micon"><i data-feather="zap"></i></span>
         <span class="dash-mtext">Izi Lead</span>
+        <span class="premium-lock"><i class="ti ti-lock"></i></span>
         <span class="dash-arrow"><i data-feather="chevron-right"></i></span>
     </a>
     <ul class="dash-submenu">
@@ -338,10 +344,11 @@
     </ul>
 </li>
 
-<li class="dash-item dash-hasmenu collapsed">
-    <a href="#!" class="dash-link">
-       <span class="dash-micon"><i data-feather="star"></i></span>
+<li class="dash-item dash-hasmenu collapsed disabled-menu-item">
+    <a href="#!" class="dash-link" data-bs-toggle="tooltip" data-bs-placement="right" title="Recurso disponível no plano Premium">
+        <span class="dash-micon"><i data-feather="star"></i></span>
         <span class="dash-mtext">Izi Review</span>
+        <span class="premium-lock"><i class="ti ti-lock"></i></span>
         <span class="dash-arrow"><i data-feather="chevron-right"></i></span>
     </a>
     <ul class="dash-submenu">
@@ -492,120 +499,103 @@
 
 {{-- === CANAIS === --}}
 <li class="menu-title" style="margin-left: 28px;">CANAIS</li>
-
-<li class="dash-item dash-hasmenu collapsed">
-    <a href="#!" class="dash-link">
+<li class="dash-item disabled">
+    <a href="#" class="dash-link disabled-link" onclick="return false;">
         <span class="dash-micon"><i class="ti ti-truck-delivery"></i></span>
         <span class="dash-mtext">Dropshipping</span>
-        <span class="dash-arrow"><i data-feather="chevron-right"></i></span>
+        <span class="lock-icon"><i class="ti ti-lock"></i></span>
     </a>
-    <ul class="dash-submenu">
-        <li class="dash-item"><a class="dash-link" href="#">Drop. Nacional</a></li>
-        <li class="dash-item"><a class="dash-link" href="#">Drop. Internacional</a></li>
-        <li class="dash-item"><a class="dash-link" href="#">Drop. com link</a></li>
-    </ul>
 </li>
-
-<li class="dash-item dash-hasmenu collapsed">
-    <a href="#!" class="dash-link">
-        <span class="dash-micon"><i class="ti ti-refresh"></i></span>
-        <span class="dash-mtext">Trade by Fidelize</span>
-        <span class="dash-arrow"><i data-feather="chevron-right"></i></span>
-    </a>
-    <ul class="dash-submenu">
-        <li class="dash-item"><a class="dash-link" href="#">Meus Compartilhamentos</a></li>
-        <li class="dash-item"><a class="dash-link" href="#">Minha coleção de trade</a></li>
-        <li class="dash-item"><a class="dash-link" href="#">Minhas listas</a></li>
-    </ul>
-</li>
-
-<li class="dash-item dash-hasmenu collapsed">
-    <a href="#!" class="dash-link">
+<li class="dash-item disabled">
+    <a href="#" class="dash-link disabled-link" onclick="return false;">
         <span class="dash-micon"><i class="ti ti-building-store"></i></span>
-        <span class="dash-mtext">Venda B2B</span>
-        <span class="dash-arrow"><i data-feather="chevron-right"></i></span>
+        <span class="dash-mtext">Trade by Fidelize</span>
+        <span class="lock-icon"><i class="ti ti-lock"></i></span>
     </a>
-    <ul class="dash-submenu">
-        <li class="dash-item"><a class="dash-link" href="#">Empresas</a></li>
-        <li class="dash-item"><a class="dash-link" href="#">Catálogos</a></li>
-    </ul>
+</li>
+<li class="dash-item disabled">
+    <a href="#" class="dash-link disabled-link" onclick="return false;">
+        <span class="dash-micon"><i class="ti ti-building-factory"></i></span>
+        <span class="dash-mtext">Venda B2B</span>
+        <span class="lock-icon"><i class="ti ti-lock"></i></span>
+    </a>
 </li>
 
 {{-- === SUA LOJA === --}}
 <li class="menu-title" style="margin-left: 28px;">SUA LOJA</li>
-
-<li class="dash-item">
-    <a href="#" class="dash-link">
-        <span class="dash-micon"><i class="ti ti-eye"></i></span>
-        <span class="dash-mtext">Vitrine de recomendação</span>
-    </a>
-</li>
-
-<li class="dash-item">
-    <a href="#" class="dash-link">
+<li class="dash-item disabled">
+    <a href="#" class="dash-link disabled-link" onclick="return false;">
         <span class="dash-micon"><i class="ti ti-layout-grid"></i></span>
-        <span class="dash-mtext">Gerenciador de Widgets e apps</span>
+        <span class="dash-mtext">Vitrine de recomendação</span>
+        <span class="lock-icon"><i class="ti ti-lock"></i></span>
     </a>
 </li>
-
-<li class="dash-item">
-    <a href="#" class="dash-link">
-        <span class="dash-micon"><i class="ti ti-palette"></i></span>
-        <span class="dash-mtext">Personalizar loja</span>
+<li class="dash-item disabled">
+    <a href="#" class="dash-link disabled-link" onclick="return false;">
+        <span class="dash-micon"><i class="ti ti-apps"></i></span>
+        <span class="dash-mtext">Gerenciador de Widgets e apps</span>
+        <span class="lock-icon"><i class="ti ti-lock"></i></span>
     </a>
 </li>
 
 <li class="menu-title" style="margin-left: 28px;">REDES SOCIAIS</li>
-<li class="dash-item">
-    <a href="#" class="dash-link">
+<li class="dash-item disabled">
+    <a href="#" class="dash-link disabled-link" onclick="return false;">
         <span class="dash-micon"><i class="ti ti-brand-instagram"></i></span>
         <span class="dash-mtext">Instagram</span>
+        <span class="lock-icon"><i class="ti ti-lock"></i></span>
     </a>
 </li>
-<li class="dash-item">
-    <a href="#" class="dash-link">
+<li class="dash-item disabled">
+    <a href="#" class="dash-link disabled-link" onclick="return false;">
         <span class="dash-micon"><i class="ti ti-brand-tiktok"></i></span>
         <span class="dash-mtext">TikTok</span>
+        <span class="lock-icon"><i class="ti ti-lock"></i></span>
     </a>
 </li>
 
 {{-- === ATENDIMENTO === --}}
 <li class="menu-title" style="margin-left: 28px;">ATENDIMENTO</li>
-<li class="dash-item">
-    <a href="#" class="dash-link">
+<li class="dash-item disabled">
+    <a href="#" class="dash-link disabled-link" onclick="return false;">
         <span class="dash-micon"><i class="ti ti-headset"></i></span>
         <span class="dash-mtext">CRM omnichannel</span>
+        <span class="lock-icon"><i class="ti ti-lock"></i></span>
     </a>
 </li>
 
 {{-- === AUTOMAÇÕES === --}}
 <li class="menu-title" style="margin-left: 28px;">AUTOMAÇÕES</li>
-<li class="dash-item">
-    <a href="#" class="dash-link">
+<li class="dash-item disabled">
+    <a href="#" class="dash-link disabled-link" onclick="return false;">
         <span class="dash-micon"><i class="ti ti-bell"></i></span>
         <span class="dash-mtext">Notificações Manuais</span>
+        <span class="lock-icon"><i class="ti ti-lock"></i></span>
     </a>
 </li>
-<li class="dash-item">
-    <a href="#" class="dash-link">
+<li class="dash-item disabled">
+    <a href="#" class="dash-link disabled-link" onclick="return false;">
         <span class="dash-micon"><i class="ti ti-zap"></i></span>
         <span class="dash-mtext">Notificações inteligentes</span>
         <span class="badge badge-secondary ml-auto">AI</span>
+        <span class="lock-icon"><i class="ti ti-lock"></i></span>
     </a>
 </li>
-<li class="dash-item">
-    <a href="#" class="dash-link">
+<li class="dash-item disabled">
+    <a href="#" class="dash-link disabled-link" onclick="return false;">
         <span class="dash-micon"><i class="ti ti-settings"></i></span>
         <span class="dash-mtext">Configurações</span>
+        <span class="lock-icon"><i class="ti ti-lock"></i></span>
     </a>
 </li>
 
 {{-- === EXTRAS === --}}
 <li class="menu-title" style="margin-left: 28px;">EXTRAS</li>
-<li class="dash-item">
-    <a href="#" class="dash-link">
+<li class="dash-item disabled">
+    <a href="#" class="dash-link disabled-link" onclick="return false;">
         <span class="dash-micon"><i class="ti ti-gift"></i></span>
         <span class="dash-mtext">Recompensas</span>
+        <span class="lock-icon"><i class="ti ti-lock"></i></span>
     </a>
 </li>
 

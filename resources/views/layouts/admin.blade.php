@@ -1,4 +1,3 @@
-
 @php
 // get theme color
 $setting = App\Models\Utility::colorset();
@@ -27,50 +26,57 @@ $logo = \App\Models\Utility::get_file('uploads/logo');
 @endphp
 
 <!DOCTYPE html>
-<html lang="en" dir="{{isset($settings['SITE_RTL']) && $settings['SITE_RTL'] == 'on' ? 'rtl' : '' }}">
-<meta name="csrf-token" content="{{ csrf_token() }}">
-<style>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir="{{$SITE_RTL == 'on'?'rtl':''}}">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="{{asset(Storage::url('uploads/logo/favicon.png'))}}" type="image/png">
+    <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/quick-access.css') }}">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <style>
 
-    [dir="rtl"] .dash-sidebar {
-        left: auto !important;
-    }
+        [dir="rtl"] .dash-sidebar {
+            left: auto !important;
+        }
 
-    [dir="rtl"] .dash-header {
-        left: 0;
-        right: 280px;
-    }
-    [dir="rtl"] .dash-header:not(.transprent-bg) .header-wrapper {
-        padding: 0 0 0 30px;
-    }
+        [dir="rtl"] .dash-header {
+            left: 0;
+            right: 280px;
+        }
+        [dir="rtl"] .dash-header:not(.transprent-bg) .header-wrapper {
+            padding: 0 0 0 30px;
+        }
 
-    [dir="rtl"] .dash-header:not(.transprent-bg):not(.dash-mob-header)~.dash-container {
-        margin-left: 0px;
-    }
+        [dir="rtl"] .dash-header:not(.transprent-bg):not(.dash-mob-header)~.dash-container {
+            margin-left: 0px;
+        }
 
-    [dir="rtl"] .me-auto.dash-mob-drp {
-        margin-right: 10px !important;
-    }
+        [dir="rtl"] .me-auto.dash-mob-drp {
+            margin-right: 10px !important;
+        }
 
-    [dir="rtl"] .me-auto {
-        margin-left: 10px !important;
-    }
+        [dir="rtl"] .me-auto {
+            margin-left: 10px !important;
+        }
 
 
-    [dir="rtl"] .header-wrapper .ms-auto {
-        margin-left: 0 !important;
-    }
+        [dir="rtl"] .header-wrapper .ms-auto {
+            margin-left: 0 !important;
+        }
 
-    [dir="rtl"] .dash-header {
-        left: 0 !important;
-        right: 280px !important;
-    }
+        [dir="rtl"] .dash-header {
+            left: 0 !important;
+            right: 280px !important;
+        }
 
-    [dir="rtl"] .list-group-flush>.list-group-item .float-end {
-        float: left !important;
-    }
-</style>
+        [dir="rtl"] .list-group-flush>.list-group-item .float-end {
+            float: left !important;
+        }
+    </style>
 
-@include('partials.admin.head')
+    @include('partials.admin.head')
+</head>
 <body class="{{ $themeColor }}">
     <!-- [ Pre-loader ] start -->
     <div class="loader-bg">
@@ -147,6 +153,14 @@ $logo = \App\Models\Utility::get_file('uploads/logo');
     @if ($settings['enable_cookie'] == 'on')
         @include('layouts.cookie_consent')
     @endif
+    @stack('custom-scripts')
+    <script>
+        // Initialize tooltips
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl)
+        });
+    </script>
 </body>
 
 
