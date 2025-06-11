@@ -436,21 +436,21 @@
                         href="{{ route('product-coupon.index') }}">{{ __('Product Coupon') }}</a>
                 </li>
             @endcan
-            @can('Manage Subscriber')
+            <!-- @can('Manage Subscriber')
                 <li
                     class="dash-item {{ Request::route()->getName() == 'subscriptions.index' ? ' active' : '' }}">
                     <a class="dash-link"
                         href="{{ route('subscriptions.index') }}">{{ __('Subscriber') }}</a>
                 </li>
-            @endcan
-            @if (isset($plan->shipping_method) && $plan->shipping_method == 'on')
+            @endcan -->
+            <!-- @if (isset($plan->shipping_method) && $plan->shipping_method == 'on')
                 @can('Manage Shipping')
                     <li
                         class="dash-item {{ Request::route()->getName() == 'shipping.index' ? ' active' : '' }}">
                         <a class="dash-link" href="{{ route('shipping.index') }}">{{ __('Shipping') }}</a>
                     </li>
                 @endcan
-            @endif
+            @endif -->
             @if (isset($plan->additional_page) && $plan->additional_page == 'on')
                 @can('Manage Custom Page')
                     <li
@@ -468,12 +468,12 @@
                     </li>
                 @endcan
             @endif
-            @can('Manage Testimonial')
+            <!-- @can('Manage Testimonial')
                 <li
                     class="dash-item {{ Request::route()->getName() == 'testimonial.index' ? ' active' : '' }}">
                     <a class="dash-link" href="{{ route('testimonial.index') }}">{{ __('Testimonial') }}</a>
                 </li>
-            @endcan
+            @endcan -->
         </ul>
     </li>
 @endcanany
