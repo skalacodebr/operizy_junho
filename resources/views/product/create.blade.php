@@ -266,6 +266,30 @@
                                         {{ Form::label('quantity', __('Stock Quantity'), ['class' => 'form-label']) }}
                                         {{ Form::number('quantity', null, ['class' => 'form-control', 'placeholder' => __('Enter Stock Quantity')]) }}
                                     </div>
+                                    <div class="form-group proprice">
+                                        <div class="row gy-4">
+                                            <div class="col-md-6">
+                                                {{ Form::label('min_stock', __('Minimum Stock'), ['class' => 'form-label']) }}
+                                                {{ Form::number('min_stock', null, ['class' => 'form-control', 'placeholder' => __('Enter Minimum Stock'), 'min' => '0']) }}
+                                            </div>
+                                            <div class="col-md-6">
+                                                {{ Form::label('max_stock', __('Maximum Stock'), ['class' => 'form-label']) }}
+                                                {{ Form::number('max_stock', null, ['class' => 'form-control', 'placeholder' => __('Enter Maximum Stock'), 'min' => '0']) }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group proprice">
+                                        <div class="row gy-4">
+                                            <div class="col-md-6">
+                                                {{ Form::label('min_order', __('Minimum Order'), ['class' => 'form-label']) }}
+                                                {{ Form::number('min_order', null, ['class' => 'form-control', 'placeholder' => __('Enter Minimum Order'), 'min' => '0']) }}
+                                            </div>
+                                            <div class="col-md-6">
+                                                {{ Form::label('max_order', __('Maximum Order'), ['class' => 'form-label']) }}
+                                                {{ Form::number('max_order', null, ['class' => 'form-control', 'placeholder' => __('Enter Maximum Order'), 'min' => '0']) }}
+                                            </div>
+                                        </div>
+                                    </div>
                                     <div class="form-group">
                                         <label for="attachment" class="form-label">{{ __('Attachment') }}</label>
                                         <input type="file" name="attachment" id="attachment" class="form-control"

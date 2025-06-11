@@ -157,6 +157,10 @@
                 href="{{ route('storeanalytic') }}">Estatisticas</a>
         </li>
         @endcan
+            <li class="dash-item {{ Request::segment(1) == 'orders.index' || Request::route()->getName() == 'orders.show' ? ' active dash-trigger' : 'collapsed' }}">
+                <a class="dash-link" href="/academy">Academy</a>
+            </li>
+  
         <!-- @can('Manage Orders')
             <li class="dash-item {{ Request::segment(1) == 'orders.index' || Request::route()->getName() == 'orders.show' ? ' active dash-trigger' : 'collapsed' }}">
                 <a class="dash-link" href="{{ route('orders.index') }}">Pedidos</a>
