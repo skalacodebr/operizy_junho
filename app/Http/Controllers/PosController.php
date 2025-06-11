@@ -228,7 +228,7 @@ class PosController extends Controller
                 
                     $pos                  = new Order();
                     $pos->order_id = time();
-                    $pos->name            = isset($customer->name) ? $customer->name : 'walk-in-customer' ;
+                    $pos->name            = isset($customer->name) ? $customer->name : 'PDV-CLIENTE' ;
                     $pos->email           = isset($customer->name) ? $customer->email : '' ;
                     $pos->card_number = '';
                     $pos->card_exp_month = '';

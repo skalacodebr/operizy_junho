@@ -1,0 +1,1 @@
+@extends('product.collections.create') 
