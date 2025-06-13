@@ -113,12 +113,6 @@ class DashboardController extends Controller
                     return view('home', compact('user', 'chartData'));
                 } else {
                     $store = Auth::user();
-                    $userstore = UserStore::where('store_id', $store->current_store)->first();
-                    $newproduct = Product::where('store_id', $store->current_store)->count();
-                    $products = Product::where('store_id', $store->current_store)->limit(5)->get();
-                    $new_orders = Order::where('user_id', $store->current_store)->limit(5)->orderBy('id', 'DESC')->get();
-                    $chartData = $this->getOrderChart(['duration' => 'week'],$userstore);
-                    $saleData = $this->getSaleChart(['duration' => 'week'],$userstore);
                     $store_id = Store::where('id', $store->current_store)->first();
                     if ($store_id) {
                         // $app_url = trim(env('APP_URL'), '/');
@@ -132,39 +126,7 @@ class DashboardController extends Controller
                             $store_id['store_url'] = 'https://' . $store_id['subdomain'] . '/';
                         }
                     }
-                    $totle_sale = 0;
-                    $totle_order = 0;
-                    $orders = Order::where('user_id', $store->current_store)->get();
-                    if (!empty($orders)) {
-                        $pro_qty = 0;
-                        $item_id = [];
-                        $totle_qty = [];
-                        foreach ($orders as $order) {
-                            $order_array = json_decode($order->product);
-                            $pro_id = [];
-                            foreach ($order_array as $key => $item) {
-                                if (!in_array($item->id, $item_id)) {
-                                    $item_id[] = $item->id;
-                                    $totle_qty[] = $item->quantity;
-                                } else {
-
-                                    $totle_qty[array_search($item->id, $item_id)] += $item->quantity;
-                                }
-                            }
-                            $totle_sale += $order['price'];
-                            $totle_order++;
-                        }
-                    }
-                    $users = \Auth::user()->currentuser();
-                    $plan = Plan::find($users->plan);
-                    if($plan->storage_limit > 0)
-                    {
-                        $storage_limit = ($users->storage_limit / $plan->storage_limit) * 100;
-                    }
-                    else{
-                        $storage_limit = 0;
-                    }
-                    return view('home', compact('products','saleData', 'store_id', 'totle_sale', 'store', 'orders', 'totle_order', 'newproduct', 'item_id', 'totle_qty', 'chartData', 'new_orders','storage_limit','plan','users'));
+                    return view('dashboard_owner', compact('store_id'));
                 }
             }else{
                 return redirect()->back()->with('error', __('Permission denied.'));
