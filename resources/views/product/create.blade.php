@@ -304,6 +304,12 @@
                                             onchange="document.getElementById('down_product').src = window.URL.createObjectURL(this.files[0])">
                                         <img id="down_product" src="" width="20%" class="mt-2" />
                                     </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            {{ Form::label('brand_id', __('Brand'), ['class' => 'form-label']) }}
+                                            {{ Form::select('brand_id', $brands->pluck('name', 'id'), isset($product) ? $product->brand_id : null, ['class' => 'form-control', 'placeholder' => __('Select Brand')]) }}
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
