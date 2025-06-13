@@ -630,6 +630,7 @@ final class DescontoProgressivoController extends Controller
         return view('desconto-progressivo.desconto-em-massa');
     }
 
+
     /**
      * Salva um novo Desconto em Massa
      *
@@ -682,8 +683,8 @@ final class DescontoProgressivoController extends Controller
                 'valor_minimo_produto' => $request->input('valorMinimoProduto', 0.00),
                 'utilizacao_unica_por_cliente' => true,
                 'publico_alvo' => $request->input('tipoClientes', 'qualquer'),
-                'validade_inicio' => $request->input('dataInicio'),
-                'validade_fim' => $request->input('dataFim'),
+                'validade_inicio' => $request->input('limitarData') ? $request->input('dataInicio') : now(),
+                'validade_fim' => $request->input('limitarData') ? $request->input('dataFim') : now()->addYears(10),
                 'titulo_promocao' => $request->input('tituloPromocao', 'Desconto em Massa'),
                 'created_at' => now(),
                 'updated_at' => now(),
@@ -737,4 +738,122 @@ final class DescontoProgressivoController extends Controller
         }
     }
 
+
+    public function brinde_de_carrinho_index()
+    {
+        return view('desconto-progressivo.brinde-de-carrinho');
+    }
+
+    public function salvarBrindeCarrinho(Request $request)
+    {
+        try {
+            $usuarioId = \Auth::id();
+            if (!$usuarioId) {
+                return response()->json([
+                    'sucesso' => false,
+                    'erro' => 'Usuário não autenticado'
+                ], 401);
+            }
+
+            // Buscar informações do usuário e sua loja atual
+            $usuario = \DB::table('users')
+                ->select('id', 'current_store')
+                ->where('id', $usuarioId)
+                ->first();
+
+            if (!$usuario || !$usuario->current_store) {
+                return response()->json([
+                    'sucesso' => false,
+                    'erro' => 'Usuário não possui loja associada'
+                ], 404);
+            }
+            
+            // Validação básica
+            if (!$request->has('descricao') || empty($request->input('descricao'))) {
+                return response()->json([
+                    'sucesso' => false,
+                    'erro' => 'A descrição é obrigatória',
+                    'detalhes' => ['descricao' => ['O campo descrição é obrigatório']]
+                ], 422);
+            }
+
+            // Validação do valor mínimo
+            if (!$request->has('valorMinimoCompra') || floatval($request->input('valorMinimoCompra')) <= 0) {
+                return response()->json([
+                    'sucesso' => false,
+                    'erro' => 'O valor mínimo de compra é obrigatório',
+                    'detalhes' => ['valorMinimoCompra' => ['O campo valor mínimo de compra é obrigatório e deve ser maior que zero']]
+                ], 422);
+            }
+
+            // Validação dos brindes
+            if (!$request->has('brindesSelecionados') || !is_array($request->input('brindesSelecionados')) || count($request->input('brindesSelecionados')) === 0) {
+                return response()->json([
+                    'sucesso' => false,
+                    'erro' => 'É necessário selecionar pelo menos um brinde',
+                    'detalhes' => ['brindesSelecionados' => ['Selecione pelo menos um brinde para oferecer']]
+                ], 422);
+            }
+
+            \DB::beginTransaction();
+
+            // Preparar datas de validade
+            $validadeInicio = $request->input('limitarData') ? $request->input('dataInicio') : now();
+            $validadeFim = $request->input('limitarData') ? $request->input('dataFim') : now()->addYears(10);
+
+            $brindeId = \DB::table('brindes_carrinho')->insertGetId([
+                'ativo' => $request->input('ativo', true),
+                'descricao' => $request->input('descricao'),
+                'valor_minimo' => floatval($request->input('valorMinimoCompra')),
+                'validade_inicio' => $validadeInicio,
+                'validade_fim' => $validadeFim,
+                'store_id' => $usuario->current_store,
+                'created_by' => $usuarioId,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]);
+
+            // Estados
+            $estados = $request->input('estadosSelecionados', []);
+            foreach ($estados as $estado) {
+                \DB::table('brinde_carrinho_estado')->insert([
+                    'brinde_id' => $brindeId,
+                    'estado_id' => $estado,
+                ]);
+            }
+
+            // Brindes
+            $brindes = $request->input('brindesSelecionados', []);
+            foreach ($brindes as $brinde) {
+                \DB::table('brinde_carrinho_produto')->insert([
+                    'brinde_id' => $brindeId,
+                    'produto_id' => $brinde['id'],
+                ]);
+            }
+
+            \DB::commit();
+
+            return response()->json([
+                'sucesso' => true,
+                'mensagem' => 'Brinde no carrinho salvo com sucesso!',
+                'id' => $brindeId
+            ], 201);
+        } catch (\Exception $e) {
+            \DB::rollBack();
+            
+            return response()->json([
+                'sucesso' => false,
+                'erro' => 'Erro ao salvar brinde no carrinho',
+                'detalhes' => $e->getMessage()
+            ], 500);
+        }
+    }
+
+
+
+
+    public function cupons_de_desconto_index()
+    {
+        return view('desconto-progressivo.cupons-de-desconto');
+    }
 }

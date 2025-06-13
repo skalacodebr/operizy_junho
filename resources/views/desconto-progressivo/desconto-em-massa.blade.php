@@ -690,6 +690,11 @@ Desconto em Massa
                         <input type="text" class="form-control" id="descricaoDesconto" placeholder="Ex: Toda categoria Masculina com 20% Off">
                     </div>
 
+                    <div class="form-group">
+                        <label for="tituloPromocao" class="form-label fw-semibold">Título da Promoção</label>
+                        <input type="text" class="form-control" id="tituloPromocao" placeholder="Ex: Promoção de fim de ano">
+                    </div>
+
                     <!-- Tipo de Desconto -->
                     <div class="mb-3">
                         <label class="form-label fw-semibold">Tipo de Desconto</label>
@@ -737,7 +742,8 @@ Desconto em Massa
                         Aplicação em Produtos
                     </h6>
                 </div>
-                <div class="card-body">
+                <div class="card-body">+
+                
                     <!-- Toggle Todos os Produtos -->
                     <div class="toggle-section">
                         <label class="custom-toggle">
@@ -1800,22 +1806,38 @@ function salvarDesconto() {
         valorDesconto = $('#valorFixoDesconto').val() || 0;
     }
     
+    const limitarData = $('#limitarData').is(':checked');
+    
+    // Definir datas padrão se não estiver limitando por data
+    let dataInicio = $('#dataInicio').val();
+    let dataFim = $('#dataFim').val();
+    
+    if (!limitarData) {
+        const hoje = new Date();
+        dataInicio = hoje.toISOString().split('T')[0]; // Formato YYYY-MM-DD
+        
+        const dezAnos = new Date();
+        dezAnos.setFullYear(dezAnos.getFullYear() + 10);
+        dataFim = dezAnos.toISOString().split('T')[0]; // Formato YYYY-MM-DD
+    }
+    
     const dados = {
         ativo: $('#ativarDescontoMassa').is(':checked'),
         descricao: $('#descricaoDesconto').val(),
         tipoDesconto: tipoDesconto,
         valorDesconto: valorDesconto, // Enviar um único campo para o backend
         valorMinimoProduto: $('#valorMinimoProduto').val() || 0,
-        limitarData: $('#limitarData').is(':checked'),
-        dataInicio: $('#dataInicio').val() || null,
-        dataFim: $('#dataFim').val() || null,
+        limitarData: limitarData,
+        dataInicio: dataInicio,
+        dataFim: dataFim,
         estadosSelecionados: estadosSelecionados,
         tipoClientes: $('#selectClientes').val(),
         clientesSelecionados: clientesSelecionados,
         todosProdutos: $('#todosProdutos').is(':checked'),
         tipoAplicacao: $('#tipoAplicacao').val(),
         produtosSelecionados: produtosSelecionados,
-        permitirOutrasPromocoes: $('#permitirOutrasPromocoes').is(':checked')
+        permitirOutrasPromocoes: $('#permitirOutrasPromocoes').is(':checked'),
+        tituloPromocao: $('#tituloPromocao').val() || 'Desconto em Massa'
     };
 
     // Debug para verificar valores

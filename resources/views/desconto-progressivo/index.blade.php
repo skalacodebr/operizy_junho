@@ -491,7 +491,7 @@ $(document).ready(function() {
 // CARDS ORIGINAIS
 
 function configureCupons() {
-    window.location.href = '{{ route("cupons.index") }}';
+    window.location.href = '{{ route("desconto-progressivo.cupons") }}';
 }
 
 function configureFreteGratis() {
@@ -501,6 +501,16 @@ function configureFreteGratis() {
 function configureLeveMais() {
     window.location.href = '{{ route("leve-mais-ganhe.index") }}';
 }
+
+// NOVOS CARDS
+function configureDescontoMassa() {
+    window.location.href = '{{ route("desconto-em-massa.index") }}';
+}
+
+function configureBrinde() {
+    window.location.href = '{{ route("brinde-de-carrinho.index") }}';
+}
+
 
 
 
@@ -519,18 +529,10 @@ function configureCrossSell() {
     window.location.href = '{{ route("cross-sell.index") }}';
 }
 
-function configureBrinde() {
-    window.location.href = '{{ route("brinde-carrinho.index") }}';
-}
-
 function configureCompreJunto() {
     window.location.href = '{{ route("compre-junto.index") }}';
 }
 
-// NOVOS CARDS
-function configureDescontoMassa() {
-    window.location.href = '{{ route("desconto-massa.index") }}';
-}
 
 
 

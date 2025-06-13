@@ -80,10 +80,12 @@ use Illuminate\Http\Request;
 
 
  Route::get('/desconto-progressivo', [DescontoProgressivoController::class, 'index'])->name('desconto-progressivo.index');
- Route::get('/desconto-progressivo/cupons', [DescontoProgressivoController::class, 'cupons'])->name('cupons.index');
+ Route::get('/desconto-progressivo/cupons', [DescontoProgressivoController::class, 'cupons'])->name('desconto-progressivo.cupons');
  Route::get('/desconto-progressivo/frete-gratis', [DescontoProgressivoController::class, 'frete_gratis_index'])->name('frete-gratis.index');
  Route::get('/desconto-progressivo/leve-mais-ganhe', [DescontoProgressivoController::class, 'leve_mais_ganhe_index'])->name('leve-mais-ganhe.index');
  Route::get('/desconto-progressivo/desconto-em-massa', [DescontoProgressivoController::class, 'desconto_em_massa_index'])->name('desconto-em-massa.index');
+ Route::get('/desconto-progressivo/brinde-de-carrinho', [DescontoProgressivoController::class, 'brinde_de_carrinho_index'])->name('brinde-de-carrinho.index');
+ Route::get('/desconto-progressivo/cupons-de-desconto', [DescontoProgressivoController::class, 'cupons_de_desconto_index'])->name('cupons-de-desconto.index');
 
 
 
@@ -91,6 +93,7 @@ use Illuminate\Http\Request;
  Route::post('/desconto-progressivo/frete-gratis/salvar', [DescontoProgressivoController::class, 'salvarFreteGratis'])->name('frete-gratis.salvar');
  Route::post('/leve-mais-pague-menos/salvar', [DescontoProgressivoController::class, 'salvarLeveMaisPagueMenos'])->name('leve-mais-pague-menos.salvar');
  Route::post('/desconto-progressivo/desconto-em-massa/salvar', [DescontoProgressivoController::class, 'salvarDescontoEmMassa'])->name('desconto-em-massa.salvar');
+ Route::post('/desconto-progressivo/brinde-de-carrinho/salvar', [DescontoProgressivoController::class, 'salvarBrindeCarrinho'])->name('brinde-de-carrinho.salvar');
 
 
 
