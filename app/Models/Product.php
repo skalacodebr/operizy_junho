@@ -144,4 +144,9 @@ class Product extends Model
             ->withPivot('is_active')
             ->withTimestamps();
     }
+
+    public function brand()
+    {
+        return $this->belongsTo(ProductBrand::class, 'brand_id');
+    }
 }
