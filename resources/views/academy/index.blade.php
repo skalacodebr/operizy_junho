@@ -206,7 +206,7 @@
 
   <div class="mb-4">
         <button class="btn btn-primary me-2" data-bs-toggle="modal" data-bs-target="#modalCreateCategory">
-            <i class="fas fa-folder-plus"></i> Nova Categoria
+            <i class="fas fa-folder-plus"></i> Nova Categoria 
         </button>
         <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalUploadVideo">
             <i class="fas fa-video"></i> Enviar Vídeo
@@ -313,7 +313,7 @@
           @csrf
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="modalCreateCategoryLabel">Nova Categoria</h5>
+              <h5 class="modal-title" id="modalCreateCategoryLabel">Nova Categoria (Apenas admin)</h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
             <div class="modal-body">
@@ -338,7 +338,7 @@
       @csrf
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="modalUploadVideoLabel">Enviar Novo Vídeo</h5>
+          <h5 class="modal-title" id="modalUploadVideoLabel">Enviar Novo Vídeo (Apenas admin) e tamanho dos arquivos pequenos</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
         </div>
         <div class="modal-body">

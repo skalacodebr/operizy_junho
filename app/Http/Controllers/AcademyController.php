@@ -56,7 +56,7 @@ public function index()
         ]);
 
         return redirect()
-            ->route('video-categories.index')
+            ->route('academy.index')
             ->with('success', 'Categoria criada com sucesso.');
     }
 

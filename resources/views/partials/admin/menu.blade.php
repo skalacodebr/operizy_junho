@@ -313,6 +313,16 @@
 </li>
 @endcan
 
+{{-- Promoções e Descontos --}}
+<li class="dash-item {{ Request::route()->getName() == 'desconto-progressivo.index' ? ' active' : 'collapsed' }}">
+    <a href="{{ route('desconto-progressivo.index') }}" class="dash-link">
+        <span class="dash-micon">
+            <i class="ti ti-percentage"></i>
+        </span>
+        <span class="dash-mtext">Promoções e Descontos</span>
+    </a>
+</li>
+
 <li class="dash-item dash-hasmenu collapsed">
     <a href="#!" class="dash-link">
         <span class="dash-micon"><i class="ti ti-shopping-cart"></i></span>

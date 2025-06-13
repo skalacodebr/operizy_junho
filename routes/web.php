@@ -64,6 +64,7 @@ use App\Http\Controllers\XenditController;
 use App\Http\Controllers\AplicativosController;
 use App\Http\Controllers\ReviewsController;
 use App\Http\Controllers\AcademyController;
+use App\Http\Controllers\DescontoProgressivoController;
 use Illuminate\Http\Request;
 
 /*
@@ -77,12 +78,41 @@ use Illuminate\Http\Request;
 |
  */
 
+
+ Route::get('/desconto-progressivo', [DescontoProgressivoController::class, 'index'])->name('desconto-progressivo.index');
+ Route::get('/desconto-progressivo/cupons', [DescontoProgressivoController::class, 'cupons'])->name('cupons.index');
+ Route::get('/desconto-progressivo/frete-gratis', [DescontoProgressivoController::class, 'frete_gratis_index'])->name('frete-gratis.index');
+ Route::get('/desconto-progressivo/leve-mais-ganhe', [DescontoProgressivoController::class, 'leve_mais_ganhe_index'])->name('leve-mais-ganhe.index');
+
+
+
+ Route::post('/desconto-progressivo/salvar', [DescontoProgressivoController::class, 'salvarDesconto'])->name('desconto-progressivo.salvar');
+ Route::post('/desconto-progressivo/frete-gratis/salvar', [DescontoProgressivoController::class, 'salvarFreteGratis'])->name('frete-gratis.salvar');
+
+
+
+
+ Route::get('/minha-loja-produtos', [DescontoProgressivoController::class, 'minhaLojaEProdutos'])->name('minha-loja-produtos');
+ Route::get('/minha-loja-clientes', [DescontoProgressivoController::class, 'minhosClientes'])->name('minha-loja-clientes');
+
+
+
+
+
+
+
+
+
+
+
+
 Route::get('/review', [ReviewsController::class, 'index'])->name('review.index');
 Route::get('/campanhas', [ReviewsController::class, 'review_campanhas'])->name('review.campanhas');
 Route::get('/perguntas', [ReviewsController::class, 'review_perguntas'])->name('review.perguntas');
 Route::get('/avaliacao', [ReviewsController::class, 'review_avaliacao'])->name('review.avaliacao');
 Route::get('/perguntas/respostas', [ReviewsController::class, 'review_perguntas_respostas'])->name('review.perguntas_respsotas');
 Route::get('/extracao', [ReviewsController::class, 'review_extracao'])->name('review.extracao');
+
 
 Route::get('/academy', [AcademyController::class, 'index'])->name('academy.index');
 
@@ -735,6 +765,7 @@ Route::any('/order-ozow-payment/{slug}', [OzowController::class, 'orderPayWithOz
 Route::any('/order-get-ozow-status/{slug}',[OzowController::class,'orderGetOzowStatus'])->name('order.get.ozow.status');
 
 });
+
 //================================= Custom Massage Page ====================================//
 Route::post('/store/custom-msg/{slug}', [StoreController::class, 'customMassage'])->name('customMassage');
 Route::post('store/get-massage/{slug}', [StoreController::class, 'getWhatsappUrl'])->name('get.whatsappurl');
@@ -911,3 +942,5 @@ Route::group(['middleware' => ['auth', 'XSS']], function () {
         'destroy' => 'product.filter.values.destroy',
     ]);
 });
+
+Route::post('/leve-mais-pague-menos/salvar', [DescontoProgressivoController::class, 'salvarLeveMaisPagueMenos'])->name('leve-mais-pague-menos.salvar');
