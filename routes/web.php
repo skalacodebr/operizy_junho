@@ -83,11 +83,14 @@ use Illuminate\Http\Request;
  Route::get('/desconto-progressivo/cupons', [DescontoProgressivoController::class, 'cupons'])->name('cupons.index');
  Route::get('/desconto-progressivo/frete-gratis', [DescontoProgressivoController::class, 'frete_gratis_index'])->name('frete-gratis.index');
  Route::get('/desconto-progressivo/leve-mais-ganhe', [DescontoProgressivoController::class, 'leve_mais_ganhe_index'])->name('leve-mais-ganhe.index');
+ Route::get('/desconto-progressivo/desconto-em-massa', [DescontoProgressivoController::class, 'desconto_em_massa_index'])->name('desconto-em-massa.index');
 
 
 
  Route::post('/desconto-progressivo/salvar', [DescontoProgressivoController::class, 'salvarDesconto'])->name('desconto-progressivo.salvar');
  Route::post('/desconto-progressivo/frete-gratis/salvar', [DescontoProgressivoController::class, 'salvarFreteGratis'])->name('frete-gratis.salvar');
+ Route::post('/leve-mais-pague-menos/salvar', [DescontoProgressivoController::class, 'salvarLeveMaisPagueMenos'])->name('leve-mais-pague-menos.salvar');
+ Route::post('/desconto-progressivo/desconto-em-massa/salvar', [DescontoProgressivoController::class, 'salvarDescontoEmMassa'])->name('desconto-em-massa.salvar');
 
 
 
@@ -943,4 +946,4 @@ Route::group(['middleware' => ['auth', 'XSS']], function () {
     ]);
 });
 
-Route::post('/leve-mais-pague-menos/salvar', [DescontoProgressivoController::class, 'salvarLeveMaisPagueMenos'])->name('leve-mais-pague-menos.salvar');
+

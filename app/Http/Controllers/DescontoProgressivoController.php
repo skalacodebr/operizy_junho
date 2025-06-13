@@ -619,4 +619,122 @@ final class DescontoProgressivoController extends Controller
             ], 500);
         }
     }
+
+
+
+
+
+
+    public function desconto_em_massa_index()
+    {
+        return view('desconto-progressivo.desconto-em-massa');
+    }
+
+    /**
+     * Salva um novo Desconto em Massa
+     *
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function salvarDescontoEmMassa(Request $request)
+    {
+        try {
+            // Log dos dados recebidos para depuração
+            \Log::info('Dados recebidos para salvar desconto em massa:', $request->all());
+            
+            $usuarioId = \Auth::id();
+            if (!$usuarioId) {
+                return response()->json([
+                    'sucesso' => false,
+                    'erro' => 'Usuário não autenticado'
+                ], 401);
+            }
+
+            // Buscar informações do usuário e sua loja atual
+            $usuario = \DB::table('users')
+                ->select('id', 'name', 'email', 'current_store')
+                ->where('id', $usuarioId)
+                ->first();
+
+            if (!$usuario || !$usuario->current_store) {
+                return response()->json([
+                    'sucesso' => false,
+                    'erro' => 'Usuário não possui loja associada'
+                ], 404);
+            }
+            
+            // Validação básica
+            if (!$request->has('descricao') || empty($request->input('descricao'))) {
+                return response()->json([
+                    'sucesso' => false,
+                    'erro' => 'A descrição é obrigatória',
+                    'detalhes' => ['descricao' => ['O campo descrição é obrigatório']]
+                ], 422);
+            }
+
+            \DB::beginTransaction();
+
+            $descontoId = \DB::table('descontos_em_massa')->insertGetId([
+                'ativo' => $request->input('ativo', true),
+                'descricao' => $request->input('descricao'),
+                'tipo_desconto' => $request->input('tipoDesconto'),
+                'valor_desconto' => $request->input('valorDesconto'),
+                'valor_minimo_produto' => $request->input('valorMinimoProduto', 0.00),
+                'utilizacao_unica_por_cliente' => true,
+                'publico_alvo' => $request->input('tipoClientes', 'qualquer'),
+                'validade_inicio' => $request->input('dataInicio'),
+                'validade_fim' => $request->input('dataFim'),
+                'titulo_promocao' => $request->input('tituloPromocao', 'Desconto em Massa'),
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]);
+
+            // Log após inserção na tabela principal
+            \Log::info('Desconto em massa inserido com sucesso:', [
+                'id' => $descontoId,
+                'descricao' => $request->input('descricao')
+            ]);
+
+            // Estados
+            $estados = $request->input('estadosSelecionados', []);
+            foreach ($estados as $estado) {
+                \DB::table('desconto_massa_estado')->insert([
+                    'desconto_id' => $descontoId,
+                    'estado_id' => $estado, // Se for ID, senão adapte para UF ou nome
+                ]);
+            }
+
+            // Clientes
+            if ($request->input('tipoClientes') === 'especificos') {
+                $clientes = $request->input('clientesSelecionados', []);
+                foreach ($clientes as $cliente) {
+                    \DB::table('desconto_massa_cliente')->insert([
+                        'desconto_id' => $descontoId,
+                        'cliente_id' => $cliente['id'],
+                    ]);
+                }
+            }
+
+            \DB::commit();
+
+            return response()->json([
+                'sucesso' => true,
+                'mensagem' => 'Desconto em Massa salvo com sucesso!',
+                'id' => $descontoId
+            ], 201);
+        } catch (\Exception $e) {
+            \DB::rollBack();
+            \Log::error('Erro ao salvar desconto em massa: ' . $e->getMessage(), [
+                'trace' => $e->getTraceAsString(),
+                'dados' => $request->all()
+            ]);
+            
+            return response()->json([
+                'sucesso' => false,
+                'erro' => 'Erro ao salvar desconto em massa',
+                'detalhes' => $e->getMessage()
+            ], 500);
+        }
+    }
+
 }
