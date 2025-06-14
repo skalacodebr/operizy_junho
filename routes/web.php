@@ -80,7 +80,7 @@ use Illuminate\Http\Request;
 
 
  Route::get('/desconto-progressivo', [DescontoProgressivoController::class, 'index'])->name('desconto-progressivo.index');
- Route::get('/desconto-progressivo/cupons', [DescontoProgressivoController::class, 'cupons'])->name('desconto-progressivo.cupons');
+ Route::get('/desconto-progressivo/desconto-progressivo', [DescontoProgressivoController::class, 'desconto_progressivo_index'])->name('desconto-progressivo.desconto-progressivo');
  Route::get('/desconto-progressivo/frete-gratis', [DescontoProgressivoController::class, 'frete_gratis_index'])->name('frete-gratis.index');
  Route::get('/desconto-progressivo/leve-mais-ganhe', [DescontoProgressivoController::class, 'leve_mais_ganhe_index'])->name('leve-mais-ganhe.index');
  Route::get('/desconto-progressivo/desconto-em-massa', [DescontoProgressivoController::class, 'desconto_em_massa_index'])->name('desconto-em-massa.index');

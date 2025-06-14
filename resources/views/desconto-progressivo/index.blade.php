@@ -490,8 +490,10 @@ $(document).ready(function() {
 
 // CARDS ORIGINAIS
 
-function configureCupons() {
-    window.location.href = '{{ route("desconto-progressivo.cupons") }}';
+
+
+function configureDescontoProgressivo() {
+    window.location.href = '{{ route("desconto-progressivo.desconto-progressivo") }}';
 }
 
 function configureFreteGratis() {
@@ -516,6 +518,9 @@ function configureBrinde() {
 
 {{--
 
+function configureCupons() {
+    window.location.href = '{{ route("desconto-progressivo.cupons") }}';
+}
 
 function configureUpsell() {
     window.location.href = '{{ route("upsell.index") }}';
@@ -531,13 +536,6 @@ function configureCrossSell() {
 
 function configureCompreJunto() {
     window.location.href = '{{ route("compre-junto.index") }}';
-}
-
-
-
-
-function configureDescontoProgressivo() {
-    window.location.href = '{{ route("desconto-progressivo-config.index") }}';
 }
 
 

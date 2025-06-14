@@ -20,9 +20,9 @@ final class DescontoProgressivoController extends Controller
 
 
 
-    public function cupons()
+    public function desconto_progressivo_index()
     {
-        return view('desconto-progressivo.cupons');
+        return view('desconto-progressivo.desconto-progressivo');
     }
 
     /**
