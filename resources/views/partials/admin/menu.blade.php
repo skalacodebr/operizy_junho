@@ -347,7 +347,7 @@
     'Manage Blog',
     'Manage Testimonial'
 ])
-    <li class="dash-item dash-hasmenu {{ Request::segment(1) == 'product' || Request::segment(1) == 'product_categorie' || Request::segment(1) == 'product_tax' || Request::segment(1) == 'product-coupon' || Request::segment(1) == 'shipping' || Request::segment(1) == 'subscriptions' || Request::segment(1) == 'custom-page' || Request::segment(1) == 'blog' || Request::segment(1) == 'products' ? ' active dash-trigger' : 'collapsed' }}">
+    <li class="dash-item dash-hasmenu {{ Request::segment(1) == 'product' || Request::segment(1) == 'product_categorie' || Request::segment(1) == 'product_tax' || Request::segment(1) == 'product-coupon' || Request::segment(1) == 'shipping' || Request::segment(1) == 'subscriptions' || Request::segment(1) == 'custom-page' || Request::segment(1) == 'blog' || Request::segment(1) == 'products' || Request::segment(2) == 'collections' || Request::segment(2) == 'brands' || Request::segment(2) == 'tags' || Request::segment(2) == 'filters' ? ' active dash-trigger' : 'collapsed' }}">
         <a href="#!" class="dash-link">
             <span class="dash-micon">
                 <i class="ti ti-license"></i>
@@ -357,32 +357,32 @@
                 <i data-feather="chevron-right"></i>
             </span>
         </a>
-        <ul class="dash-submenu {{ Request::segment(1) == 'product.index' ? ' show' : '' }}">
+        <ul class="dash-submenu {{ Request::segment(1) == 'product' || Request::segment(1) == 'product_categorie' || Request::segment(1) == 'product_tax' || Request::segment(1) == 'product-coupon' || Request::segment(1) == 'shipping' || Request::segment(1) == 'subscriptions' || Request::segment(1) == 'custom-page' || Request::segment(1) == 'blog' || Request::segment(1) == 'products' || Request::segment(2) == 'collections' || Request::segment(2) == 'brands' || Request::segment(2) == 'tags' || Request::segment(2) == 'filters' ? ' show' : '' }}">
             @can('Manage Products')
                 <li
                     class="dash-item {{ Request::route()->getName() == 'product.index' || Request::route()->getName() == 'product.create' || Request::route()->getName() == 'product.edit' || Request::route()->getName() == 'product.show' || Request::route()->getName() == 'product.grid' ? ' active' : '' }}">
-                    <a class="dash-link" href="{{ route('product.index') }}">{{ __('Products') }}</a>
+                    <a class="dash-link" href="{{ route('product.index') }}">Produtos</a>
                 </li>
             @endcan
             @can('Manage Product category')
                 <li
                     class="dash-item {{ Request::route()->getName() == 'product_categorie.index' ? ' active' : '' }}">
                     <a class="dash-link"
-                        href="{{ route('product_categorie.index') }}">{{ __('Product Category') }}</a>
+                        href="{{ route('product_categorie.index') }}">Categorias</a>
                 </li>
             @endcan
             @can('Manage Product Tax')
                 <li
                     class="dash-item {{ Request::route()->getName() == 'product_tax.index' ? ' active' : '' }}">
                     <a class="dash-link"
-                        href="{{ route('product_tax.index') }}">{{ __('Product Tax') }}</a>
+                        href="{{ route('product_tax.index') }}">Impostos</a>
                 </li>
             @endcan
             @can('Manage Product Coupan')
                 <li
                     class="dash-item {{ Request::route()->getName() == 'product-coupon.index' || Request::route()->getName() == 'product-coupon.show' ? ' active' : '' }}">
                     <a class="dash-link"
-                        href="{{ route('product-coupon.index') }}">{{ __('Product Coupon') }}</a>
+                        href="{{ route('product-coupon.index') }}">Cupons</a>
                 </li>
             @endcan
             @if (isset($plan->additional_page) && $plan->additional_page == 'on')
@@ -390,7 +390,7 @@
                     <li
                         class="dash-item {{ Request::route()->getName() == 'custom-page.index' ? ' active' : '' }}">
                         <a class="dash-link"
-                            href="{{ route('custom-page.index') }}">{{ __('Custom Page') }}</a>
+                            href="{{ route('custom-page.index') }}">Páginas Personalizadas</a>
                     </li>
                 @endcan
             @endif
@@ -398,34 +398,31 @@
                 @can('Manage Blog')
                     <li
                         class="dash-item {{ Request::route()->getName() == 'blog.index' ? ' active' : '' }}">
-                        <a class="dash-link" href="{{ route('blog.index') }}">{{ __('Blog') }}</a>
+                        <a class="dash-link" href="{{ route('blog.index') }}">Blog</a>
                     </li>
                 @endcan
             @endif
+            @can('Manage Products')
+                <li class="dash-item {{ Request::route()->getName() == 'product.collections.index' ? ' active' : '' }}">
+                    <a class="dash-link" href="{{ route('product.collections.index') }}">Coleções</a>
+                </li>
+                <li class="dash-item {{ Request::route()->getName() == 'product.brands.index' ? ' active' : '' }}">
+                    <a class="dash-link" href="{{ route('product.brands.index') }}">Marcas</a>
+                </li>
+                <li class="dash-item {{ Request::route()->getName() == 'product.tags.index' ? ' active' : '' }}">
+                    <a class="dash-link" href="{{ route('product.tags.index') }}">Tags e Selos</a>
+                </li>
+                <li class="dash-item {{ Request::route()->getName() == 'product.filters.index' ? ' active' : '' }}">
+                    <a class="dash-link" href="{{ route('product.filters.index') }}">Filtros</a>
+                </li>
+            @endcan
         </ul>
     </li>
-    @can('Manage Products')
-    <li class="dash-item {{ Request::route()->getName() == 'product.collections.index' ? ' active' : '' }}">
-        <a class="dash-link" href="{{ route('product.collections.index') }}">{{ __('Collections') }}</a>
-    </li>
-
-    <li class="dash-item {{ Request::route()->getName() == 'product.brands.index' ? ' active' : '' }}">
-        <a class="dash-link" href="{{ route('product.brands.index') }}">{{ __('Brands') }}</a>
-    </li>
-
-    <li class="dash-item {{ Request::route()->getName() == 'product.tags.index' ? ' active' : '' }}">
-        <a class="dash-link" href="{{ route('product.tags.index') }}">{{ __('Tags & Seals') }}</a>
-    </li>
-
-    <li class="dash-item {{ Request::route()->getName() == 'product.filters.index' ? ' active' : '' }}">
-        <a class="dash-link" href="{{ route('product.filters.index') }}">{{ __('Filters') }}</a>
-    </li>
-@endcan
 @endcanany
 
 
 <li class="dash-item">
-    <a href="#" class="dash-link">
+    <a href="{{ route('desconto-progressivo.index') }}" class="dash-link">
         <span class="dash-micon"><i class="ti ti-tag"></i></span>
         <span class="dash-mtext">Promoções</span>
     </a>
@@ -533,23 +530,7 @@
     </a>
 </li>
 
-@can('Manage Products')
-    <li class="dash-item {{ Request::route()->getName() == 'product.collections.index' ? ' active' : '' }}">
-        <a class="dash-link" href="{{ route('product.collections.index') }}">{{ __('Collections') }}</a>
-    </li>
 
-    <li class="dash-item {{ Request::route()->getName() == 'product.brands.index' ? ' active' : '' }}">
-        <a class="dash-link" href="{{ route('product.brands.index') }}">{{ __('Brands') }}</a>
-    </li>
-
-    <li class="dash-item {{ Request::route()->getName() == 'product.tags.index' ? ' active' : '' }}">
-        <a class="dash-link" href="{{ route('product.tags.index') }}">{{ __('Tags & Seals') }}</a>
-    </li>
-
-    <li class="dash-item {{ Request::route()->getName() == 'product.filters.index' ? ' active' : '' }}">
-        <a class="dash-link" href="{{ route('product.filters.index') }}">{{ __('Filters') }}</a>
-    </li>
-@endcan
 
                 @endif
             </ul>

@@ -24,8 +24,32 @@ class ProductFilter extends Model
     {
         parent::boot();
         static::creating(function ($model) {
-            $model->slug = Str::slug($model->name);
+            $model->slug = $model->generateUniqueSlug($model->name);
         });
+        
+        static::updating(function ($model) {
+            if ($model->isDirty('name')) {
+                $model->slug = $model->generateUniqueSlug($model->name);
+            }
+        });
+    }
+
+    protected function generateUniqueSlug($name)
+    {
+        $baseSlug = Str::slug($name);
+        $slug = $baseSlug;
+        $counter = 1;
+
+        // Verifica se o slug já existe na mesma loja
+        while (static::where('slug', $slug)
+                    ->where('store_id', $this->store_id)
+                    ->where('id', '!=', $this->id)
+                    ->exists()) {
+            $slug = $baseSlug . '-' . $counter;
+            $counter++;
+        }
+
+        return $slug;
     }
 
     public function values()
@@ -35,7 +59,7 @@ class ProductFilter extends Model
 
     public function products()
     {
-        return $this->belongsToMany(Product::class, 'product_filter')
+        return $this->belongsToMany(Product::class, 'product_filter', 'filter_id', 'product_id')
             ->withPivot('filter_value_id');
     }
 

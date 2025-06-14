@@ -21,7 +21,7 @@ class ProductFilterController extends Controller
         }
         else
         {
-            return redirect()->back()->with('error', __('Permission denied.'));
+            return redirect()->back()->with('error', __('Permissão negada.'));
         }
     }
 
@@ -33,7 +33,7 @@ class ProductFilterController extends Controller
         }
         else
         {
-            return redirect()->back()->with('error', __('Permission denied.'));
+            return redirect()->back()->with('error', __('Permissão negada.'));
         }
     }
 
@@ -74,11 +74,11 @@ class ProductFilterController extends Controller
                 $filterValue->save();
             }
 
-            return redirect()->route('product.filters.index')->with('success', __('Filter successfully created.'));
+            return redirect()->route('product.filters.index')->with('success', __('Filtro criado com sucesso.'));
         }
         else
         {
-            return redirect()->back()->with('error', __('Permission denied.'));
+            return redirect()->back()->with('error', __('Permissão negada.'));
         }
     }
 
@@ -90,7 +90,7 @@ class ProductFilterController extends Controller
         }
         else
         {
-            return redirect()->back()->with('error', __('Permission denied.'));
+            return redirect()->back()->with('error', __('Permissão negada.'));
         }
     }
 
@@ -132,11 +132,11 @@ class ProductFilterController extends Controller
                 $filterValue->save();
             }
 
-            return redirect()->route('product.filters.index')->with('success', __('Filter successfully updated.'));
+            return redirect()->route('product.filters.index')->with('success', __('Filtro atualizado com sucesso.'));
         }
         else
         {
-            return redirect()->back()->with('error', __('Permission denied.'));
+            return redirect()->back()->with('error', __('Permissão negada.'));
         }
     }
 
@@ -150,11 +150,11 @@ class ProductFilterController extends Controller
             // Remove o filtro
             $filter->delete();
 
-            return redirect()->route('product.filters.index')->with('success', __('Filter successfully deleted.'));
+            return redirect()->route('product.filters.index')->with('success', __('Filtro excluído com sucesso.'));
         }
         else
         {
-            return redirect()->back()->with('error', __('Permission denied.'));
+            return redirect()->back()->with('error', __('Permissão negada.'));
         }
     }
 } 

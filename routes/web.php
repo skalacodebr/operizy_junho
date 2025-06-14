@@ -65,6 +65,10 @@ use App\Http\Controllers\AplicativosController;
 use App\Http\Controllers\ReviewsController;
 use App\Http\Controllers\AcademyController;
 use App\Http\Controllers\DescontoProgressivoController;
+use App\Http\Controllers\ProductCollectionController;
+use App\Http\Controllers\ProductBrandController;
+use App\Http\Controllers\ProductTagController;
+use App\Http\Controllers\ProductFilterController;
 use Illuminate\Http\Request;
 
 /*
@@ -894,7 +898,7 @@ Route::get('order/download-pdf/{id}', [OrderController::class, 'invoiceStorePdf'
 
 Route::group(['middleware' => ['auth', 'XSS']], function () {
     // Coleções
-    Route::resource('product/collections', 'ProductCollectionController')->names([
+    Route::resource('products/collections', ProductCollectionController::class)->names([
         'index' => 'product.collections.index',
         'create' => 'product.collections.create',
         'store' => 'product.collections.store',
@@ -905,7 +909,7 @@ Route::group(['middleware' => ['auth', 'XSS']], function () {
     ]);
 
     // Marcas
-    Route::resource('product/brands', 'ProductBrandController')->names([
+    Route::resource('products/brands', ProductBrandController::class)->names([
         'index' => 'product.brands.index',
         'create' => 'product.brands.create',
         'store' => 'product.brands.store',
@@ -916,7 +920,7 @@ Route::group(['middleware' => ['auth', 'XSS']], function () {
     ]);
 
     // Tags e Selos
-    Route::resource('product/tags', 'ProductTagController')->names([
+    Route::resource('products/tags', ProductTagController::class)->names([
         'index' => 'product.tags.index',
         'create' => 'product.tags.create',
         'store' => 'product.tags.store',
@@ -927,7 +931,7 @@ Route::group(['middleware' => ['auth', 'XSS']], function () {
     ]);
 
     // Filtros
-    Route::resource('product/filters', 'ProductFilterController')->names([
+    Route::resource('products/filters', ProductFilterController::class)->names([
         'index' => 'product.filters.index',
         'create' => 'product.filters.create',
         'store' => 'product.filters.store',
@@ -935,17 +939,6 @@ Route::group(['middleware' => ['auth', 'XSS']], function () {
         'edit' => 'product.filters.edit',
         'update' => 'product.filters.update',
         'destroy' => 'product.filters.destroy',
-    ]);
-
-    // Valores dos Filtros
-    Route::resource('product/filters/{filter}/values', 'ProductFilterValueController')->names([
-        'index' => 'product.filter.values.index',
-        'create' => 'product.filter.values.create',
-        'store' => 'product.filter.values.store',
-        'show' => 'product.filter.values.show',
-        'edit' => 'product.filter.values.edit',
-        'update' => 'product.filter.values.update',
-        'destroy' => 'product.filter.values.destroy',
     ]);
 });
 
