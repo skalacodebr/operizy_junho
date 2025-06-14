@@ -1,23 +1,23 @@
 @extends('layouts.admin')
 
 @section('page-title')
-    {{ isset($filter) ? __('Edit Filter') : __('Create Filter') }}
+    {{ isset($filter) ? 'Editar Filtro' : 'Criar Filtro' }}
 @endsection
 
 @section('title')
     <div class="d-inline-block">
         <h5 class="h4 d-inline-block text-white font-weight-bold mb-0">
-            {{ isset($filter) ? __('Edit Filter') : __('Create Filter') }}
+            {{ isset($filter) ? 'Editar Filtro' : 'Criar Filtro' }}
         </h5>
     </div>
 @endsection
 
 @section('breadcrumb')
-    <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">{{ __('Home') }}</a></li>
-    <li class="breadcrumb-item"><a href="{{ route('product.index') }}">{{ __('Products') }}</a></li>
-    <li class="breadcrumb-item"><a href="{{ route('product.filters.index') }}">{{ __('Filters') }}</a></li>
+    <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Início</a></li>
+    <li class="breadcrumb-item"><a href="{{ route('product.index') }}">Produtos</a></li>
+    <li class="breadcrumb-item"><a href="{{ route('product.filters.index') }}">Filtros</a></li>
     <li class="breadcrumb-item active" aria-current="page">
-        {{ isset($filter) ? __('Edit') : __('Create') }}
+        {{ isset($filter) ? 'Editar' : 'Criar' }}
     </li>
 @endsection
 
@@ -33,7 +33,7 @@
         valueRow.className = 'row mb-3 value-row';
         valueRow.innerHTML = `
             <div class="col-${type === 'color' ? '6' : '10'}">
-                <input type="text" name="values[]" class="form-control" placeholder="{{ __('Enter value') }}" required>
+                <input type="text" name="values[]" class="form-control" placeholder="Digite o valor" required>
             </div>
             ${type === 'color' ? `
                 <div class="col-4">
@@ -84,26 +84,26 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                {{ Form::label('name', __('Name'), ['class' => 'form-label']) }}
-                                {{ Form::text('name', isset($filter) ? $filter->name : '', ['class' => 'form-control', 'placeholder' => __('Enter filter name')]) }}
+                                {{ Form::label('name', 'Nome', ['class' => 'form-label']) }}
+                                {{ Form::text('name', isset($filter) ? $filter->name : '', ['class' => 'form-control', 'placeholder' => 'Digite o nome do filtro']) }}
                             </div>
                         </div>
 
                         <div class="col-md-6">
                             <div class="form-group">
-                                {{ Form::label('type', __('Type'), ['class' => 'form-label']) }}
+                                {{ Form::label('type', 'Tipo', ['class' => 'form-label']) }}
                                 {{ Form::select('type', [
-                                    'select' => __('Select'),
-                                    'checkbox' => __('Checkbox'),
-                                    'radio' => __('Radio'),
-                                    'color' => __('Color')
+                                    'select' => 'Seleção',
+                                    'checkbox' => 'Checkbox',
+                                    'radio' => 'Radio',
+                                    'color' => 'Cor'
                                 ], isset($filter) ? $filter->type : '', ['class' => 'form-control', 'id' => 'type']) }}
                             </div>
                         </div>
 
                         <div class="col-md-12 mt-3">
                             <div class="form-group">
-                                <label class="form-label d-block">{{ __('Values') }}</label>
+                                <label class="form-label d-block">Valores</label>
                                 <div id="values-list">
                                     @if(isset($filter))
                                         @foreach($filter->values as $value)
@@ -126,7 +126,7 @@
                                     @endif
                                 </div>
                                 <button type="button" class="btn btn-success btn-sm mt-2" onclick="addValue()">
-                                    <i class="ti ti-plus"></i> {{ __('Add Value') }}
+                                    <i class="ti ti-plus"></i> Adicionar Valor
                                 </button>
                             </div>
                         </div>
@@ -136,14 +136,14 @@
                                 <label class="form-check form-switch">
                                     <input type="checkbox" class="form-check-input" name="is_active" 
                                         {{ isset($filter) && $filter->is_active ? 'checked' : '' }}>
-                                    <span class="form-check-label">{{ __('Active') }}</span>
+                                    <span class="form-check-label">Ativo</span>
                                 </label>
                             </div>
                         </div>
 
                         <div class="col-md-12 text-end">
                             <div class="form-group">
-                                <button type="submit" class="btn btn-primary">{{ __('Save') }}</button>
+                                <button type="submit" class="btn btn-primary">Salvar</button>
                             </div>
                         </div>
                     </div>

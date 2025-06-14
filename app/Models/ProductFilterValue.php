@@ -19,8 +19,31 @@ class ProductFilterValue extends Model
     {
         parent::boot();
         static::creating(function ($model) {
-            $model->slug = Str::slug($model->value);
+            $model->slug = $model->generateUniqueSlug($model->value);
         });
+        
+        static::updating(function ($model) {
+            if ($model->isDirty('value')) {
+                $model->slug = $model->generateUniqueSlug($model->value);
+            }
+        });
+    }
+
+    protected function generateUniqueSlug($value)
+    {
+        $baseSlug = Str::slug($value);
+        $slug = $baseSlug;
+        $counter = 1;
+
+        // Verifica se o slug já existe globalmente (todos os filter values)
+        while (static::where('slug', $slug)
+                    ->where('id', '!=', $this->id)
+                    ->exists()) {
+            $slug = $baseSlug . '-' . $counter;
+            $counter++;
+        }
+
+        return $slug;
     }
 
     public function filter()
